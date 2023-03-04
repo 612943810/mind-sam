@@ -16,6 +16,10 @@ var ioInit=new Server(serverInit);
 
 ioInit.on('connection',(mindConection)=>{
     console.log("Welcome to mind-sam. What can I assist you with?")
+    mindConection.emit('connection')
+})
+serverInit.on('connection',()=>{
+    console.log("Welcome to mind-sam. What can I assist you with?")
 })
 httpServerInit.listen(3000,()=>{
     console.log("Port 3000");
