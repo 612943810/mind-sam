@@ -4,23 +4,25 @@ import mongoose=require('mongoose')
 import { Socket } from 'socket.io';
 import { createServer } from 'http';
 let appInit:Express=express();
-let httpServerInit=require('http').createServer(appInit);
+let httpServerInit=require('http').Server(appInit);
 import {Server} from'socket.io';
 import cors=require('cors');
-appInit.use(cors({
-    origin:'*',
-    
-}));
 let serverInit=createServer();
-var ioInit=new Server(serverInit);
+var io:Socket=require('socket.io')(httpServerInit,{
+    cors:{
 
-ioInit.on('connection',(mindConection)=>{
-    console.log("Welcome to mind-sam. What can I assist you with?")
-    mindConection.emit('connection')
+        origin: "*",
+        methods: ["GET", "POST"],
+        credentials: true
+    
+    }
+});
+var port=3000
+
+io.on('connection',(mindConection:Socket)=>{
+mindConection.on("welcomeMessage",(userData)=>console.log(userData));
 })
-serverInit.on('connection',()=>{
-    console.log("Welcome to mind-sam. What can I assist you with?")
-})
-httpServerInit.listen(3000,()=>{
-    console.log("Port 3000");
+
+httpServerInit.listen(port,()=>{
+    console.log(`Port  ${port}`);
 })

@@ -3,13 +3,36 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const http_1 = require("http");
 let appInit = express();
-let httpServerInit = require('http').createServer(appInit);
-const socket_io_1 = require("socket.io");
+let httpServerInit = require('http').Server(appInit);
 let serverInit = (0, http_1.createServer)();
-var ioInit = new socket_io_1.Server();
-ioInit.on('connection', (mindConection) => {
-    console.log("Welcome to mind-sam. What can I assist you with?");
+var io = require('socket.io')(httpServerInit, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"],
+        credentials: true
+    }
 });
-httpServerInit.listen(3000, () => {
-    console.log("Port 3000");
+let mongoose=require('mongoose');
+
+var port = 3000;
+io.on('connection', (mindConection) => {
+    mindConection.on("welcomeMessage", (userData) => console.log(userData));
+});
+appInit.post((res,req)=>{
+    
+})
+mongoose.connect("mongodb+srv://personal:mongodb2@personal.yhrxz.mongodb.net/?retryWrites=true&w=majority",
+{useNewUrlParser:true,
+useUnifiedTopology:true
+})
+
+mongoose.connection.on('connected',()=>{
+    console.log("Connection successful");
+});
+
+mongoose.connection.on('error',(error)=>{
+console.log(`Error:${error}`);
+});
+httpServerInit.listen(port, () => {
+    console.log(`Port  ${port}`);
 });
