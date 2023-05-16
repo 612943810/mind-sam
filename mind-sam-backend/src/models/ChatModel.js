@@ -1,3 +1,2 @@
-let mongoose=require('mongoose');
-
-mongoose.createConnection();
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });

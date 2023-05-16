@@ -1,28 +1,41 @@
-import express=require('express')
-import { Express } from 'express';
-import mongoose=require('mongoose')
-import { Socket } from 'socket.io';
-import { createServer } from 'http';
-let appInit:Express=express();
-let httpServerInit=require('http').Server(appInit);
-import {Server} from'socket.io';
-import cors=require('cors');
-let serverInit=createServer();
-var io:Socket=require('socket.io')(httpServerInit,{
-    cors:{
-
+import express from 'express';
+import http from 'http';
+import mongose, { Schema } from 'mongoose';
+let appInit = express();
+let httpServerInit = require('http').Server(appInit);
+let serverInit =http.createServer();
+var io = require('socket.io')(httpServerInit, {
+    cors: {
         origin: "*",
         methods: ["GET", "POST"],
         credentials: true
-    
     }
 });
-var port=3000
-
-io.on('connection',(mindConection:Socket)=>{
-mindConection.on("welcomeMessage",(userData)=>console.log(userData));
+let mongoose=require('mongoose');
+import { Chat } from './models/ChatModel';
+var port = 3000;
+io.on('connection', (mindConection:any) => {
+    mindConection.on("welcomeMessage", (userData:any) => console.log(userData));
+});
+appInit.get("/getMessage",(res,req)=>{
+let chat=new Schema<Chat>({
+    messageid:1,
+    message:"Test"
 })
 
-httpServerInit.listen(port,()=>{
+})
+mongoose.connect("mongodb+srv://personal:mongodb2@personal.yhrxz.mongodb.net/?retryWrites=true&w=majority",
+{useNewUrlParser:true,
+useUnifiedTopology:true
+})
+
+mongoose.connection.on('connected',()=>{
+    console.log("Connection successful");
+});
+
+mongoose.connection.on('error',(error:any)=>{
+console.log(`Error:${error}`);
+});
+httpServerInit.listen(port, () => {
     console.log(`Port  ${port}`);
-})
+});
