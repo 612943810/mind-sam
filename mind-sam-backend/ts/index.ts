@@ -1,28 +1,33 @@
-import express from 'express';
-import http from 'http';
+import express, { Request,Response } from 'express';
+import http, { IncomingMessage, Server, ServerResponse } from 'http';
 import mongose, { Schema } from 'mongoose';
+import cors from 'cors';
 let appInit = express();
-let httpServerInit = require('http').Server(appInit);
-let serverInit =http.createServer();
-var io = require('socket.io')(httpServerInit, {
+
+let serverInit =http.createServer(appInit);
+var io = require('socket.io')(serverInit, {
     cors: {
         origin: "*",
         methods: ["GET", "POST"],
         credentials: true
     }
 });
+appInit.use(cors({ origin: 'http://127.0.0.1:3000'}))
 let mongoose=require('mongoose');
 import { Chat } from './models/ChatModel';
 var port = 3000;
 io.on('connection', (mindConection:any) => {
     mindConection.on("welcomeMessage", (userData:any) => console.log(userData));
 });
-appInit.get("/getMessage",(res,req)=>{
-let chat=new Schema<Chat>({
-    messageid:1,
-    message:"Test"
-})
+appInit.get("/message",(req:Request,res:Response):void=>{
+res.json("Path found.")
 
+})
+io.on("connection",()=>{
+   console.log("Chat started");
+})
+io.on("disconnect",()=>{
+   console.log("Chat off")
 })
 mongoose.connect("mongodb+srv://personal:mongodb2@personal.yhrxz.mongodb.net/?retryWrites=true&w=majority",
 {useNewUrlParser:true,
@@ -36,6 +41,6 @@ mongoose.connection.on('connected',()=>{
 mongoose.connection.on('error',(error:any)=>{
 console.log(`Error:${error}`);
 });
-httpServerInit.listen(port, () => {
+serverInit.listen(port, () => {
     console.log(`Port  ${port}`);
 });

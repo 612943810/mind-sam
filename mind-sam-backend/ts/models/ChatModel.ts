@@ -4,3 +4,4 @@ export type Chat={
     messageid:Number,
     message:String
 };
+
