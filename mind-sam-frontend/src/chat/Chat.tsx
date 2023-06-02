@@ -1,7 +1,12 @@
-import React, { Fragment, createElement } from "react";
+import React, { Fragment, createElement,useEffect } from "react";
 import {io} from 'socket.io-client';
-import{Axios} from 'axios';
+import axios from 'axios';
 function Chat(){
+  useEffect(()=>{
+    axios.get("http://localhost:3000/").then((response)=>{
+      console.log(response.data)
+    })
+  })
   let conInit=io('http://localhost:3000/');
 console.log(conInit.connected)
     conInit.emit("welcomeMessage","Welcome to mind-sam. What can I assist you with?"); 
@@ -12,14 +17,15 @@ var textBox=document.createElement("p");
 textBox.textContent=eventStatus;
 textEl?.appendChild(textBox);
     });
-  
+  conInit.on("connection",(status)=>{
+    console.log(status)
+  })
     return(
    <Fragment>
-    <ul id="text"></ul>
+
  <form>
-   <input type="text"/> 
+   <input type="text" placeholder="Please type something to the bot." style={{width:400,height:50}} /> 
  </form>
- <h1>Mind Sam</h1>
 </Fragment>
 
     );

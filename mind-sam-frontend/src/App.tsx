@@ -7,10 +7,13 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <Fragment>
-    {/* @ts-expect-error Server Component */}
-      <Chat/>
-    </Fragment>
+    <div  className='grid'>
+      <div className='chatBar'>
+           <Chat/>
+      </div>
+      </div>
+  
+   
   )
 }
 export default App;

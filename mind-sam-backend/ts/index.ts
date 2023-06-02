@@ -7,27 +7,28 @@ let appInit = express();
 let serverInit =http.createServer(appInit);
 var io = require('socket.io')(serverInit, {
     cors: {
-        origin: "*",
-        methods: ["GET", "POST"],
+        origin: " *",
+       // methods: ["GET", "POST","UPDATE","DELETE"],
+        
         credentials: true
     }
 });
-appInit.use(cors({ origin: 'http://127.0.0.1:3000'}))
+appInit.use(cors({ origin: '*'}));
 let mongoose=require('mongoose');
 import { Chat } from './models/ChatModel';
 var port = 3000;
 io.on('connection', (mindConection:any) => {
     mindConection.on("welcomeMessage", (userData:any) => console.log(userData));
 });
-appInit.get("/message",(req:Request,res:Response):void=>{
-res.json("Path found.")
+appInit.get("/",(req:Request,res:Response):void=>{
 
 })
-io.on("connection",()=>{
-   console.log("Chat started");
+
+io.on("connection",(socketLis:any)=>{
+   socketLis.broadcast.emit("Chat started");
 })
-io.on("disconnect",()=>{
-   console.log("Chat off")
+io.on("disconnect",(socketLis:any)=>{
+   socketLis.broadcast.emit("Chat off")
 })
 mongoose.connect("mongodb+srv://personal:mongodb2@personal.yhrxz.mongodb.net/?retryWrites=true&w=majority",
 {useNewUrlParser:true,

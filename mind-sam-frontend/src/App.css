@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+.grid{
+display: grid;
+grid-template-rows: repeat(12,1fr);
+grid-template-columns: repeat(12,1fr);
+}
+.chatBar{
+  grid-row:12;
+  grid-column: 1/span 12;
+}
