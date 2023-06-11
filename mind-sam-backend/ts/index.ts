@@ -18,18 +18,22 @@ let mongoose=require('mongoose');
 import { Chat } from './models/ChatModel';
 var port = 3000;
 io.on('connection', (mindConection:any) => {
-    mindConection.on("welcomeMessage", (userData:any) => console.log(userData));
+    mindConection.emit("welcomeMessage",`Welcome, ${mindConection.id} to the bot! `)
 });
 appInit.get("/",(req:Request,res:Response):void=>{
 
 })
 
 io.on("connection",(socketLis:any)=>{
-   socketLis.broadcast.emit("Chat started");
+   socketLis.emit("Chat started");
+ 
+   socketLis.emit("messageDisplay","Please select an option. 1 is for Customer, and 2 is for Business Owner.");
+
 })
 io.on("disconnect",(socketLis:any)=>{
-   socketLis.broadcast.emit("Chat off")
+   socketLis.emit("Chat off")
 })
+
 mongoose.connect("mongodb+srv://personal:mongodb2@personal.yhrxz.mongodb.net/?retryWrites=true&w=majority",
 {useNewUrlParser:true,
 useUnifiedTopology:true
