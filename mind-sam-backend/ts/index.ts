@@ -20,16 +20,19 @@ var port = 3000;
 io.on('connection', (mindConection:any) => {
     mindConection.emit("welcomeMessage",`Welcome, ${mindConection.id} to the bot! `)
 });
-appInit.get("/",(req:Request,res:Response):void=>{
 
-})
 
 io.on("connection",(socketLis:any)=>{
    socketLis.emit("Chat started");
  
    socketLis.emit("messageDisplay","Please select an option. 1 is for Customer, and 2 is for Business Owner.");
+socketLis.on("showMenu",(menuOptions:any)=>{
+      io.emit("showMenu",menuOptions);
+   })
 
-})
+}) 
+
+
 io.on("disconnect",(socketLis:any)=>{
    socketLis.emit("Chat off")
 })

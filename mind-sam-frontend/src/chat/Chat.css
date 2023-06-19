@@ -10,5 +10,11 @@
 .chatText{
 font-size: larger;
  word-wrap: break-word;
+
  background-color:var(--xanthous)
+}
+.chatButton{
+    background-color: var(--melon);
+    border-radius: 30%;
+    padding: 2%;
 }

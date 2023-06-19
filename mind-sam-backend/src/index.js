@@ -19,13 +19,14 @@ appInit.use((0, cors_1.default)({ origin: '*' }));
 let mongoose = require('mongoose');
 var port = 3000;
 io.on('connection', (mindConection) => {
-    mindConection.emit("welcomeMessage", `Welcome, ${mindConection.id} to the bot!. `);
-});
-appInit.get("/", (req, res) => {
+    mindConection.emit("welcomeMessage", `Welcome, ${mindConection.id} to the bot! `);
 });
 io.on("connection", (socketLis) => {
     socketLis.emit("Chat started");
     socketLis.emit("messageDisplay", "Please select an option. 1 is for Customer, and 2 is for Business Owner.");
+    socketLis.on("showMenu", (menuOptions) => {
+        io.emit("showMenu", menuOptions);
+    });
 });
 io.on("disconnect", (socketLis) => {
     socketLis.emit("Chat off");
