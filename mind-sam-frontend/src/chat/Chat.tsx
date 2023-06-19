@@ -1,4 +1,4 @@
-import React, { Fragment, createElement,useEffect, useState } from "react";
+import React, { ClassAttributes, Fragment, RefAttributes, createElement,useEffect, useState } from "react";
 import {io} from 'socket.io-client';
 import axios from 'axios';
 import './Chat.css';
@@ -9,11 +9,22 @@ function Chat(){
 submitVal.preventDefault();
 if(chat=="1"){
 var textEl=document.getElementById("chatText");
-var menuButton=document.createElement("button");
-menuButton.textContent="Entertainment";
- textEl?.appendChild(menuButton);
+var menuButton=document.createElement("button")
+menuButton.textContent="News";
+menuButton.addEventListener('click',()=>{
+  window.open("https://www.cbc.ca/news");
+});
+textEl?.appendChild(menuButton);
 conInit.emit("showMenu",menuButton);
-}
+}else if(chat=="2"){
+  var textEl=document.getElementById("chatText");
+  var menuButton=document.createElement("button")
+  menuButton.textContent="Guide for Business Owners";
+  menuButton.addEventListener('click',()=>{
+    window.open("https://www.businessnewsdaily.com/4686-how-to-start-a-business.html");
+  });
+  textEl?.appendChild(menuButton);
+ }
 };
   useEffect(()=>{
 return()=>{

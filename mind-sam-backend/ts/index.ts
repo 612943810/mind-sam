@@ -25,7 +25,7 @@ io.on('connection', (mindConection:any) => {
 io.on("connection",(socketLis:any)=>{
    socketLis.emit("Chat started");
  
-   socketLis.emit("messageDisplay","Please select an option. 1 is for Customer, and 2 is for Business Owner.");
+   socketLis.emit("messageDisplay","Please select an option for your respective links. 1 is for Customer, and 2 is for Business Owner.");
 socketLis.on("showMenu",(menuOptions:any)=>{
       io.emit("showMenu",menuOptions);
    })
