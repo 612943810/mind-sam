@@ -13,4 +13,4 @@ let chatSchema=new Schema<Chat>({
 })
 
 let chat=model<Chat>('Chat',chatSchema);
-let user1=new chat("23","Hello",'2023-09-12')
+module.exports=chat

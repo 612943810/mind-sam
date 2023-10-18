@@ -37,7 +37,7 @@ io.on("disconnect",(socketLis:any)=>{
    socketLis.emit("Chat off")
 })
 
-mongoose.connect("mongodb+srv://personal:mongodb2@personal.yhrxz.mongodb.net/?retryWrites=true&w=majority",
+mongoose.connect("mongodb+srv://:@.yhrxz.mongodb.net/?retryWrites=true&w=majority",
 {useNewUrlParser:true,
 useUnifiedTopology:true
 })
