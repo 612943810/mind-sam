@@ -2,6 +2,8 @@ import express, { Request,Response } from 'express';
 import http, { IncomingMessage, Server, ServerResponse } from 'http';
 import mongose, { Schema } from 'mongoose';
 import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config();
 let appInit = express();
 
 let serverInit =http.createServer(appInit);
@@ -37,10 +39,7 @@ io.on("disconnect",(socketLis:any)=>{
    socketLis.emit("Chat off")
 })
 
-mongoose.connect("mongodb+srv://:@.yhrxz.mongodb.net/?retryWrites=true&w=majority",
-{useNewUrlParser:true,
-useUnifiedTopology:true
-})
+mongoose.connect(`mongodb+srv://:  ${process.env.database_password}@.yhrxz.mongodb.net/?retryWrites=true&w=majority`);
 
 mongoose.connection.on('connected',()=>{
     console.log("Connection successful");

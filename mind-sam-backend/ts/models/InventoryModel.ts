@@ -9,5 +9,4 @@ let inventorySchema=new Schema<Inventory>({
     inventoryName:{type:String,required:true},
     inventoryDate:{type:Date,required:true}
 })
- let inventory=model<Inventory>('Inventory',inventorySchema);
-module.exports=inventory;
+ export let inventory=model<Inventory>('Inventory',inventorySchema);

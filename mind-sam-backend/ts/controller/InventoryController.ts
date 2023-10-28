@@ -1,9 +1,13 @@
 import mongoose, { Mongoose,Schema } from "mongoose";
 import { Express,Request,Response } from "express";
-let inventory=require("../models/InventoryModel")
+import  {inventory} from "../models/InventoryModel"
 let getInventory=(res:Response,req:Request)=>{
-inventory.
+inventory.find({});
 }
 let postInventory=(res:Response,req:Request)=>{
-
+inventory.create();
 }
+let findInventory=(res:Response,req:Request)=>{
+    
+    inventory.find({});
+    }
