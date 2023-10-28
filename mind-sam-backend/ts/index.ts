@@ -39,7 +39,7 @@ io.on("disconnect",(socketLis:any)=>{
    socketLis.emit("Chat off")
 })
 
-mongoose.connect(`mongodb+srv://:  ${process.env.database_password}@.yhrxz.mongodb.net/?retryWrites=true&w=majority`);
+mongoose.connect(`mongodb+srv://${process.env.database_name}:${process.env.database_password}@${process.env.database_name}.yhrxz.mongodb.net/?retryWrites=true&w=majority`);
 
 mongoose.connection.on('connected',()=>{
     console.log("Connection successful");

@@ -7,3 +7,6 @@ let getInventory = (res, req) => {
 let postInventory = (res, req) => {
     InventoryModel_1.inventory.create();
 };
+let findInventory = (res, req) => {
+    InventoryModel_1.inventory.find({});
+};

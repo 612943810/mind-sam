@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const http_1 = __importDefault(require("http"));
 const cors_1 = __importDefault(require("cors"));
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 let appInit = (0, express_1.default)();
 let serverInit = http_1.default.createServer(appInit);
 var io = require('socket.io')(serverInit, {
@@ -31,9 +33,7 @@ io.on("connection", (socketLis) => {
 io.on("disconnect", (socketLis) => {
     socketLis.emit("Chat off");
 });
-mongoose.connect("mongodb+srv://:@.yhrxz.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+mongoose.connect(`mongodb+srv://${process.env.database_name}:${process.env.database_password}@${process.env.database_name}.yhrxz.mongodb.net/?retryWrites=true&w=majority`);
 mongoose.connection.on('connected', () => {
     console.log("Connection successful");
 });
