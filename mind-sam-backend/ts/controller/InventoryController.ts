@@ -23,7 +23,7 @@ let getInventory= async (res:Response,req:Request)=>{
       await inventory.find({})
       .then(inventoryData=>res.json(inventoryData)); 
       res.json() 
-    } catch (error) {
+} catch (error) {
         res.json(error)
     }
 
@@ -34,6 +34,14 @@ let updateInventory=async(res:Response,req:Request)=>{
         .then(inventory=>{
             res.json("Inventory updated")
         })
+    } catch (error) {
+        res.json(error)
+    }
+}
+
+let deleteInventory=async(res:Response,req:Request)=>{
+    try {
+        await inventory.deleteOne({id:req.params.inventoryId})
     } catch (error) {
         res.json(error)
     }
