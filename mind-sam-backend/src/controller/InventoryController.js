@@ -1,8 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const InventoryModel_1 = require("../models/InventoryModel");
-let getInventory = (res, req) => {
-    InventoryModel_1.inventory.find({});
+let getInventory = async (res, req) => {
+    try {
+        await InventoryModel_1.inventory.find({})
+            .then(inventoryData => res.json(inventoryData));
+        res.json();
+    }
+    catch (error) {
+        res.json(error);
+    }
 };
 let postInventory = async (req, res) => {
     const { inventoryId, inventoryName, inventoryDate } = req.body;
@@ -18,10 +25,9 @@ let postInventory = async (req, res) => {
     catch (error) {
         res.json(error);
     }
-    res.send();
 };
-let findInventory = (res, req) => {
-    InventoryModel_1.inventory.find({});
+let findInventory = async (res, req) => {
+    await InventoryModel_1.inventory.find({});
 };
 module.exports = {
     getInventory,
