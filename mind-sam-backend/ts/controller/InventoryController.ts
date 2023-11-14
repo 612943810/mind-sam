@@ -54,5 +54,6 @@ let findInventory= async(res:Response,req:Request)=>{
     module.exports={
         getInventory,
         postInventory,
-        updateInventory
+        updateInventory,
+        deleteInventory
     }
