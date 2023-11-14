@@ -32,7 +32,7 @@ let updateInventory=async(res:Response,req:Request)=>{
     try {
         await inventory.findByIdAndUpdate(req.params.inventorytId,req.body, {new:true})
         .then(inventory=>{
-            res.json("Inventory updated")
+            res.json("Inventory update")
         })
     } catch (error) {
         res.json(error)
