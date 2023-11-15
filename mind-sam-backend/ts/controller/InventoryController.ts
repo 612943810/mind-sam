@@ -18,7 +18,7 @@ let postInventory=async (req:Request,res:Response,)=>{
     }
 
 }
-let getInventory= async (res:Response,req:Request)=>{
+let getInventory= async (req:Request,res:Response)=>{
     try {
       await inventory.find({})
       .then(inventoryData=>res.json(inventoryData)); 
@@ -28,7 +28,7 @@ let getInventory= async (res:Response,req:Request)=>{
     }
 
 }
-let updateInventory=async(res:Response,req:Request)=>{
+let updateInventory=async(req:Request,res:Response)=>{
     try {
         await inventory.findByIdAndUpdate(req.params.inventorytId,req.body, {new:true})
         .then(inventory=>{
@@ -39,14 +39,14 @@ let updateInventory=async(res:Response,req:Request)=>{
     }
 }
 
-let deleteInventory=async(res:Response,req:Request)=>{
+let deleteInventory=async(req:Request,res:Response)=>{
     try {
         await inventory.deleteOne({id:req.params.inventoryId})
     } catch (error) {
         res.json(error)
     }
 }
-let findInventory= async(res:Response,req:Request)=>{
+let findInventory= async(req:Request,res:Response)=>{
     
    await  inventory.find({});
     }

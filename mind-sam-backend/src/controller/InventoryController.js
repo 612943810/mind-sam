@@ -1,16 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const InventoryModel_1 = require("../models/InventoryModel");
-let getInventory = async (res, req) => {
-    try {
-        await InventoryModel_1.inventory.find({})
-            .then(inventoryData => res.json(inventoryData));
-        res.json();
-    }
-    catch (error) {
-        res.json(error);
-    }
-};
 let postInventory = async (req, res) => {
     const { inventoryId, inventoryName, inventoryDate } = req.body;
     let inventoryData = new InventoryModel_1.inventory({
@@ -26,10 +16,41 @@ let postInventory = async (req, res) => {
         res.json(error);
     }
 };
-let findInventory = async (res, req) => {
+let getInventory = async (req, res) => {
+    try {
+        await InventoryModel_1.inventory.find({})
+            .then(inventoryData => res.json(inventoryData));
+        res.json();
+    }
+    catch (error) {
+        res.json(error);
+    }
+};
+let updateInventory = async (req, res) => {
+    try {
+        await InventoryModel_1.inventory.findByIdAndUpdate(req.params.inventorytId, req.body, { new: true })
+            .then(inventory => {
+            res.json("Inventory update");
+        });
+    }
+    catch (error) {
+        res.json(error);
+    }
+};
+let deleteInventory = async (req, res) => {
+    try {
+        await InventoryModel_1.inventory.deleteOne({ id: req.params.inventoryId });
+    }
+    catch (error) {
+        res.json(error);
+    }
+};
+let findInventory = async (req, res) => {
     await InventoryModel_1.inventory.find({});
 };
 module.exports = {
     getInventory,
-    postInventory
+    postInventory,
+    updateInventory,
+    deleteInventory
 };
