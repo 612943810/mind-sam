@@ -2,6 +2,6 @@ import { Router } from "express";
 let inController=require('../controller/InventoryController')
 export let inRoute=Router();
 inRoute.post("/postinventory",inController.postInventory)
-inRoute.get("/getInventory",inController.getInventory)
-inRoute.put('/updateInventory',inController.updateInventory)
-inRoute.delete("/deleteInventory",inController.deleteInventory)
+inRoute.get("/getinventory",inController.getInventory)
+inRoute.put('/updateinventory/:id',inController.updateInventory)
+inRoute.delete("/deleteinventory",inController.deleteInventory)

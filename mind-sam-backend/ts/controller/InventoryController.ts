@@ -6,7 +6,7 @@ import  {inventory} from "../models/InventoryModel"
 let postInventory=async (req:Request,res:Response,)=>{
     const {inventoryId,inventoryName,inventoryDate}=req.body;
     let inventoryData=new inventory({
-     inventoryId,
+        inventoryId,
      inventoryName,
      inventoryDate
     })
@@ -19,6 +19,7 @@ let postInventory=async (req:Request,res:Response,)=>{
 
 }
 let getInventory= async (req:Request,res:Response)=>{
+
     try {
       await inventory.find({})
       .then(inventoryData=>res.json(inventoryData)); 
@@ -29,11 +30,18 @@ let getInventory= async (req:Request,res:Response)=>{
 
 }
 let updateInventory=async(req:Request,res:Response)=>{
-    try {
-        await inventory.findByIdAndUpdate(req.params.inventorytId,req.body, {new:true})
-        .then(inventory=>{
-            res.json("Inventory update")
-        })
+        const {inventoryId,inventoryName,inventoryDate}=req.body;
+    let inventoryData=new inventory({
+        inventoryId,
+        inventoryName,
+        inventoryDate
+       })
+       try {
+        await inventory.findByIdAndUpdate(req.params.id,req.body,{runValidators:true,returnOriginal:false,useFinfAndModify:false})
+       .then(inventory=>{
+            res.json("Inventory updated") ;
+           })
+         await  inventoryData.save();
     } catch (error) {
         res.json(error)
     }

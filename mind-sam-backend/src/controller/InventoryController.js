@@ -27,11 +27,18 @@ let getInventory = async (req, res) => {
     }
 };
 let updateInventory = async (req, res) => {
+    const { inventoryId, inventoryName, inventoryDate } = req.body;
+    let inventoryData = new InventoryModel_1.inventory({
+        inventoryId,
+        inventoryName,
+        inventoryDate
+    });
     try {
-        await InventoryModel_1.inventory.findByIdAndUpdate(req.params.inventorytId, req.body, { new: true })
+        await InventoryModel_1.inventory.findByIdAndUpdate(req.params.id, req.body, { runValidators: true, returnOriginal: false, useFinfAndModify: false })
             .then(inventory => {
             res.json("Inventory update");
         });
+        await inventoryData.save();
     }
     catch (error) {
         res.json(error);
