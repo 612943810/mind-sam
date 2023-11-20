@@ -2,12 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const InventoryModel_1 = require("../models/InventoryModel");
 let postInventory = async (req, res) => {
-    const { inventoryId, inventoryName, inventoryDate } = req.body;
-    let inventoryData = new InventoryModel_1.inventory({
-        inventoryId,
-        inventoryName,
-        inventoryDate
-    });
+    let inventoryData = new InventoryModel_1.inventory(req.body);
     try {
         await inventoryData.save();
         res.send("Success");
@@ -19,7 +14,7 @@ let postInventory = async (req, res) => {
 let getInventory = async (req, res) => {
     try {
         await InventoryModel_1.inventory.find({})
-            .then(inventoryData => res.json(inventoryData));
+            .then(inventoryStatus => res.json(inventoryStatus));
         res.json();
     }
     catch (error) {
@@ -27,16 +22,11 @@ let getInventory = async (req, res) => {
     }
 };
 let updateInventory = async (req, res) => {
-    const { inventoryId, inventoryName, inventoryDate } = req.body;
-    let inventoryData = new InventoryModel_1.inventory({
-        inventoryId,
-        inventoryName,
-        inventoryDate
-    });
+    let inventoryData = new InventoryModel_1.inventory(req.body);
     try {
         await InventoryModel_1.inventory.findByIdAndUpdate(req.params.id, req.body, { runValidators: true, returnOriginal: false, useFinfAndModify: false })
-            .then(inventory => {
-            res.json("Inventory update");
+            .then(inventoryStatus => {
+            res.json("Inventory updated");
         });
         await inventoryData.save();
     }
@@ -46,7 +36,10 @@ let updateInventory = async (req, res) => {
 };
 let deleteInventory = async (req, res) => {
     try {
-        await InventoryModel_1.inventory.deleteOne({ id: req.params.inventoryId });
+        await InventoryModel_1.inventory.findByIdAndDelete(req.params.id)
+            .then(inventoryStatus => {
+            res.json("Inventory deleted");
+        });
     }
     catch (error) {
         res.json(error);

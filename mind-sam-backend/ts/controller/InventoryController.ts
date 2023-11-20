@@ -2,14 +2,8 @@ import mongoose, { Mongoose,Schema } from "mongoose";
 import { Express,Request,Response } from "express";
 import  {inventory} from "../models/InventoryModel"
 
-
 let postInventory=async (req:Request,res:Response,)=>{
-    const {inventoryId,inventoryName,inventoryDate}=req.body;
-    let inventoryData=new inventory({
-        inventoryId,
-     inventoryName,
-     inventoryDate
-    })
+let inventoryData=new inventory(req.body)
     try {
         await inventoryData.save();
         res.send("Success")
@@ -22,7 +16,7 @@ let getInventory= async (req:Request,res:Response)=>{
 
     try {
       await inventory.find({})
-      .then(inventoryData=>res.json(inventoryData)); 
+      .then(inventoryStatus=>res.json(inventoryStatus)); 
       res.json() 
 } catch (error) {
         res.json(error)
@@ -30,15 +24,10 @@ let getInventory= async (req:Request,res:Response)=>{
 
 }
 let updateInventory=async(req:Request,res:Response)=>{
-        const {inventoryId,inventoryName,inventoryDate}=req.body;
-    let inventoryData=new inventory({
-        inventoryId,
-        inventoryName,
-        inventoryDate
-       })
+    let inventoryData=new inventory(req.body)  
        try {
         await inventory.findByIdAndUpdate(req.params.id,req.body,{runValidators:true,returnOriginal:false,useFinfAndModify:false})
-       .then(inventory=>{
+       .then(inventoryStatus=>{
             res.json("Inventory updated") ;
            })
          await  inventoryData.save();
@@ -49,7 +38,10 @@ let updateInventory=async(req:Request,res:Response)=>{
 
 let deleteInventory=async(req:Request,res:Response)=>{
     try {
-        await inventory.deleteOne({id:req.params.inventoryId})
+        await inventory.findByIdAndDelete(req.params.id)
+       .then(inventoryStatus=>{
+            res.json("Inventory deleted") ;
+           })
     } catch (error) {
         res.json(error)
     }

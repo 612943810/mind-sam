@@ -7,4 +7,4 @@ exports.inRoute = (0, express_1.Router)();
 exports.inRoute.post("/postinventory", inController.postInventory);
 exports.inRoute.get("/getinventory", inController.getInventory);
 exports.inRoute.put('/updateinventory/:id', inController.updateInventory);
-exports.inRoute.delete("/deleteinventory", inController.deleteInventory);
+exports.inRoute.delete("/deleteinventory/:id", inController.deleteInventory);
