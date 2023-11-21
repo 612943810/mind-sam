@@ -47,13 +47,21 @@ let deleteInventory=async(req:Request,res:Response)=>{
     }
 }
 let findInventory= async(req:Request,res:Response)=>{
-    
-   await  inventory.find({});
+    try {
+        await inventory.findById(req.params.id)
+       .then(inventoryStatus=>{
+            res.json(inventoryStatus) ;
+           })
+    } catch (error) {
+        res.json(error)
+    }
+
     }
 
     module.exports={
         getInventory,
         postInventory,
         updateInventory,
-        deleteInventory
+        deleteInventory,
+        findInventory
     }
