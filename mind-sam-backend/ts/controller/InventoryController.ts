@@ -47,11 +47,26 @@ let deleteInventory=async(req:Request,res:Response)=>{
     }
 }
 let findInventory= async(req:Request,res:Response)=>{
+   let {inventoryId,inventoryName,inventoryDate}=req.query;
     try {
-        await inventory.findById(req.params.id)
-       .then(inventoryStatus=>{
+        if(req.query==inventoryId){
+               await inventory.find({inventoryId:req.query.inventoryId}) 
+               .then(inventoryStatus=>{
             res.json(inventoryStatus) ;
            })
+        } else if(req.query==inventoryName){
+            await inventory.find({inventoryName:req.query.inventoryName}) 
+            .then(inventoryStatus=>{
+         res.json(inventoryStatus) ;
+        }) 
+     }else if(req.query==inventoryDate){
+            await inventory.find({inventoryDate:req.query.inventoryData}) 
+            .then(inventoryStatus=>{
+         res.json(inventoryStatus) ;
+        })
+     }
+    
+      
     } catch (error) {
         res.json(error)
     }

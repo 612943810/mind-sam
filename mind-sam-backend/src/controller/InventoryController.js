@@ -46,11 +46,35 @@ let deleteInventory = async (req, res) => {
     }
 };
 let findInventory = async (req, res) => {
-    await InventoryModel_1.inventory.find({});
+    let { inventoryId, inventoryName, inventoryDate } = req.query;
+    try {
+        if (req.query == inventoryId) {
+            await InventoryModel_1.inventory.find({ inventoryId: req.query.inventoryId })
+                .then(inventoryStatus => {
+                res.json(inventoryStatus);
+            });
+        }
+        else if (req.query == inventoryName) {
+            await InventoryModel_1.inventory.find({ inventoryName: req.query.inventoryName })
+                .then(inventoryStatus => {
+                res.json(inventoryStatus);
+            });
+        }
+        else if (req.query == inventoryDate) {
+            await InventoryModel_1.inventory.find({ inventoryDate: req.query.inventoryData })
+                .then(inventoryStatus => {
+                res.json(inventoryStatus);
+            });
+        }
+    }
+    catch (error) {
+        res.json(error);
+    }
 };
 module.exports = {
     getInventory,
     postInventory,
     updateInventory,
-    deleteInventory
+    deleteInventory,
+    findInventory
 };
