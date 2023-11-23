@@ -8,14 +8,16 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div  className='grid'>
-<div className='navigationBar'>
+
+<>   
 <Navigation/>
-</div>
-      <div className='chatBar'>
+<div className='chatBar'>
            <Chat/>
       </div>
-      </div>
+       
+</>
+   
+
   
    
   )
