@@ -12,10 +12,28 @@ let postInventory = async (req, res) => {
     }
 };
 let getInventory = async (req, res) => {
+    let currentData = null;
     try {
-        await InventoryModel_1.inventory.find({})
-            .then(inventoryStatus => res.json(inventoryStatus));
-        res.json();
+        let { id, name, date } = req.query;
+        if (id) {
+            currentData = await InventoryModel_1.inventory.find({ inventoryId: req.query.id });
+        }
+        else if (name) {
+            currentData = await InventoryModel_1.inventory.find({ inventoryName: req.query.name });
+        }
+        else if (date) {
+            currentData = await InventoryModel_1.inventory.find({ inventoryDate: req.query.date });
+        }
+        else {
+            currentData = await InventoryModel_1.inventory.find({});
+        }
+        13;
+        if (Object.keys(req.body).length === 0) {
+            res.send("Result not found.");
+        }
+        else {
+            res.send(currentData);
+        }
     }
     catch (error) {
         res.json(error);
