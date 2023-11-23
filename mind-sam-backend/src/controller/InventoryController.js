@@ -27,13 +27,7 @@ let getInventory = async (req, res) => {
         else {
             currentData = await InventoryModel_1.inventory.find({});
         }
-        13;
-        if (Object.keys(req.body).length === 0) {
-            res.send("Result not found.");
-        }
-        else {
-            res.send(currentData);
-        }
+        res.send(currentData);
     }
     catch (error) {
         res.json(error);

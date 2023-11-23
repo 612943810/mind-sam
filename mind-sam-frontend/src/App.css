@@ -4,6 +4,11 @@ display: grid;
 grid-template-rows: repeat(12,1fr);
 grid-template-columns: repeat(12,1fr);
 }
+.navigationBar{
+  width: 100%;
+  grid-row: 1/2;
+  grid-column: 1/span 12;
+}
 .chatBar{
 width: 80%;
 padding:2% 2% 2% 2%;
