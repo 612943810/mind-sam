@@ -3,38 +3,31 @@
     --xanthous: #f3b61fff;
     --keppel: #15b097ff;
     --melon: #fbc3bcff;
-    --indigo-dye: #084b83ff;  
-  }
-.navigation{
-     grid-row: 1/1;
-    grid-column: 1/span 12; 
-   
-
+    --indigo-dye: #084b83ff;
 }
-.navigationBar{
-   background-color:var(--xanthous); 
-  
-    /* height:100%; */
-    display: flex;
-   justify-content:start;
-    flex-direction: row;
-   list-style-type: none;
 
-    }
-.navigationBar li{
+.navigation {
+    grid-row: 1/1;
+    grid-column: 1/span 12;
+}
+
+.navigationBar {
+    background-color: var(--xanthous);
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.navigationBar li {
     display: inline-block;
     padding: 3% 3% 3% 3%;
+}
 
-   
-}  
+.navigationBar li:hover {
+    background-color: var(--keppel);
+}
 
-.navigationBar li:hover{
-    
-   background-color:var(--keppel);  
-
-    }
-
-
-.loginPosition{
-margin-left: auto;
+.loginPosition {
+    margin-left: auto;
 }
