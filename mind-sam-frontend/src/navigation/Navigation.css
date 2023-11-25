@@ -16,13 +16,12 @@
     }
 .navigationBar li{
     display: inline-block;
-    padding: 2% 2% 2% 2%;
+    padding: 3% 3% 3% 3%;
+
    
 }  
-.navigationBar a{
 
-}
-.navigationBar a:hover{
+.navigationBar li:hover{
     
    background-color: lightyellow;  
 
