@@ -1,3 +1,10 @@
+#root {
+    --cardinal: #c33149ff;
+    --xanthous: #f3b61fff;
+    --keppel: #15b097ff;
+    --melon: #fbc3bcff;
+    --indigo-dye: #084b83ff;  
+  }
 .navigation{
      grid-row: 1/1;
     grid-column: 1/span 12; 
@@ -23,7 +30,7 @@
 
 .navigationBar li:hover{
     
-   background-color: lightyellow;  
+   background-color:var(--keppel);  
 
     }
 
