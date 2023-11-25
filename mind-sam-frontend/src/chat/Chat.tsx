@@ -28,7 +28,7 @@ conInit.emit("showMenu",menuButton);
 };
   useEffect(()=>{
 return()=>{
- axios.get("http://localhost:3000/").then((response)=>{
+ axios.get("http://localhost:3001/").then((response)=>{
      console.log(response.data)
     })
     console.log(`Data: ${chat}`)
