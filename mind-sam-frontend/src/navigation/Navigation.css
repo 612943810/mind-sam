@@ -1,28 +1,34 @@
-.navigationBar{
-    grid-row: 1/2;
-    grid-column: 1/span 12;
-    height:100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    flex-direction: column;
-  
-    }
-    .navigationBar a{
-        padding: 2%;
-    }
-    .navigationBar a:hover{
-      display: block;
-        background-color: lightyellow;
-    }
-    .navigationBar ul{
-    display: flex;
-    flex-direction: row;
-    list-style-type: none;
-    justify-content: space-between;
-background-color:var(--xanthous);
-padding: 2% 2% 2% 2%;
+.navigation{
+     grid-row: 1/1;
+    grid-column: 1/span 12; 
+   
+
 }
+.navigationBar{
+   background-color:var(--xanthous); 
+  
+    /* height:100%; */
+    display: flex;
+   justify-content:start;
+    flex-direction: row;
+   list-style-type: none;
+
+    }
 .navigationBar li{
     display: inline-block;
+    padding: 2% 2% 2% 2%;
+   
+}  
+.navigationBar a{
+
+}
+.navigationBar a:hover{
+    
+   background-color: lightyellow;  
+
+    }
+
+
+.loginPosition{
+margin-left: auto;
 }
