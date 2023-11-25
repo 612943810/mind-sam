@@ -71,7 +71,10 @@ return()=>{
  <form onSubmit={submitChat}>
 
    <input type="text" placeholder="Please type something to the bot."  className='chatText'  value={chat} onChange={(formVal)=>setChat(formVal.target.value)}/> 
-   <button type="submit" className="chatButton">Send</button>
+  <div className="buttonposition">
+      <button type="submit" className="chatButton" >Send</button>
+  </div>
+ 
  </form> 
 
 </Fragment>

@@ -8,15 +8,23 @@
 
 
 .chatText{
+    width: 100%;
 font-size: larger;
  word-wrap: break-word;
 
  background-color:var(--xanthous)
 }
+.buttonposition{
+      text-align: center; 
+}
 .chatButton{
-    width:100%;
+    width:60%;
     height:100%;
     background-color: var(--melon);
+    
     border-radius: 30%;
     padding: 2%;
+}
+.chatButton:hover{
+    color:var(--cardinal);
 }

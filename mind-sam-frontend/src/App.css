@@ -13,7 +13,7 @@
 
  
   .chatBar{
-  width: 80%;
+  width: 90%;
   padding:2% 2% 2% 2%;
     grid-row:11/12;
     grid-column: 1/span 12;
