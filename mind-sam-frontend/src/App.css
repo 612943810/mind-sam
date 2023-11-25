@@ -1,29 +1,17 @@
+#root {
+  --cardinal: #c33149ff;
+  --xanthous: #f3b61fff;
+  --keppel: #15b097ff;
+  --melon: #fbc3bcff;
+  --indigo-dye: #084b83ff;  
+}
 .grid{
   display: grid;
   grid-template-rows: repeat(12,1fr);
   grid-template-columns: repeat(12,1fr);
   }
 
-  .navigationBar{
-    grid-row: 1/2;
-    grid-column: 1/span 12;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    flex-direction: column;
-  
-    }
-    .navigationBar a{
-        color: inherit;
-    }
-    .navigationBar ul{
-    display: flex;
-    flex-direction: row;
-    list-style-type: none;
-    justify-content: space-between;
-background-color: brown;
-padding: 2% 2% 2% 2%;
-}
+ 
   .chatBar{
   width: 80%;
   padding:2% 2% 2% 2%;

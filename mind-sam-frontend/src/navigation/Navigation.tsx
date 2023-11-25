@@ -1,16 +1,17 @@
-export default function Navigation(){
-    return (
-<>
-<nav className="navigationBar">
+import './Navigation.css';
+export default function Navigation() {
+  return (
+    <>
+      <nav className="navigationBar">
+        <ul>
+          <a href=''> Inventory</a>
+          <a href=''>Customers</a>
+          <a href=''>Trucks</a>
+        </ul>
+   
+      </nav>
+    </>
 
-<ul >
-  <li><a href=""> Inventory</a></li>
-  <li><a>Customers</a></li>
-  <li><a>Trucks</a></li>  
-</ul>
-</nav>
-</>
-
-    )
+  )
 
 }

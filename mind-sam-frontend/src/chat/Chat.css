@@ -14,6 +14,8 @@ font-size: larger;
  background-color:var(--xanthous)
 }
 .chatButton{
+    width:100%;
+    height:100%;
     background-color: var(--melon);
     border-radius: 30%;
     padding: 2%;
