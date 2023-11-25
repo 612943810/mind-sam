@@ -4,7 +4,7 @@ import axios from 'axios';
 import './Chat.css';
 function Chat(){
   let [chat,setChat]=useState(''); 
- let conInit=io('http://localhost:3000/');  
+ let conInit=io('http://localhost:3001/');  
   let submitChat=(submitVal:any)=>{
 submitVal.preventDefault();
 if(chat=="1"){
