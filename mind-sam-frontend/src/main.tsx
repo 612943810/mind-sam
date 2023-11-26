@@ -6,7 +6,7 @@ import Navigation from './navigation/Navigation'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <div className='grid'>
+    <div className='grid website'>
  <App />   
     </div>
 
