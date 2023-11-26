@@ -1,3 +1,4 @@
+import './Inventory.css';
 import Button from "../Button/Button";
 import Navigation from "../navigation/Navigation";
 function Test(){
@@ -7,7 +8,10 @@ function Test(){
 export default function Inventory(){
     return(
   <>
-<Navigation />
+  <div className='navigation'>
+ <Navigation  />   
+  </div>
+
 <div className='createButton'>
     <Button text="Test"  clickAction={Test}/>
 </div>

@@ -3,6 +3,7 @@ import {io} from 'socket.io-client';
 import axios from 'axios';
 import './Chat.css';
 import Navigation from "../navigation/Navigation";
+import Button from "../Button/Button";
 function Chat(){
   let [chat,setChat]=useState(''); 
  let conInit=io('http://localhost:3001/');  
@@ -68,13 +69,18 @@ return()=>{
 
     return(
    <Fragment>
-    <Navigation/>
-  <div id="chatText"></div>
- <form onSubmit={submitChat}>
+    <div className="navigation">
+    <Navigation/>   
+    </div>
+   
+  <div id="chatText">
 
-   <input type="text" placeholder="Please type something to the bot."  className='chatText'  value={chat} onChange={(formVal)=>setChat(formVal.target.value)}/> 
-  <div className="buttonposition">
-      <button type="submit" className="chatButton" >Send</button>
+  </div>
+ <form onSubmit={submitChat} className="chatForm">
+
+   <input type="text" placeholder="Please type something to the bot."  className='chatInput'  value={chat} onChange={(formVal)=>setChat(formVal.target.value)}/> 
+  <div className="chatButton">
+      <Button text="Send"></Button>
   </div>
  
  </form> 

@@ -6,10 +6,7 @@
     --indigo-dye: #084b83ff;
 }
 
-.navigation {
-    grid-row: 1/1;
-    grid-column: 1/span 12;
-}
+
 
 .navigationBar {
     background-color: var(--xanthous);
