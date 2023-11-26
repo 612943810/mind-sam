@@ -2,6 +2,7 @@ import React, { ClassAttributes, Fragment, RefAttributes, createElement,useEffec
 import {io} from 'socket.io-client';
 import axios from 'axios';
 import './Chat.css';
+import Navigation from "../navigation/Navigation";
 function Chat(){
   let [chat,setChat]=useState(''); 
  let conInit=io('http://localhost:3001/');  
@@ -67,6 +68,7 @@ return()=>{
 
     return(
    <Fragment>
+    <Navigation/>
   <div id="chatText"></div>
  <form onSubmit={submitChat}>
 
