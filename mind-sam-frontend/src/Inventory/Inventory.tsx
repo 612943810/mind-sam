@@ -13,7 +13,7 @@ export default function Inventory(){
   </div>
 
 <div className='createButton'>
-    <Button text="Test"  clickAction={Test}/>
+    <Button text="Create"  clickAction={Test} backgroundColor='#15b097ff' color='#fbc3bcff'/>
 </div>
 <div className='chatBar'>
         <body>

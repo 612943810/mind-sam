@@ -79,7 +79,7 @@ return()=>{
 
    <input type="text" placeholder="Please type something to the bot."  className='chatInput'  value={chat} onChange={(formVal)=>setChat(formVal.target.value)}/> 
   <div className="chatButton">
-      <Button text="Send"></Button>
+  <Button text="Send"   backgroundColor='#15b097ff' color='#fbc3bcff'/>
   </div>
  
  </form> 
