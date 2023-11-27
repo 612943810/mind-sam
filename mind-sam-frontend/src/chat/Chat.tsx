@@ -46,12 +46,10 @@ return()=>{
     console.log(clientLis);
     var textEl=document.getElementById("chatText");
   var textBox=document.createElement("p");
-  textBox.style.backgroundColor='#15b097ff';
- textBox.style.borderRadius='30%';
- textBox.style.padding="1%";
-  textBox.style.overflow="hidden";
   textBox.textContent=clientLis;
+  textBox.className="chatText";
   textEl?.appendChild(textBox);
+
   });
 
 
@@ -70,12 +68,13 @@ return()=>{
     return(
    <Fragment>
     <div className="navigation">
-    <Navigation/>   
+    
+  <Navigation/>   
     </div>
-   
-  <div id="chatText">
+  <div id="chatText" className="chatText">
 
-  </div>
+  </div>  
+ 
  <form onSubmit={submitChat} className="chatForm">
 
    <input type="text" placeholder="Please type something to the bot."  className='chatInput'  value={chat} onChange={(formVal)=>setChat(formVal.target.value)}/> 
