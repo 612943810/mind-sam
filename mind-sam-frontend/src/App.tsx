@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg';
 import './App.css';
 import {BrowserRouter} from 'react-router-dom';
 import { Routes,Route } from 'react-router';
-import Inventory from './Inventory/Inventory';
+import Inventory from './Inventory/Home/Inventory';
 import Chat from './chat/Chat';
 function App() {
   const [count, setCount] = useState(0)

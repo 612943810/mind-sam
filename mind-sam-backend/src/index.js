@@ -12,6 +12,7 @@ const inventory_1 = require("./routes/inventory");
 dotenv_1.default.config();
 mongoose_1.default.connect(`mongodb+srv://${process.env.database_name}:${process.env.database_password}@${process.env.database_name}.yhrxz.mongodb.net/inventory?retryWrites=true&w=majority`);
 let appInit = (0, express_1.default)();
+appInit.use((0, cors_1.default)());
 let chatInit = http_1.default.createServer(appInit);
 var io = require('socket.io')(chatInit, {
     cors: {

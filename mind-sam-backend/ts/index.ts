@@ -7,8 +7,10 @@ import { Router } from 'express';
 import mongoose from 'mongoose';
 import {inRoute} from './routes/inventory';
 dotenv.config();
+
 mongoose.connect(`mongodb+srv://${process.env.database_name}:${process.env.database_password}@${process.env.database_name}.yhrxz.mongodb.net/inventory?retryWrites=true&w=majority`);
 let appInit = express();
+appInit.use(cors());
 let chatInit =http.createServer(appInit);
 var io = require('socket.io')(chatInit, {
     cors: {
