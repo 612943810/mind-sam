@@ -9,13 +9,15 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-<>   
+<> 
+
   <BrowserRouter>
   <Routes>
 <Route path='/' element={<Chat/>}/>
 <Route path='/inventory' element={<Inventory/>}/>
   </Routes>
   </BrowserRouter>
+
 </>
    
 

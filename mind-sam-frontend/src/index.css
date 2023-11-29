@@ -5,7 +5,12 @@
     --melon: #fbc3bcff;
     --indigo-dye: #084b83ff;  
   }
-
+  .backgroundImage{
+    background-image: url('./assets/images/shopping.png');
+    background-size: cover;
+  background-position:center;
+   background-repeat: no-repeat;
+  }
 .website{
     background-color: var(--indigo-dye);
   }

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 #root {
     --cardinal: #c33149ff;
     --xanthous: #f3b61fff;
@@ -8,5 +9,6 @@
 .button{
     padding:3%;
     border-radius: 20%;
+    font-family: 'Comfortaa','sans-serif';
     font-size: larger;
   }
