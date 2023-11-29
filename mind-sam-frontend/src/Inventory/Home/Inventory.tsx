@@ -32,6 +32,7 @@ useEffect(()=>{
 <div className='createButton'>
     <Button text="Create"  backgroundColor='#084b83ff' color='#fbc3bcff'/>
 </div>
+<br/>
 <table className='tableDesign'>
     <thead>
         <tr>
