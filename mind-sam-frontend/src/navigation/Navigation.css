@@ -14,14 +14,15 @@
     justify-content: start;
     flex-direction: row;
     list-style-type: none;
+    width: 100%;
 }
 
-.navigationBar li {
+.navLink {
     display: block;
     padding: 3% 3% 3% 3%;
 }
 
-.navigationBar li:hover {
+.navLink:hover {
     background-color: var(--keppel);
 }
 

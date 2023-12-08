@@ -3,8 +3,9 @@ import reactLogo from './assets/react.svg';
 import './App.css';
 import {BrowserRouter} from 'react-router-dom';
 import { Routes,Route } from 'react-router';
-import Inventory from './Inventory/Home/Inventory';
 import Chat from './chat/Chat';
+import Home from './Inventory/Home/Home';
+import Create from './Inventory/Create/Create';
 function App() {
   const [count, setCount] = useState(0)
 
@@ -14,7 +15,8 @@ function App() {
   <BrowserRouter>
   <Routes>
 <Route path='/' element={<Chat/>}/>
-<Route path='/inventory' element={<Inventory/>}/>
+<Route path='/inventory' element={<Home/>}/>
+<Route path='/inventory/create'element={<Create/>}/>
   </Routes>
   </BrowserRouter>
 

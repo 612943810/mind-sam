@@ -1,17 +1,18 @@
-import './Inventory.css';
+import './Home.css';
 import Button from "../../Button/Button";
 import Navigation from "../../navigation/Navigation";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-   export default interface Inventory {
+   export default interface Home {
     inventoryId:number,
     inventoryName:string,
     inventoryDate:string
       }
-export default function Inventory(){
+export default function Home(){
  
-  const[inventory,setInventory]=useState<Inventory[]>([]); 
+  const[inventory,setInventory]=useState<Home[]>([]); 
    let getInventory=()=>{
  return axios.get('http://localhost:3000/inventory')
  .then((inData)=>{
@@ -30,7 +31,9 @@ useEffect(()=>{
     </div>
 <h1 className='title'>Inventory Details</h1>
 <div className='createButton'>
-    <Button text="Create"  backgroundColor='#084b83ff' color='#fbc3bcff'/>
+    <Link to="/inventory/create">
+    <Button text="Create"  backgroundColor='#084b83ff' color='#fbc3bcff' />
+    </Link>
 </div>
 <br/>
 <table className='tableDesign'>
