@@ -9,10 +9,17 @@
   .title{
     color: var(--cardinal);
   }
+  .formDesign{
+text-align: center;
+  }
 input{
-width: 100%;
+width: 50%;
 padding: 2%;
 }
 *{
     font-family: 'Comfortaa', sans-serif;
+}
+
+.button{
+    text-align: center;
 }

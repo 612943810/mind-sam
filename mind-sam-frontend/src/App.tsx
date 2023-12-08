@@ -5,7 +5,7 @@ import {BrowserRouter} from 'react-router-dom';
 import { Routes,Route } from 'react-router';
 import Chat from './chat/Chat';
 import Home from './Inventory/Home/Home';
-import Create from './Inventory/Create/Create';
+import CreateInventory from './Inventory/Create/Create';
 function App() {
   const [count, setCount] = useState(0)
 
@@ -16,7 +16,7 @@ function App() {
   <Routes>
 <Route path='/' element={<Chat/>}/>
 <Route path='/inventory' element={<Home/>}/>
-<Route path='/inventory/create'element={<Create/>}/>
+<Route path='/inventory/create'element={<CreateInventory/>}/>
   </Routes>
   </BrowserRouter>
 
