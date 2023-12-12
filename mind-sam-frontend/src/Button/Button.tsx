@@ -9,11 +9,12 @@ interface ButtonProps{
     clickAction?:()=>void;
     submitAction?:()=>void;
 
+
 }
 export default function Button({text,backgroundColor,color,clickAction,submitAction}:ButtonProps){
     return(
         <>
-    <button   className=" button" style={{backgroundColor:backgroundColor,color:color}} onClick={clickAction} onSubmit={submitAction}>{text}</button>    
+    <button  type='submit' className=" button" style={{backgroundColor:backgroundColor,color:color}} onClick={clickAction} onSubmit={submitAction}>{text}</button>    
         </>
     )
 
