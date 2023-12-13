@@ -59,37 +59,12 @@ let deleteInventory = async (req: Request, res: Response) => {
         res.json(error)
     }
 }
-let findInventory = async (req: Request, res: Response) => {
-    let { inventoryId, inventoryName, inventoryDate } = req.query;
-    try {
-        if (req.query == inventoryId) {
-            await inventory.find({ inventoryId: req.query.inventoryId })
-                .then(inventoryStatus => {
-                    res.json(inventoryStatus);
-                })
-        } else if (req.query == inventoryName) {
-            await inventory.find({ inventoryName: req.query.inventoryName })
-                .then(inventoryStatus => {
-                    res.json(inventoryStatus);
-                })
-        } else if (req.query == inventoryDate) {
-            await inventory.find({ inventoryDate: req.query.inventoryData })
-                .then(inventoryStatus => {
-                    res.json(inventoryStatus);
-                })
-        }
 
-
-    } catch (error) {
-        res.json(error)
-    }
-
-}
 
 module.exports = {
     getInventory,
     postInventory,
     updateInventory,
     deleteInventory,
-    findInventory
+   // findInventory
 }

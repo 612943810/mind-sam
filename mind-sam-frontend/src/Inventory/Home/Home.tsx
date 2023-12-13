@@ -54,7 +54,11 @@ useEffect(()=>{
   <td>{tableData.inventoryName}</td>  
   <td>{tableData.inventoryDate}</td>  
   <td>
-    
+    <Link to={`/inventory/update/${tableData.inventoryId}`}>
+      <Button  buttonType='button' text="Update" backgroundColor='#f3b61fff' color='#fbc3bcff' />
+      </Link>
+
+  <Button  buttonType='button' text="Delete" backgroundColor='#15b097ff' color='#fbc3bcff' />
   </td>
   </tr>     
    ))

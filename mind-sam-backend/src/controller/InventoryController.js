@@ -61,22 +61,20 @@ let findInventory = async (req, res) => {
     let { inventoryId, inventoryName, inventoryDate } = req.query;
     try {
         if (req.query == inventoryId) {
-            await InventoryModel_1.inventory.find({ inventoryId: req.query.inventoryId })
+            await InventoryModel_1.inventory.findById(req.params.inventoryId)
                 .then(inventoryStatus => {
                 res.json(inventoryStatus);
             });
-        }
-        else if (req.query == inventoryName) {
-            await InventoryModel_1.inventory.find({ inventoryName: req.query.inventoryName })
-                .then(inventoryStatus => {
-                res.json(inventoryStatus);
-            });
-        }
-        else if (req.query == inventoryDate) {
-            await InventoryModel_1.inventory.find({ inventoryDate: req.query.inventoryData })
-                .then(inventoryStatus => {
-                res.json(inventoryStatus);
-            });
+            // } else if (req.query == inventoryName) {
+            //     await inventory.find({ inventoryName: req.query.inventoryName })
+            //         .then(inventoryStatus => {
+            //             res.json(inventoryStatus);
+            //         })
+            // } else if (req.query == inventoryDate) {
+            //     await inventory.find({ inventoryDate: req.query.inventoryData })
+            //         .then(inventoryStatus => {
+            //             res.json(inventoryStatus);
+            //         })
         }
     }
     catch (error) {

@@ -1,42 +1,52 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
-import './Create.css';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import './Update.css';
 import Navigation from '../../navigation/Navigation';
 import Button from '../../Button/Button';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import axios from 'axios';
-  export default interface CreateInventory {
+  export default interface UpdateInventory {
+    inventoryId:number,
     inventoryName:string,
     inventoryDate:string
       }
-export default function CreateInventory() {
+export default function UpdateInventory() {
 
-  const[inventory,setInventory]=useState<CreateInventory>({
+  const[inventory,setInventory]=useState<UpdateInventory>({
+    inventoryId:0,
     inventoryName:'',
     inventoryDate:'',
   })
      let navLink=useNavigate();
-     const changeAction=(event:ChangeEvent<HTMLInputElement>)=>{
+      let {query}=useParams() 
+      const changeAction=(event:ChangeEvent<HTMLInputElement>)=>{
       setInventory({...inventory,[event.target.name]:event.target.value});
         }
-  const submitData=(event:FormEvent)=>{
-   event.preventDefault()
-   const fullData={
-      inventoryName:inventory.inventoryName,
-     inventoryDate:inventory.inventoryDate
-  }
- axios.post('http://localhost:3000/inventory',fullData)
+useEffect(()=>{ 
+  axios.get(`http://localhost:3000/inventory/${query}`)
    .then( (res)=>()=>{
-
-    try {
+    console.log(res.data)
+   try {
   setInventory({
-  inventoryName:'',
-  inventoryDate:'', 
+    inventoryId:res.data.inventoryId,
+  inventoryName:res.data.inventoryName,
+  inventoryDate:res.data.inventoryDate, 
 })
     } catch (inError) {
      console.log(inError)
     }
 
-   })
+   }),[query]   
+})
+   const submitData=(event:FormEvent)=>{
+   event.preventDefault()
+   const fullData={
+    inventoryId:inventory.inventoryId,
+      inventoryName:inventory.inventoryName,
+     inventoryDate:inventory.inventoryDate
+  }
+
+
+  
      navLink('/inventory');   
       }
     return (
