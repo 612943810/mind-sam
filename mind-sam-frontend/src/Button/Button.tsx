@@ -6,15 +6,16 @@ interface ButtonProps{
      text:ReactNode;
     backgroundColor?:CSSProperties['backgroundColor'];
     color?:CSSProperties['color'];
+    buttonType?:HTMLButtonElement['type']
     clickAction?:()=>void;
     submitAction?:()=>void;
 
 
 }
-export default function Button({text,backgroundColor,color,clickAction,submitAction}:ButtonProps){
+export default function Button({text,backgroundColor,color,buttonType,clickAction,submitAction}:ButtonProps){
     return(
         <>
-    <button  type='submit' className=" button" style={{backgroundColor:backgroundColor,color:color}} onClick={clickAction} onSubmit={submitAction}>{text}</button>    
+    <button  type={buttonType} className=" button" style={{backgroundColor:backgroundColor,color:color}} onClick={clickAction} onSubmit={submitAction}>{text}</button>    
         </>
     )
 

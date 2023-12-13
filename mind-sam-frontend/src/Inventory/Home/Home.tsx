@@ -41,7 +41,8 @@ useEffect(()=>{
         <tr>
          <th>Id</th>
         <th>Name</th>
-        <th>Date</th>      
+        <th>Date</th>
+        <th>Actions</th>      
         </tr>
      
     </thead>
@@ -52,6 +53,9 @@ useEffect(()=>{
   <td>{tableData.inventoryId}</td>  
   <td>{tableData.inventoryName}</td>  
   <td>{tableData.inventoryDate}</td>  
+  <td>
+    
+  </td>
   </tr>     
    ))
 

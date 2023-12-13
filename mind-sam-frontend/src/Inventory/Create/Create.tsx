@@ -60,7 +60,10 @@ export default function CreateInventory() {
     <br/>
     <input type='date'  name='inventoryDate' value={inventory.inventoryDate}  onChange={(setInDate)=>setInventory({...inventory,inventoryDate:setInDate.target.value}) }/>
     <br/>
-      <Button text="Create"/>
+    <div>
+          <Button  buttonType='submit' text="Create Inventory" backgroundColor='#084b83ff' color='#fbc3bcff' />
+    </div>
+
 
     
 </form> <br/>
