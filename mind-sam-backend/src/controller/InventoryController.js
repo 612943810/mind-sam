@@ -34,13 +34,11 @@ let getInventory = async (req, res) => {
     }
 };
 let updateInventory = async (req, res) => {
-    let inventoryData = new InventoryModel_1.inventory(req.body);
     try {
         await InventoryModel_1.inventory.findByIdAndUpdate(req.params.id, req.body, { runValidators: true, returnOriginal: false, useFinfAndModify: false })
             .then(inventoryStatus => {
             res.json("Inventory updated");
         });
-        await inventoryData.save();
     }
     catch (error) {
         res.json(error);
@@ -57,34 +55,9 @@ let deleteInventory = async (req, res) => {
         res.json(error);
     }
 };
-let findInventory = async (req, res) => {
-    let { inventoryId, inventoryName, inventoryDate } = req.query;
-    try {
-        if (req.query == inventoryId) {
-            await InventoryModel_1.inventory.findById(req.params.inventoryId)
-                .then(inventoryStatus => {
-                res.json(inventoryStatus);
-            });
-            // } else if (req.query == inventoryName) {
-            //     await inventory.find({ inventoryName: req.query.inventoryName })
-            //         .then(inventoryStatus => {
-            //             res.json(inventoryStatus);
-            //         })
-            // } else if (req.query == inventoryDate) {
-            //     await inventory.find({ inventoryDate: req.query.inventoryData })
-            //         .then(inventoryStatus => {
-            //             res.json(inventoryStatus);
-            //         })
-        }
-    }
-    catch (error) {
-        res.json(error);
-    }
-};
 module.exports = {
     getInventory,
     postInventory,
     updateInventory,
     deleteInventory,
-    findInventory
 };

@@ -18,7 +18,7 @@ function App() {
 <Route path='/' element={<Chat/>}/>
 <Route path='/inventory' element={<Home/>}/>
 <Route path='/inventory/create'element={<CreateInventory/>}/>
-<Route path='/inventory/update/:query'element={<UpdateInventory/>}/>
+<Route path='/inventory/update/:id'element={<UpdateInventory/>}/>
   </Routes>
   </BrowserRouter>
 

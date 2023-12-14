@@ -60,11 +60,9 @@ let deleteInventory = async (req: Request, res: Response) => {
     }
 }
 
-
 module.exports = {
     getInventory,
     postInventory,
     updateInventory,
     deleteInventory,
-   // findInventory
 }

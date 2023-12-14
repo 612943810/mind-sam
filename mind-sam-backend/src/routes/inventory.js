@@ -5,7 +5,6 @@ const express_1 = require("express");
 let inController = require('../controller/InventoryController');
 exports.inRoute = (0, express_1.Router)();
 exports.inRoute.post("/inventory", inController.postInventory);
-exports.inRoute.get("/inventory", inController.getInventory);
+exports.inRoute.get("/inventory/:query", inController.getInventory);
 exports.inRoute.put('/inventory/:id', inController.updateInventory);
 exports.inRoute.delete("/inventory/:id", inController.deleteInventory);
-exports.inRoute.get("/inventory/:query", inController.findInventory);
