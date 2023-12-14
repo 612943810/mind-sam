@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
    export default interface Home {
+    _id:Object
     inventoryId:number,
     inventoryName:string,
     inventoryDate:string
@@ -54,7 +55,7 @@ useEffect(()=>{
   <td>{tableData.inventoryName}</td>  
   <td>{tableData.inventoryDate}</td>  
   <td>
-    <Link to={`/inventory/update/${tableData.inventoryId}`}>
+    <Link to={`/inventory/update/${tableData._id}`}>
       <Button  buttonType='button' text="Update" backgroundColor='#f3b61fff' color='#fbc3bcff' />
       </Link>
 

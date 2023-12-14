@@ -14,9 +14,12 @@ let postInventory = async (req, res) => {
 let getInventory = async (req, res) => {
     let currentData = null;
     try {
-        let { id, name, date } = req.query;
+        let { id, inid, name, date } = req.query;
         if (id) {
-            currentData = await InventoryModel_1.inventory.find({ inventoryId: req.query.id });
+            currentData = await InventoryModel_1.inventory.find({ _id: req.query.id });
+        }
+        else if (inid) {
+            currentData = await InventoryModel_1.inventory.find({ inventoryId: req.query.inid });
         }
         else if (name) {
             currentData = await InventoryModel_1.inventory.find({ inventoryName: req.query.name });
@@ -35,13 +38,13 @@ let getInventory = async (req, res) => {
 };
 let updateInventory = async (req, res) => {
     try {
-        await InventoryModel_1.inventory.findByIdAndUpdate(req.params.id, req.body, { runValidators: true, returnOriginal: false, useFinfAndModify: false })
-            .then(inventoryStatus => {
-            res.json("Inventory updated");
+        await InventoryModel_1.inventory.findByIdAndUpdate(req.params.id, req.body, { runValidators: true, returnOriginal: false, useFindAndModify: false }).
+            then((inventoryStatus) => {
+            res.json("Inventory Updated");
         });
     }
     catch (error) {
-        res.json(error);
+        res.status(500).json(error);
     }
 };
 let deleteInventory = async (req, res) => {

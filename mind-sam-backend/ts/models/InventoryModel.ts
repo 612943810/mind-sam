@@ -1,5 +1,5 @@
-import mongoose,{Schema,model} from "mongoose";
-export type Inventory={
+import mongoose,{Schema,model,Document} from "mongoose";
+export interface Inventory{
 inventoryId:Number
 inventoryName:String
 inventoryDate:String

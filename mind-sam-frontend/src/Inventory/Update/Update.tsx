@@ -5,6 +5,7 @@ import Button from '../../Button/Button';
 import { useNavigate, useParams } from 'react-router';
 import axios, { Axios, AxiosResponse } from 'axios';
   export default interface UpdateInventory {
+    
     inventoryId:number,
     inventoryName:string,
     inventoryDate:string
@@ -22,9 +23,9 @@ export default function UpdateInventory() {
       setInventory({...inventory,[event.target.name]:event.target.value});
         }
 useEffect(()=>{
+
 axios.get(`http://localhost:3000/inventory/?id=${id}`)
    .then((res:AxiosResponse)=>{
-    console.log(res.data)
    try {
   setInventory({
     inventoryId:res.data[0].inventoryId,
@@ -45,7 +46,7 @@ axios.get(`http://localhost:3000/inventory/?id=${id}`)
      inventoryDate:inventory.inventoryDate
   }
 
-axios.put(`http://localhost:3000/inventory/${id}`).
+axios.put(`http://localhost:3000/inventory/${id}`,fullData).
 then(()=>{
 navLink('/inventory');   
  }
@@ -54,7 +55,7 @@ navLink('/inventory');
    
       }
     return (
-  <>{console.log(inventory.inventoryId)}
+  <>
   <Navigation/>
 <form className='formDesign' onSubmit={submitData}>
   <h1 className='title'>Create Inventory</h1>
@@ -73,7 +74,7 @@ navLink('/inventory');
     <input type='string'  name='inventoryDate' value={inventory.inventoryDate}  onChange={changeAction}/>
     <br/>
     <div>
-          <Button  buttonType='submit' text="Create Inventory" backgroundColor='#084b83ff' color='#fbc3bcff' />
+          <Button  buttonType='submit' text="Update Inventory" backgroundColor='#084b83ff' color='#fbc3bcff' />
     </div>
 
 
