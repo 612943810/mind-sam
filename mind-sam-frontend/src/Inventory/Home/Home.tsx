@@ -3,7 +3,7 @@ import Button from "../../Button/Button";
 import Navigation from "../../navigation/Navigation";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
    export default interface Home {
     _id:Object
@@ -12,18 +12,27 @@ import { Link } from 'react-router-dom';
     inventoryDate:string
       }
 export default function Home(){
- 
+  let {id}=useParams();
   const[inventory,setInventory]=useState<Home[]>([]); 
-   let getInventory=()=>{
- return axios.get('http://localhost:3000/inventory')
- .then((inData)=>{
-    setInventory(inData.data);
- })   
-}
 
 useEffect(()=>{
-    getInventory();
-},[])
+   axios.get('http://localhost:3000/inventory')
+ .then((inData)=>{
+    setInventory(inData.data);
+ }) 
+ 
+});
+  let inventoryArray=Array.from(inventory);
+ let deleteInventory=(inventoryId:any)=>{
+  axios.delete(`http://localhost:3000/inventory/${inventoryId}`) 
+  .then((inData)=>{
+    setInventory(inData.data);
+  })
+
+
+
+}
+
     return(
   <>
 <div className='grid'>
@@ -49,7 +58,8 @@ useEffect(()=>{
     </thead>
     <tbody>
          { 
-   inventory.map((tableData)=>(
+        
+   inventoryArray.map((tableData)=>(
   <tr >
   <td>{tableData.inventoryId}</td>  
   <td>{tableData.inventoryName}</td>  
@@ -59,7 +69,7 @@ useEffect(()=>{
       <Button  buttonType='button' text="Update" backgroundColor='#f3b61fff' color='#fbc3bcff' />
       </Link>
 
-  <Button  buttonType='button' text="Delete" backgroundColor='#15b097ff' color='#fbc3bcff' />
+  <Button  buttonType='button' text="Delete" backgroundColor='#15b097ff' color='#fbc3bcff' clickAction={()=>deleteInventory(tableData._id)} />
   </td>
   </tr>     
    ))

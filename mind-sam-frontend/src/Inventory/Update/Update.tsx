@@ -52,7 +52,7 @@ navLink('/inventory');
  }
 
 )
-   
+  
       }
     return (
   <>
