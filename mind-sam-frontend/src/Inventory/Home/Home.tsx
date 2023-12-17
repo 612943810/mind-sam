@@ -63,7 +63,7 @@ useEffect(()=>{
   <tr >
   <td>{tableData.inventoryId}</td>  
   <td>{tableData.inventoryName}</td>  
-  <td>{tableData.inventoryDate}</td>  
+  <td>{ new Date(tableData.inventoryDate).toISOString().split('T')[0]}</td>  
   <td>
     <Link to={`/inventory/update/${tableData._id}`}>
       <Button  buttonType='button' text="Update" backgroundColor='#f3b61fff' color='#fbc3bcff' />

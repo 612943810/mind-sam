@@ -27,10 +27,11 @@ useEffect(()=>{
 axios.get(`http://localhost:3000/inventory/?id=${id}`)
    .then((res:AxiosResponse)=>{
    try {
+    var dateFormat= new Date(res.data[0].inventoryDate).toISOString().split('T')[0];
   setInventory({
     inventoryId:res.data[0].inventoryId,
   inventoryName:res.data[0].inventoryName,
-  inventoryDate:res.data[0].inventoryDate, 
+  inventoryDate:dateFormat, 
 })  
   } catch (inError) {
      console.log(inError)
@@ -71,8 +72,7 @@ navLink('/inventory');
     <br/>
     <label> Date</label>
     <br/>
-    <input type='string'  name='inventoryDate' value={inventory.inventoryDate}  onChange={changeAction}/>
-    <br/>
+    <input type='date'  name='inventoryDate' value={inventory.inventoryDate} onChange={changeAction}/>
     <div>
           <Button  buttonType='submit' text="Update Inventory" backgroundColor='#084b83ff' color='#fbc3bcff' />
     </div>

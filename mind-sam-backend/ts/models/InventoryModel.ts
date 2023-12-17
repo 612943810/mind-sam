@@ -2,7 +2,7 @@ import mongoose,{Schema,model,Document} from "mongoose";
 export interface Inventory{
 inventoryId:Number
 inventoryName:String
-inventoryDate:String
+inventoryDate:Date
 }
 let inventorySchema=new Schema<Inventory>({
     inventoryId:{type:Number},
