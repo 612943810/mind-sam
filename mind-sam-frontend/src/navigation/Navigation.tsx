@@ -8,7 +8,7 @@ export default function Navigation() {
   
        <Link  to='/inventory'className='navLink'> Inventory</Link>
    
-          <li className=' navLink loginPosition'><a href=''  >Login</a></li>
+          <li className=' navLink loginPosition'><a href='/login'  >Login</a></li>
        
       </nav>
 

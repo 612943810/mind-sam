@@ -7,6 +7,7 @@ import Chat from './chat/Chat';
 import Home from './Inventory/Home/Home';
 import CreateInventory from './Inventory/Create/Create';
 import UpdateInventory from './Inventory/Update/Update';
+import Login from './Login/Login';
 function App() {
   const [count, setCount] = useState(0)
 
@@ -19,6 +20,7 @@ function App() {
 <Route path='/inventory' element={<Home/>}/>
 <Route path='/inventory/create'element={<CreateInventory/>}/>
 <Route path='/inventory/update/:id'element={<UpdateInventory/>}/>
+<Route path='/login' element={<Login/>}/>
   </Routes>
   </BrowserRouter>
 
