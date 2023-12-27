@@ -1,5 +1,4 @@
 import { Router } from "express";
-let authController=require('../controller/InventoryController')
+let authController=require('../controller/AuthenticationController')
 export let authRoute=Router();
-authRoute.post("/inventory/",authController.postInventory);
-authRoute.get("/inventory/",authController.getInventory);
+authRoute.post("/register",authController.registerUser);

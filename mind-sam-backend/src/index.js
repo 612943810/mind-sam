@@ -9,6 +9,7 @@ const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const inventory_1 = require("./routes/inventory");
+const authentication_1 = require("./routes/authentication");
 dotenv_1.default.config();
 mongoose_1.default.connect(`mongodb+srv://${process.env.database_name}:${process.env.database_password}@${process.env.database_name}.yhrxz.mongodb.net/inventory?retryWrites=true&w=majority`);
 let appInit = (0, express_1.default)();
@@ -46,6 +47,7 @@ chatInit.listen(port, () => {
 });
 appInit.use(express_1.default.json());
 appInit.use(inventory_1.inRoute);
+appInit.use(authentication_1.authRoute);
 mongoose_1.default.connection.on('connected', () => {
     console.log("Connection successful");
 });

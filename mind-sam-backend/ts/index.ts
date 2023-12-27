@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import { Router } from 'express';
 import mongoose from 'mongoose';
 import {inRoute} from './routes/inventory';
+import { authRoute } from './routes/authentication';
 dotenv.config();
 
 mongoose.connect(`mongodb+srv://${process.env.database_name}:${process.env.database_password}@${process.env.database_name}.yhrxz.mongodb.net/inventory?retryWrites=true&w=majority`);
@@ -60,7 +61,7 @@ chatInit.listen(port, () => {
 
 appInit.use(express.json());
 appInit.use(inRoute);
-
+appInit.use(authRoute);
 
 mongoose.connection.on('connected',()=>{
     console.log("Connection successful");

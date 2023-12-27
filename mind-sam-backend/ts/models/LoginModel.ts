@@ -1,6 +1,6 @@
 import mongoose, { Schema, model } from "mongoose";
 
-export type Login={
+export interface Login{
 username:string
 password:string
 }
