@@ -5,32 +5,32 @@ import Button from '../Button/Button';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
   export default interface Login {
-    inventoryName:string,
-    inventoryDate:string
+    username:string,
+   password:string,
       }
 export default function Login() {
 
-  const[inventory,setInventory]=useState<Login>({
-    inventoryName:'',
-    inventoryDate:'',
+  const[user,setUser]=useState<Login>({
+   username:'',
+    password:'',
   })
      let navLink=useNavigate();
      const changeAction=(event:ChangeEvent<HTMLInputElement>)=>{
-      setInventory({...inventory,[event.target.name]:event.target.value});
+      setUser({...user,[event.target.name]:event.target.value});
         }
   const submitData=(event:FormEvent)=>{
    event.preventDefault()
    const fullData={
-      inventoryName:inventory.inventoryName,
-     inventoryDate:inventory.inventoryDate
+      username:user.username,
+     password:user.password
   }
- axios.post('http://localhost:3000/inventory',fullData)
+ axios.post('http://localhost:3000/login',fullData)
    .then( (res)=>()=>{
 
     try {
-  setInventory({
-  inventoryName:'',
-  inventoryDate:'', 
+  setUser({
+  username:'',
+  password:'', 
 })
     } catch (inError) {
      console.log(inError)
@@ -47,12 +47,12 @@ export default function Login() {
   <b/>
   <label> User Name </label>
   <br/>
-    <input type='text' name='inventoryName' value={inventory.inventoryName} onChange={changeAction}/>
+    <input type='text' name='username' value={user.username} onChange={changeAction}/>
     <br/>
     <br/>
     <label> Password</label>
     <br/>
-    <input type='text'  name='inventoryDate' value={inventory.inventoryDate}  onChange={changeAction}/>
+    <input type='text'  name='password' value={user.password}  onChange={changeAction}/>
     <br/>
     <div>
           <Button  buttonType='submit' text="Login" backgroundColor='#084b83ff' color='#fbc3bcff' />
