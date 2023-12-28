@@ -27,8 +27,10 @@ let registerUser = async (req: Request, res: Response) => {
 let loginUser=async (req: Request, res: Response) => {
   try {
     const {username,password} =req.body;
+
     const appUsers= await register.findOne({username:req.body.username}).then(async(userData:any)=>{
-   if(userData && (await argon.verify(userData.password,password))){
+   const hashedPassword=argon.hash(password);
+    if(userData && (await argon.verify( await hashedPassword,password))){
     
         const jwtToken = jwt.sign(
         {username: username,password:password},
@@ -37,11 +39,11 @@ let loginUser=async (req: Request, res: Response) => {
           expiresIn: "15m",
         }
       );   
-     
+     console.log(`Login Sucessful! Id:${jwtToken}`);
     }else{
       res.json(`The password is incorrect.`);
     }  
-    console.log(userData)
+ 
   
     });
 
