@@ -8,6 +8,7 @@ import Home from './Inventory/Home/Home';
 import CreateInventory from './Inventory/Create/Create';
 import UpdateInventory from './Inventory/Update/Update';
 import Login from './Login/Login';
+import Register from './Register/Register';
 function App() {
   const [count, setCount] = useState(0)
 
@@ -20,6 +21,7 @@ function App() {
 <Route path='/inventory' element={<Home/>}/>
 <Route path='/inventory/create'element={<CreateInventory/>}/>
 <Route path='/inventory/update/:id'element={<UpdateInventory/>}/>
+<Route path='/register' element={<Register/>}/>
 <Route path='/login' element={<Login/>}/>
   </Routes>
   </BrowserRouter>

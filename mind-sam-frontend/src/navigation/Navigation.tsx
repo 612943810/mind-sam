@@ -8,8 +8,12 @@ export default function Navigation() {
   
        <Link  to='/inventory'className='navLink'> Inventory</Link>
    
-          <li className=' navLink loginPosition'><a href='/login'  >Login</a></li>
-       
+          <li className=' navLink loginPosition'>
+            <a  className='registerPad'href='/register'>Register</a>
+       </li>
+          <li className=' navLink '>
+            <a href='/login'>Login</a>
+          </li>
       </nav>
 
    

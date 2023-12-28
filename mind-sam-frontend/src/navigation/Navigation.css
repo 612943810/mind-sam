@@ -25,7 +25,9 @@
 .navLink:hover {
     background-color: var(--keppel);
 }
-
+.registerPad{
+    padding: 10%;
+}
 .loginPosition {
     margin-left: auto;
 }
