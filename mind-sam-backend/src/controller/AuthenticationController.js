@@ -24,6 +24,26 @@ let registerUser = async (req, res) => {
         res.json(error);
     }
 };
+let loginUser = async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const appUsers = await RegisterModel_1.register.findOne({ username: req.body.username }).then(async (userData) => {
+            if (userData && (await argon2_1.default.verify(userData.password, password))) {
+                const jwtToken = jsonwebtoken_1.default.sign({ username: username, password: password }, process.env.JWT_SECRET, {
+                    expiresIn: "15m",
+                });
+            }
+            else {
+                res.json(`The password is incorrect.`);
+            }
+            console.log(userData);
+        });
+    }
+    catch (error) {
+        console.log(error);
+    }
+};
 module.exports = {
-    registerUser
+    registerUser,
+    loginUser
 };
