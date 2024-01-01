@@ -29,9 +29,7 @@ export default function Login() {
     dateofbirth:user.dateofbirth
   } 
 
- axios.post('https://localhost:3002/register',fullData,{
- withCredentials:true
- })
+ axios.post('http://localhost:3000/register',fullData)
    .then( (res)=>{
 console.log(res.data)
     try {

@@ -18,16 +18,13 @@ export default function Login() {
      const changeAction=(event:ChangeEvent<HTMLInputElement>)=>{
       setUser({...user,[event.target.name]:event.target.value});
         }
-  const submitData=(event:FormEvent)=>{
+  const submitData=async(event:FormEvent)=>{
    event.preventDefault()
    const fullData={
       username:user.username,
      password:user.password
   }
- axios.post('https://localhost:3002/login', fullData,{
-withCredentials:true
- }
-)
+ await axios.post('http://localhost:3000/login', fullData)
    .then( (res)=>{
 console.log(res)
     try {

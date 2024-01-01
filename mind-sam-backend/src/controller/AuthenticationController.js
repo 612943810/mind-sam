@@ -37,9 +37,10 @@ let loginUser = async (req, res) => {
                 });
                 let mainData = res.cookie("jwtToken", jwtToken, {
                     expires: new Date(Date.now()),
-                    sameSite: "none",
                     httpOnly: false,
-                    secure: true
+                    domain: "localhost",
+                    secure: true,
+                    sameSite: "none",
                 });
                 mainData.send(`Cookie sent!`);
             }
