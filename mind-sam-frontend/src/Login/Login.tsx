@@ -24,9 +24,12 @@ export default function Login() {
       username:user.username,
      password:user.password
   }
- axios.post('http://localhost:3000/login',fullData)
-   .then( (res)=>()=>{
-
+ axios.post('https://localhost:3002/login', fullData,{
+withCredentials:true
+ }
+)
+   .then( (res)=>{
+console.log(res)
     try {
   setUser({
   username:'',

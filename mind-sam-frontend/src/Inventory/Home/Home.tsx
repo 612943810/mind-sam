@@ -24,7 +24,7 @@ useEffect(()=>{
 });
   let inventoryArray=Array.from(inventory);
  let deleteInventory=(inventoryId:any)=>{
-  axios.delete(`http://localhost:3000/inventory/${inventoryId}`) 
+  axios.delete(`https://localhost:3002/inventory/${inventoryId}`) 
   .then((inData)=>{
     setInventory(inData.data);
   })

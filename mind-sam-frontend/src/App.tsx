@@ -9,6 +9,8 @@ import CreateInventory from './Inventory/Create/Create';
 import UpdateInventory from './Inventory/Update/Update';
 import Login from './Login/Login';
 import Register from './Register/Register';
+import axios from 'axios';
+axios.defaults.withCredentials=true
 function App() {
   const [count, setCount] = useState(0)
 

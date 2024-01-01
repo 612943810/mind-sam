@@ -27,18 +27,26 @@ let registerUser = async (req, res) => {
 let loginUser = async (req, res) => {
     try {
         const { username, password } = req.body;
-        const appUsers = await RegisterModel_1.register.findOne({ username: req.body.username }).then(async (userData) => {
-            const hashedPassword = argon2_1.default.hash(password);
-            if (userData && (await argon2_1.default.verify(await hashedPassword, password))) {
+        let appUsers = 0;
+        appUsers = await RegisterModel_1.register.findOne({ username: req.body.username });
+        if (appUsers) {
+            let checkPassword = await argon2_1.default.verify(appUsers.password, password);
+            if (checkPassword == true) {
                 const jwtToken = jsonwebtoken_1.default.sign({ username: username, password: password }, process.env.JWT_SECRET, {
                     expiresIn: "15m",
                 });
-                console.log(`Login Sucessful! Id:${jwtToken}`);
+                let mainData = res.cookie("jwtToken", jwtToken, {
+                    expires: new Date(Date.now()),
+                    sameSite: "none",
+                    httpOnly: false,
+                    secure: true
+                });
+                mainData.send(`Cookie sent!`);
             }
             else {
                 res.json(`The password is incorrect.`);
             }
-        });
+        }
     }
     catch (error) {
         console.log(error);

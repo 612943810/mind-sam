@@ -24,7 +24,7 @@ export default function UpdateInventory() {
         }
 useEffect(()=>{
 
-axios.get(`http://localhost:3000/inventory/?id=${id}`)
+axios.get(`https://localhost:3002/inventory/?id=${id}`)
    .then((res:AxiosResponse)=>{
    try {
     var dateFormat= new Date(res.data[0].inventoryDate).toISOString().split('T')[0];

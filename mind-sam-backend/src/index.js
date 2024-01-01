@@ -5,23 +5,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const http_1 = __importDefault(require("http"));
+const https_1 = __importDefault(require("https"));
 const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const inventory_1 = require("./routes/inventory");
 const authentication_1 = require("./routes/authentication");
+const cookieParser = require('cookie-parser');
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
 dotenv_1.default.config();
 mongoose_1.default.connect(`mongodb+srv://${process.env.database_name}:${process.env.database_password}@${process.env.database_name}.yhrxz.mongodb.net/inventory?retryWrites=true&w=majority`);
 let appInit = (0, express_1.default)();
-appInit.use((0, cors_1.default)());
+appInit.use((0, cors_1.default)({
+    origin: "http://localhost:5173",
+    credentials: true,
+    methods: ['GET', "PUT", "UPDATE", "DELETE"]
+}));
+appInit.use(cookieParser());
 let chatInit = http_1.default.createServer(appInit);
 var io = require('socket.io')(chatInit, {
     cors: {
-        origin: " *",
+        origin: "http://localhost:5173",
         credentials: true
     }
 });
-appInit.use((0, cors_1.default)({ origin: '*' }));
 var port = 3001;
 io.on('connection', (mindConection) => {
     mindConection.emit("welcomeMessage", `Welcome, ${mindConection.id} to the bot! `);
@@ -54,7 +62,9 @@ mongoose_1.default.connection.on('connected', () => {
 mongoose_1.default.connection.on('error', (error) => {
     console.log(`Error:${error}`);
 });
-appInit.listen(3000, () => {
-    console.log("Running");
-});
-let serverInit = http_1.default.createServer(appInit);
+const httpsOptions = {
+    key: fs_1.default.readFileSync(path_1.default.join(__dirname, "../certificates/cert-key.pem")),
+    cert: fs_1.default.readFileSync(path_1.default.join(__dirname, "../certificates/cert-csr.pem")),
+};
+http_1.default.createServer(appInit).listen(3000);
+https_1.default.createServer(httpsOptions, appInit).listen(3002);
