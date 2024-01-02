@@ -9,7 +9,7 @@ To install run the following:
 git clone https://github.com/612943810/101234979_assignment2_backend.git
 npm install
 
-### Please run the apps in the order given to see the app.
+### Please run the folders in the order given to see the app.
 
 To run the backend:
 ```
