@@ -11,11 +11,11 @@ npm install
 
 ### Please run the folders in the order given to see the app.
 
+```
 To run the backend:
 ```
 cd mind-sam-backend
 npm start
-```
 ```
 To run the frontend:
 ```
