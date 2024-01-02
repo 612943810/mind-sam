@@ -17,7 +17,7 @@ To run the backend:
 ```
 cd mind-sam-backend
 npm start
-
+```
 
 To run the frontend:
 ```
