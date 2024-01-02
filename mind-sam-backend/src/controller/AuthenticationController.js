@@ -29,7 +29,6 @@ let loginUser = async (req, res) => {
         const { username, password } = req.body;
         let appUsers = 0;
         appUsers = await RegisterModel_1.register.findOne({ username: req.body.username });
-        let hashedPassword = await argon2_1.default.hash(appUsers.password, { type: argon2_1.default.argon2id });
         if (appUsers) {
             let checkPassword = await argon2_1.default.verify(appUsers.password, password);
             if (checkPassword == true) {

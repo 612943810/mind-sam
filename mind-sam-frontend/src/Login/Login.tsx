@@ -10,6 +10,8 @@ import axios from 'axios';
       }
 export default function Login() {
   const[success,setSuccess]=useState('')
+  const[loginData,setloginData]=useState('')
+  const[formStatus,ssetFormStatus]=useState(false)
   const[user,setUser]=useState<Login>({
    username:'',
     password:'',
@@ -25,8 +27,15 @@ export default function Login() {
      password:user.password
   }
  await axios.post(`http://localhost:3000/login`, fullData)
-   .then( (res)=>{ 
-     navLink(`/inventory?username=${fullData.username}`);   
+   .then( (res:any)=>{ 
+    setloginData(res.data)
+if(res.data=="Password correct!"){
+    navLink(`/inventory?username=${fullData.username}`); 
+}else if(res.data=="The password is incorrect."){
+  navLink(`/login`); 
+  ssetFormStatus(true)
+}
+     
     try {
   setUser({
   username:'',
@@ -53,10 +62,12 @@ export default function Login() {
     <br/>
     <label> Password</label>
     <br/>
-    <input type='text'  name='password' value={user.password}  onChange={changeAction}/>
+    <input type='text'  name='password' value={user.password}  onChange={changeAction}/> 
+    {loginData=="Password correct!"&& formStatus==true?'':<h1>{loginData}</h1>}
     <br/>
     <div>
           <Button  buttonType='submit' text="Login" backgroundColor='#084b83ff' color='#fbc3bcff' />
+         
     </div>
 
 

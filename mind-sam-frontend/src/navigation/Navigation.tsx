@@ -7,13 +7,18 @@ export default function Navigation() {
   useEffect(()=>{
     //if()
   })
-  return (
+  return ( 
     <>
 
          <nav  className='navigationBar'>
   {
-    currentUser?<Link  to={`/inventory?username=${currentUser}`}className='navLink'> Inventory</Link>:
+    currentUser?
+<Link  to={`/inventory?username=${currentUser}`}className='navLink'> Inventory</Link>
+  :  
+   <>
     <Link  to={`/inventory`}className='navLink'> Inventory</Link>
+     <Link  to={`/chat`}className='navLink'> Chat</Link>
+    </>
   }
        
        {

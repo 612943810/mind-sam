@@ -42,15 +42,22 @@ useEffect(()=>{
     <div className='navigation'>
      <Navigation  />       
     </div>
-<h1 className='title'>Inventory Details</h1>
-<div className='createButton'>
-    <Link to="/inventory/create">
-    {
-   currentUser?    <Button text="Create"  backgroundColor='#084b83ff' color='#fbc3bcff' />   :'' 
-  }
-    
-    </Link>
+<h1 className='title'>Inventory Details</h1> 
+ {
+  currentUser? 
+   <>
+ <div className='createButton'>
+    <Link to={`/inventory/create?username=${currentUser}`}>
+     <Button text="Create"  backgroundColor='#084b83ff' color='#fbc3bcff' />    
+       </Link>
 </div>
+  </>
+:'' 
+ }
+   
+  
+    
+
 <br/> 
 {
    currentUser?    <h2 className='textDesign'>Welcome {currentUser}</h2>   :'' 

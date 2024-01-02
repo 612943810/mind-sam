@@ -23,6 +23,7 @@ function App() {
 <Route path='/inventory' element={<Home/>}/>
 <Route path='/inventory/create'element={<CreateInventory/>}/>
 <Route path='/inventory/update/:id'element={<UpdateInventory/>}/>
+<Route path='/chat' element={<Chat/>}/>
 <Route path='/register' element={<Register/>}/>
 <Route path='/login' element={<Login/>}/>
   </Routes>
