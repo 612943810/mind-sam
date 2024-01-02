@@ -20,7 +20,12 @@ let appInit = (0, express_1.default)();
 appInit.use((0, cors_1.default)({
     origin: "http://localhost:5173",
     credentials: true,
-    methods: ['GET', "PUT", "UPDATE", "DELETE"]
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: [
+        "Content-Type",
+        "Authorization",
+        "Access-Control-Allow-Credentials",
+    ]
 }));
 appInit.use(cookieParser());
 let chatInit = http_1.default.createServer(appInit);

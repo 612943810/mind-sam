@@ -24,7 +24,7 @@ export default function CreateInventory() {
       inventoryName:inventory.inventoryName,
      inventoryDate:inventory.inventoryDate
   }
- axios.post('https://localhost:3002/inventory',fullData)
+ axios.post('http://localhost:3000/inventory',fullData)
    .then( (res)=>()=>{
 
     try {
@@ -37,7 +37,7 @@ export default function CreateInventory() {
     }
 
    })
-   //  navLink('/inventory');   
+     navLink('/inventory');   
       }
     return (
   <>

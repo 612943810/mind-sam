@@ -18,8 +18,12 @@ let appInit = express();
 appInit.use(cors({
     origin: "http://localhost:5173",
     credentials: true,
-    methods:['GET',"PUT","UPDATE","DELETE"]
-    
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "Access-Control-Allow-Credentials",
+  ]
 }));
 appInit.use(cookieParser())
 let chatInit =http.createServer(appInit);

@@ -5,16 +5,18 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
-   export default interface Home {
+   export default interface Home{
     _id:Object
     inventoryId:number,
     inventoryName:string,
     inventoryDate:string
       }
+
 export default function Home(){
   let {id}=useParams();
   const[inventory,setInventory]=useState<Home[]>([]); 
-
+let currentParams=new URLSearchParams(window.location.search)
+let currentUser=currentParams.get('username')
 useEffect(()=>{
    axios.get('http://localhost:3000/inventory')
  .then((inData)=>{
@@ -24,7 +26,7 @@ useEffect(()=>{
 });
   let inventoryArray=Array.from(inventory);
  let deleteInventory=(inventoryId:any)=>{
-  axios.delete(`https://localhost:3002/inventory/${inventoryId}`) 
+  axios.delete(`http://localhost:3000/inventory/${inventoryId}`) 
   .then((inData)=>{
     setInventory(inData.data);
   })
@@ -35,6 +37,7 @@ useEffect(()=>{
 
     return(
   <>
+
 <div className='grid'>
     <div className='navigation'>
      <Navigation  />       
@@ -42,17 +45,28 @@ useEffect(()=>{
 <h1 className='title'>Inventory Details</h1>
 <div className='createButton'>
     <Link to="/inventory/create">
-    <Button text="Create"  backgroundColor='#084b83ff' color='#fbc3bcff' />
+    {
+   currentUser?    <Button text="Create"  backgroundColor='#084b83ff' color='#fbc3bcff' />   :'' 
+  }
+    
     </Link>
 </div>
-<br/>
+<br/> 
+{
+   currentUser?    <h2 className='textDesign'>Welcome {currentUser}</h2>   :'' 
+  }
+      
+
 <table className='tableDesign'>
     <thead>
         <tr>
          <th>Id</th>
         <th>Name</th>
         <th>Date</th>
-        <th>Actions</th>      
+        {
+   currentUser?      <th>Actions</th>  :'' 
+  }
+        
         </tr>
      
     </thead>
@@ -63,14 +77,19 @@ useEffect(()=>{
   <tr >
   <td>{tableData.inventoryId}</td>  
   <td>{tableData.inventoryName}</td>  
-  <td>{ new Date(tableData.inventoryDate).toISOString().split('T')[0]}</td>  
-  <td>
+  
+ <td>{ tableData.inventoryDate}</td> 
+  
+{
+  currentUser? <td>
     <Link to={`/inventory/update/${tableData._id}`}>
       <Button  buttonType='button' text="Update" backgroundColor='#f3b61fff' color='#fbc3bcff' />
       </Link>
 
   <Button  buttonType='button' text="Delete" backgroundColor='#15b097ff' color='#fbc3bcff' clickAction={()=>deleteInventory(tableData._id)} />
-  </td>
+  </td>:''
+}
+ 
   </tr>     
    ))
 

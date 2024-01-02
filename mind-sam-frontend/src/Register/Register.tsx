@@ -10,12 +10,13 @@ import axios from 'axios';
     dateofbirth:string
       }
 export default function Login() {
-
+  const[success,setSuccess]=useState('');
   const[user,setUser]=useState<Login>({
     username:'',
    password:'',
     dateofbirth:''
   })
+
      let navLink=useNavigate();
      const changeAction=(event:ChangeEvent<HTMLInputElement>)=>{
       setUser({...user,[event.target.name]:event.target.value});
@@ -31,7 +32,7 @@ export default function Login() {
 
  axios.post('http://localhost:3000/register',fullData)
    .then( (res)=>{
-console.log(res.data)
+setSuccess(res.data);
     try {
   setUser({
 username:'',
@@ -43,11 +44,16 @@ dateofbirth:''
     }
 
    })
-     navLink('/inventory');   
+  
       }
-    return (
-  <>
-  <Navigation/>
+      if(!success){
+return (
+   <> 
+   <Navigation/>
+  {
+
+  }
+
 <form className='formDesign' onSubmit={submitData}>
   <h1 className='title'>Please register for an account.</h1>
   <b/>
@@ -70,7 +76,8 @@ dateofbirth:''
 
 
     
-</form> <br/>
+</form> 
+    <br/>
     <br/>
     <br/>
     <br/>
@@ -94,4 +101,58 @@ dateofbirth:''
     <br/>
   </>
   )
+      }else{
+        return(
+        <>   
+        <Navigation/>
+     <h2>{success}</h2>
+     <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+        </>  
+        )
+     
+      }
+    
 }

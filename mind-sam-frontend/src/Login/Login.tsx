@@ -9,7 +9,7 @@ import axios from 'axios';
    password:string,
       }
 export default function Login() {
-
+  const[success,setSuccess]=useState('')
   const[user,setUser]=useState<Login>({
    username:'',
     password:'',
@@ -24,9 +24,9 @@ export default function Login() {
       username:user.username,
      password:user.password
   }
- await axios.post('http://localhost:3000/login', fullData)
-   .then( (res)=>{
-console.log(res)
+ await axios.post(`http://localhost:3000/login`, fullData)
+   .then( (res)=>{ 
+     navLink(`/inventory?username=${fullData.username}`);   
     try {
   setUser({
   username:'',
@@ -37,8 +37,9 @@ console.log(res)
     }
 
    })
-     navLink('/inventory');   
+  
       }
+ 
     return (
   <>
   <Navigation/>
@@ -84,4 +85,7 @@ console.log(res)
     <br/>
   </>
   )
+   
+       
+    
 }

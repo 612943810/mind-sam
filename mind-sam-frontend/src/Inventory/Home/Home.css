@@ -33,6 +33,13 @@ text-align: center;
 }
 
 
+.textDesign{
+  text-align: center;
+  font-family: 'Comfortaa', sans-serif;
+  text-decoration: solid;
+   border-collapse: collapse; 
+  }
+
 .tableDesign{
 grid-row: 4/5;
 grid-column: 1/span 11; 
