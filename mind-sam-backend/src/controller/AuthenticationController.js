@@ -10,7 +10,7 @@ dotenv_1.default.config();
 const RegisterModel_1 = require("../models/RegisterModel");
 let registerUser = async (req, res) => {
     const { username, password, dateofbirth } = req.body;
-    let hashedPassword = await argon2_1.default.hash(password);
+    let hashedPassword = await argon2_1.default.hash(password, { type: argon2_1.default.argon2id });
     let users = new RegisterModel_1.register({ username: username, password: hashedPassword, dateofbirth: dateofbirth });
     try {
         await users.save();
@@ -29,6 +29,7 @@ let loginUser = async (req, res) => {
         const { username, password } = req.body;
         let appUsers = 0;
         appUsers = await RegisterModel_1.register.findOne({ username: req.body.username });
+        let hashedPassword = await argon2_1.default.hash(appUsers.password, { type: argon2_1.default.argon2id });
         if (appUsers) {
             let checkPassword = await argon2_1.default.verify(appUsers.password, password);
             if (checkPassword == true) {
@@ -42,7 +43,7 @@ let loginUser = async (req, res) => {
                     secure: true,
                     sameSite: "none",
                 });
-                mainData.send(`Cookie sent!`);
+                mainData.send("Password correct!");
             }
             else {
                 res.json(`The password is incorrect.`);

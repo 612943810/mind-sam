@@ -6,7 +6,7 @@ dotenv.config();
 import {register} from '../models/RegisterModel';
 let registerUser = async (req: Request, res: Response) => {
     const {username,password,dateofbirth}=req.body;
-   let hashedPassword= await argon.hash(password);
+   let hashedPassword= await argon.hash(password,{type:argon.argon2id});
     let users = new register({username:username,password:hashedPassword,dateofbirth:dateofbirth})
     try {
         await users.save();
@@ -24,13 +24,15 @@ let registerUser = async (req: Request, res: Response) => {
     }
   }
 let loginUser=async (req: Request, res: Response) => {
+ 
   try {
     const {username,password} =req.body;
     let appUsers:any=0;
     appUsers= await register.findOne({username:req.body.username})
-    if(appUsers){
-     let  checkPassword=await argon.verify( appUsers.password,password)
-     if(checkPassword==true){
+     if(appUsers){
+     let  checkPassword=await argon.verify( appUsers.password,password);
+     if(checkPassword==true){      
+    
        const jwtToken = jwt.sign(
         {username: username,password:password},
         process.env.JWT_SECRET as Secret,
@@ -45,7 +47,8 @@ let loginUser=async (req: Request, res: Response) => {
         secure:true,
         sameSite: "none",
       })
-      mainData.send(`Cookie sent!`)
+      mainData.send("Password correct!")
+
       }else{
       res.json(`The password is incorrect.`);
     }  
