@@ -36,10 +36,7 @@ grid-column: 6/span 3;
 justify-content: center;
     width: 50%;
 }
-.chatButton{
-    grid-row: 11/12;
-    grid-column: 6/span 4;
-}
+
 .chatButton:hover{
     color:var(--cardinal);
 }

@@ -4,6 +4,7 @@ import Navigation from "../../navigation/Navigation";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import Chat from '../../chat/Chat';
 
    export default interface Home{
     _id:Object
@@ -102,10 +103,51 @@ useEffect(()=>{
 
     }
     </tbody> 
-</table>   
+</table> 
+< section className="chatButton">
+ <Chat/> 
+</section>  
 </div>
-
-   
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>   
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>   
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>   
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>   
 
  
     </>      

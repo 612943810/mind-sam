@@ -10,8 +10,9 @@
 
 .grid {
 
- grid: repeat(minmax(12, 1fr)/ repeat(12, 1fr));
-height: 200vh;
+  display: grid;
+  grid: repeat(minmax(12, 1fr))/ repeat(12, 1fr);
+  height: 100%;
 }
 
 .navigation{
@@ -19,20 +20,21 @@ height: 200vh;
   grid-column: 1/span 12;
 }
 .title{
-
   grid-row: 2/3;
   grid-column: 1/span 12;
-
-text-align: center;
+  text-align: center;
 }
 .createButton {
-  grid-row: 3/4;
-  grid-column: 6/span 4;
+  grid-row: 1/span 4;
+  grid-column: 2/span 4;
   text-align: center;
   
 }
 
 
+.chatButton:hover{
+  color:var(--cardinal);
+}
 .textDesign{
   text-align: center;
   font-family: 'Comfortaa', sans-serif;
@@ -41,10 +43,11 @@ text-align: center;
   }
 
 .tableDesign{
-grid-row: 4/5;
-grid-column: 1/span 11; 
+grid-row: 3/4;
+grid-column: 1/span 12; 
 table-layout: fixed;
 width: 80%;
+height: 30%;
 margin-left: auto;
 margin-right: auto;
 background-color: var(--melon);
@@ -61,4 +64,9 @@ td{
 th , td {
  
   width: 100%
+}
+.chatButton{
+  padding: 10%;
+grid-row:4/ 7;
+ grid-column: 6/8;
 }

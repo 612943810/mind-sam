@@ -67,11 +67,11 @@ return()=>{
 
     return(
    <Fragment>
-    <div className="grid">
+    {/* <div className="grid"> */}
          <div className="navigation">
     
-  <Navigation/>   
-    </div>
+  {/* <Navigation/>    */}
+    {/* </div>
   <div id="chatText" className="chatText">
 
   </div>  
@@ -81,9 +81,9 @@ return()=>{
    <input type="text" placeholder="Please type something to the bot."  className='chatInput'  value={chat} onChange={(formVal)=>setChat(formVal.target.value)}/> 
   <div className="chatButton">
   <Button text="Send"   backgroundColor='#084b83ff' color='#fbc3bcff' />
-  </div>
- 
- </form> 
+  </div> */}
+ <Button text="Chat"backgroundColor='#084b83ff' color='#fbc3bcff'/>
+ {/* </form>  */}
     </div>
  
 
