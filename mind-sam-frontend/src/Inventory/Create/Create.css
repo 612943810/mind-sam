@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 #root {
     --cardinal: #c33149ff;
     --xanthous: #f3b61fff;
@@ -22,4 +22,4 @@ padding: 2%;
 
 .button{
     text-align: center;
-} */
+}
