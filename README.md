@@ -1,6 +1,6 @@
 # mind-sam
 
-This app makes it easir for store owners to manage their inventory and provides customers with  links to their preferred entertainment method.
+This app makes it easier for store owners to manage their inventory and provides customers with  links to their preferred entertainment method.
 ## Installation
 
 To install run the following: 
