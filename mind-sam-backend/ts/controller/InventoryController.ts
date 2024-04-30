@@ -1,7 +1,7 @@
 import mongoose, { Mongoose, Schema } from "mongoose";
 import { Express, Request, Response, json } from "express";
 import { inventory } from "../models/InventoryModel"
-let postInventory = async (req: Request, res: Response,) => {
+export let postInventory = async (req: Request, res: Response,) => {
     let inventoryData = new inventory(req.body)
     try {
         await inventoryData.save();
@@ -10,7 +10,7 @@ let postInventory = async (req: Request, res: Response,) => {
         res.json(error);
     }
 }
-let getInventory = async (req: Request, res: Response) => {
+export let getInventory = async (req: Request, res: Response) => {
     let currentData = null;
     try {
         let { id,inid, name, date } = req.query;
@@ -33,7 +33,7 @@ let getInventory = async (req: Request, res: Response) => {
         res.json(error)
     }
 }
-let updateInventory = async (req: Request, res: Response) => {
+export let  updateInventory = async (req: Request, res: Response) => {
     try {
        
 await inventory.findByIdAndUpdate(req.params.id,req.body,{runValidators:true,returnOriginal:false,useFindAndModify:false}).
@@ -45,7 +45,7 @@ res.json("Inventory Updated")
         res.status(500).json(error)
     }
 }
-let deleteInventory = async (req: Request, res: Response) => {
+export let deleteInventory = async (req: Request, res: Response) => {
     try {
         await inventory.findByIdAndDelete(req.params.id)
             .then(inventoryStatus => {
