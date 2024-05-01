@@ -9,19 +9,20 @@ function Chat(){
 const [isOpen, setIsOpen] = useState(false);
 const [messages, setMessages] = useState([]);
 const [newMessage, setNewMessage] = useState('');
-
-const toggleChat = () => {
+  let [chat,setChat]=useState(''); 
+ let conInit=io('http://localhost:3001/'); 
+ const toggleChat = () => {
   setIsOpen(!isOpen);
 };
 const toggleChatOn = () => {
   setIsOpen(true);
 };
-  let [chat,setChat]=useState(''); 
- let conInit=io('http://localhost:3001/');  
-const handleSendMessage = (submitVal:any) => {
+
+ 
+const submitChat = (submitVal:any) => {
   submitVal.preventDefault();
   if(chat=="1"){
-  var textEl=document.getElementById("chatText");
+  var textEl=document.getElementById("chatMessages");
   var menuButton=document.createElement("button")
   menuButton.textContent="News";
   menuButton.addEventListener('click',()=>{
@@ -39,8 +40,12 @@ const handleSendMessage = (submitVal:any) => {
     textEl?.appendChild(menuButton);
    }
   setNewMessage('');
-}; let chatDialog=()=>{
- axios.get("http://localhost:3001/").then((response)=>{
+}; 
+
+
+useEffect(()=>{
+  return()=>{
+   axios.get("http://localhost:3001/").then((response)=>{
      console.log(response.data)
     })
     console.log(`Data: ${chat}`)
@@ -56,6 +61,8 @@ const handleSendMessage = (submitVal:any) => {
     console.log(clientLis);
     var textEl=document.getElementById("chatMessages");
   var textBox=document.createElement("p");
+  textBox.style.padding="1%";
+   textBox.style.overflow="hidden"
   textBox.textContent=clientLis;
   textBox.className="chatMessages";
   textEl?.appendChild(textBox);
@@ -63,16 +70,14 @@ const handleSendMessage = (submitVal:any) => {
   });
 
 
-});
-
+}); 
   }
-useEffect(()=>{
- 
-  });
+
+  },[]);
 return (
   <Fragment>
 <button className="closeButton" onClick={toggleChatOn}> Chat </button>
-<form onSubmit={chatDialog}>
+<form onSubmit={submitChat}>
   <div className={`chatPopup ${isOpen ? 'open' : ''}`}> 
      
       <div className="chatHeader">
@@ -81,21 +86,22 @@ return (
       
       </div>
 
-    <div className="chatMessages">
-      {messages.map((message, index) => (
-        <div key={index} className="message">{message}</div>
-      ))}
+     <div id="chatMessages">
+   
     </div>
     <div className="chatInput">
       <input
         type="text"
         placeholder="Type your message..."
-        value={newMessage}
-        onChange={(e) => setNewMessage(e.target.value)}
+        value={chat}
+        onChange={(formVal)=>setChat(formVal.target.value)}
       />
-      <button onClick={handleSendMessage}>Send</button>
+    
+    <button type="submit" >Chat</button> 
     </div>
-  </div>
+   
+  </div> 
+  
 </form>
       
 
