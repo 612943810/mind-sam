@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.deleteInventory = exports.updateInventory = exports.getInventory = exports.postInventory = void 0;
 const InventoryModel_1 = require("../models/InventoryModel");
 let postInventory = async (req, res) => {
     let inventoryData = new InventoryModel_1.inventory(req.body);
@@ -11,6 +12,7 @@ let postInventory = async (req, res) => {
         res.json(error);
     }
 };
+exports.postInventory = postInventory;
 let getInventory = async (req, res) => {
     let currentData = null;
     try {
@@ -36,6 +38,7 @@ let getInventory = async (req, res) => {
         res.json(error);
     }
 };
+exports.getInventory = getInventory;
 let updateInventory = async (req, res) => {
     try {
         await InventoryModel_1.inventory.findByIdAndUpdate(req.params.id, req.body, { runValidators: true, returnOriginal: false, useFindAndModify: false }).
@@ -47,6 +50,7 @@ let updateInventory = async (req, res) => {
         res.status(500).json(error);
     }
 };
+exports.updateInventory = updateInventory;
 let deleteInventory = async (req, res) => {
     try {
         await InventoryModel_1.inventory.findByIdAndDelete(req.params.id)
@@ -58,9 +62,10 @@ let deleteInventory = async (req, res) => {
         res.json(error);
     }
 };
+exports.deleteInventory = deleteInventory;
 module.exports = {
-    getInventory,
-    postInventory,
-    updateInventory,
-    deleteInventory,
+    getInventory: exports.getInventory,
+    postInventory: exports.postInventory,
+    updateInventory: exports.updateInventory,
+    deleteInventory: exports.deleteInventory,
 };
