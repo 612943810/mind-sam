@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import './Login.css';
 import Navigation from '../navigation/Navigation';
 import Button from '../Button/Button';
@@ -11,7 +11,7 @@ import axios from 'axios';
 export default function Login() {
   const[success,setSuccess]=useState('')
   const[loginData,setloginData]=useState('')
-  const[formStatus,ssetFormStatus]=useState(false)
+  const[formStatus,setFormStatus]=useState(false)
   const[user,setUser]=useState<Login>({
    username:'',
     password:'',
@@ -26,16 +26,16 @@ export default function Login() {
       username:user.username,
      password:user.password
   }
- await axios.post(`http://localhost:3000/login`, fullData)
+await axios.post(`http://localhost:3000/login`, fullData)
    .then( (res:any)=>{ 
     setloginData(res.data)
-if(res.data=="Password correct!"){
+if(res.data=="Access granted!"){
     navLink(`/inventory?username=${fullData.username}`); 
-}else if(res.data=="The password is incorrect."){
+}else if(res.data=="Access denied!"){
   navLink(`/login`); 
-  ssetFormStatus(true)
+  setFormStatus(true)
 }
-     
+    
     try {
   setUser({
   username:'',
@@ -46,8 +46,11 @@ if(res.data=="Password correct!"){
     }
 
    })
+   
+   
+
   
-      }
+ } 
  
     return (
   <>
@@ -95,8 +98,8 @@ if(res.data=="Password correct!"){
     <br/>
     <br/>
   </>
-  )
-   
+  );
+}
+ 
        
     
-}

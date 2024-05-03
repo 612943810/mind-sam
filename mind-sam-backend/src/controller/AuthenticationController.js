@@ -35,17 +35,15 @@ let loginUser = async (req, res) => {
                 const jwtToken = jsonwebtoken_1.default.sign({ username: username, password: password }, process.env.JWT_SECRET, {
                     expiresIn: "15m",
                 });
-                let mainData = res.cookie("jwtToken", jwtToken, {
-                    expires: new Date(Date.now()),
-                    httpOnly: false,
-                    domain: "localhost",
+                res.cookie("jwtToken", jwtToken, {
+                    httpOnly: true,
                     secure: true,
                     sameSite: "none",
                 });
-                mainData.send("Password correct!");
+                res.json("Aceess granted!");
             }
             else {
-                res.json(`The password is incorrect.`);
+                res.json("Acesss denied!");
             }
         }
     }

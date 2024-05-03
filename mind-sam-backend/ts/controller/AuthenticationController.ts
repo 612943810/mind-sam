@@ -40,17 +40,15 @@ let loginUser=async (req: Request, res: Response) => {
           expiresIn: "15m",
         }
       );
-    let mainData= res.cookie("jwtToken",jwtToken,{
-        expires:new Date(Date.now()),
+ res.cookie("jwtToken",jwtToken,{
         httpOnly:true,
         secure:true,
         sameSite: "none",
       })
-      res.cookie("token",mainData)
-      mainData.send("Aceess granted!")
+     res.json("Aceess granted!")
 
       }else{
-      res.send("Acesss denied!");
+      res.json("Acesss denied!");
     }  
    
  }
