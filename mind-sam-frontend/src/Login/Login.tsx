@@ -29,9 +29,9 @@ export default function Login() {
 await axios.post(`http://localhost:3000/login`, fullData)
    .then( (res:any)=>{ 
     setloginData(res.data)
-if(res.data=="Access granted!"){
+if(res.data="Access granted!"){
     navLink(`/inventory?username=${fullData.username}`); 
-}else if(res.data=="Access denied!"){
+}else if(res.data="Access denied!"){
   navLink(`/login`); 
   setFormStatus(true)
 }
