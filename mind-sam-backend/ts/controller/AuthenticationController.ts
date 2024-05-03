@@ -42,15 +42,15 @@ let loginUser=async (req: Request, res: Response) => {
       );
     let mainData= res.cookie("jwtToken",jwtToken,{
         expires:new Date(Date.now()),
-        httpOnly:false,
-        domain: "localhost",
+        httpOnly:true,
         secure:true,
         sameSite: "none",
       })
-      mainData.send("Password correct!")
+      res.cookie("token",mainData)
+      mainData.send("Aceess granted!")
 
       }else{
-      res.json(`The password is incorrect.`);
+      res.send("Acesss denied!");
     }  
    
  }
