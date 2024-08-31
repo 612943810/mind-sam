@@ -47,9 +47,6 @@ if(res.data="Access granted!"){
 
    })
    
-   
-
-  
  } 
  
     return (
