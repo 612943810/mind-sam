@@ -51,7 +51,7 @@ const submitChat = (submitVal:any) => {
     window.open("https://www.cbc.ca/news");
   });
   textEl?.appendChild(menuButton);
-  conInit.emit("showMenu",menuButton);
+
   }else if(chat=="2"){
     var textEl=document.getElementById("chatMessages");
     var menuButton=document.createElement("button")
