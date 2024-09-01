@@ -1,24 +1,46 @@
 import React, { ClassAttributes, Fragment, RefAttributes, createElement,useEffect, useState } from "react";
-import {io} from 'socket.io-client';
+import {io, Socket} from 'socket.io-client';
 import axios from 'axios';
 import './Chat.css';
 import Navigation from "../navigation/Navigation";
 import Button from "../Button/Button";
+
 function Chat(){
     
 const [isOpen, setIsOpen] = useState(false);
 const [messages, setMessages] = useState([]);
 const [newMessage, setNewMessage] = useState('');
   let [chat,setChat]=useState(''); 
- let conInit=io('http://localhost:3001/'); 
- const toggleChat = () => {
+  let conInit:Socket;
+useEffect(()=>{
+   conInit=io('http://localhost:3001/');   
+    conInit.on("welcomeMessage",(socketConnect)=>{
+  var textEl=document.getElementById("chatMessages");
+  var textBox=document.createElement("p");
+  textBox.textContent=socketConnect;
+  textEl?.appendChild(textBox);
+    })
+  conInit.on("messageDisplay",(clientLis)=>{
+    console.log(clientLis);
+    var textEl=document.getElementById("chatMessages");
+  var textBox=document.createElement("p");
+  textBox.style.padding="1%";
+   textBox.style.overflow="hidden"
+  textBox.textContent=clientLis;
+  textBox.className="chatMessages";
+  textEl?.appendChild(textBox);
+  })
+
+return () => {
+  conInit.disconnect();
+};
+  },[]); 
+  const toggleChat = () => {
   setIsOpen(!isOpen);
 };
 const toggleChatOn = () => {
   setIsOpen(true);
 };
-
- 
 const submitChat = (submitVal:any) => {
   submitVal.preventDefault();
   if(chat=="1"){
@@ -43,37 +65,20 @@ const submitChat = (submitVal:any) => {
 }; 
 
 
-useEffect(()=>{
-  return()=>{
-   axios.get("http://localhost:3001/").then((response)=>{
-     console.log(response.data)
-    })
-    console.log(`Data: ${chat}`)
+
+  // return()=>{
+  //  axios.get("http://localhost:3001/").then((response)=>{
+  //    console.log(response.data)
+  //   })
+  //   console.log(`Data: ${chat}`)
 
     
-    conInit.on("welcomeMessage",(socketConnect)=>{
-  var textEl=document.getElementById("chatMessages");
-  var textBox=document.createElement("p");
-  textBox.textContent=socketConnect;
-  textEl?.appendChild(textBox);
-
-  conInit.on("messageDisplay",(clientLis)=>{
-    console.log(clientLis);
-    var textEl=document.getElementById("chatMessages");
-  var textBox=document.createElement("p");
-  textBox.style.padding="1%";
-   textBox.style.overflow="hidden"
-  textBox.textContent=clientLis;
-  textBox.className="chatMessages";
-  textEl?.appendChild(textBox);
-
-  });
 
 
-}); 
-  }
+  // }
 
-  },[]);
+
+
 return (
   <Fragment>
 <button className="closeButton" onClick={toggleChatOn}> Chat </button>
@@ -97,13 +102,13 @@ return (
         onChange={(formVal)=>setChat(formVal.target.value)}
       />
     
-    <button type="submit" >Chat</button> 
+ 
     </div>
-   
+      <button type="submit" >Submit</button>  
   </div> 
-  
+     
 </form>
-      
+  
 
 </Fragment>
 );  
