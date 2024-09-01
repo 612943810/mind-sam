@@ -41,7 +41,7 @@ let loginUser=async (req: Request, res: Response) => {
         }
       );
  res.cookie("jwtToken",jwtToken,{
-        httpOnly:true,
+        httpOnly:false,
         secure:true,
         sameSite: "none",
       })
@@ -57,7 +57,8 @@ console.log(error)
   }
     }
 let logoutUser=async (req: Request, res: Response) => {
-  res.cookie("jwtToken",'',{maxAge:1})
+  res.cookie("jwtToken"," ",{maxAge:1})
+  res.json("Cookie Deleted")
 }
 module.exports = {
 registerUser,

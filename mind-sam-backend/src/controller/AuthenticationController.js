@@ -36,7 +36,7 @@ let loginUser = async (req, res) => {
                     expiresIn: "15m",
                 });
                 res.cookie("jwtToken", jwtToken, {
-                    httpOnly: true,
+                    httpOnly: false,
                     secure: true,
                     sameSite: "none",
                 });
@@ -51,7 +51,12 @@ let loginUser = async (req, res) => {
         console.log(error);
     }
 };
+let logoutUser = async (req, res) => {
+    res.cookie("jwtToken", " ", { maxAge: 1 });
+    res.json("Cookie Deleted");
+};
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    logoutUser
 };

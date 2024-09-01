@@ -1,12 +1,21 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import './Navigation.css';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 export default function Navigation() {
+  let redirectUser=useNavigate();
   let currentParams = useParams()
   let currentUser = currentParams.username
-  useEffect(() => {
-    //if()
-  })
+ 
+  let logoutUser=()=>{
+      axios.get("http://localhost:3000/logout")
+    .then(res=>{
+redirectUser('/')
+    })
+    .catch(res=>{
+      alert("Page not availible.")
+    })
+  }
   return (
     <>
 
@@ -15,7 +24,7 @@ export default function Navigation() {
           currentUser ?
             <>
               <Link to={`/inventory/${currentUser}`} className='navLink'> Inventory</Link>
-              <Link to='' className='navLink'>Logout</Link>
+              <li onClick={logoutUser}className='navLink' > <a>Logout</a></li>
             </>
 
             :
