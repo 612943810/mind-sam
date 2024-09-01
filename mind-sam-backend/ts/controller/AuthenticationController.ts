@@ -56,7 +56,11 @@ let loginUser=async (req: Request, res: Response) => {
 console.log(error)
   }
     }
+let logoutUser=async (req: Request, res: Response) => {
+  res.cookie("jwtToken",'',{maxAge:1})
+}
 module.exports = {
 registerUser,
-loginUser
+loginUser,
+logoutUser
 }

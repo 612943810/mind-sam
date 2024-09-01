@@ -11,6 +11,7 @@ import { authRoute } from './routes/authentication';
 const cookieParser = require('cookie-parser')
 import fs from 'fs';
 import path from 'path';
+import session from  'express-session';
 dotenv.config();
 
 mongoose.connect(`mongodb+srv://${process.env.database_name}:${process.env.database_password}@${process.env.database_name}.yhrxz.mongodb.net/inventory?retryWrites=true&w=majority`);
