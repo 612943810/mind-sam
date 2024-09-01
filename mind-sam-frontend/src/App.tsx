@@ -10,6 +10,7 @@ import UpdateInventory from './Inventory/Update/Update';
 import Login from './Login/Login';
 import Register from './Register/Register';
 import axios from 'axios';
+import Profile from './Profile/Profile';
 axios.defaults.withCredentials=true
 function App() {
   const [count, setCount] = useState(0)
@@ -19,8 +20,9 @@ function App() {
 
   <BrowserRouter>
   <Routes>
-<Route path='/' element={<Chat/>}/>
-<Route path='/inventory' element={<Home/>}/>
+
+<Route path='/' element={<Home/>}/>
+<Route path='/inventory/:username' element={<Profile/>}/>
 <Route path='/inventory/create'element={<CreateInventory/>}/>
 <Route path='/inventory/update/:id'element={<UpdateInventory/>}/>
 <Route path='/chat' element={<Chat/>}/>

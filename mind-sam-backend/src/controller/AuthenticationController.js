@@ -40,10 +40,10 @@ let loginUser = async (req, res) => {
                     secure: true,
                     sameSite: "none",
                 });
-                res.json("Aceess granted!");
+                res.json("Access granted!");
             }
             else {
-                res.json("Acesss denied!");
+                res.json("Access denied!");
             }
         }
     }

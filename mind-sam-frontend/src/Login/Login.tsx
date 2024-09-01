@@ -30,7 +30,7 @@ await axios.post(`http://localhost:3000/login`, fullData)
    .then( (res:any)=>{ 
     setloginData(res.data)
 if(res.data="Access granted!"){
-    navLink(`/inventory?username=${fullData.username}`); 
+    navLink(`/inventory/${fullData.username}`); 
 }else if(res.data="Access denied!"){
   navLink(`/login`); 
   setFormStatus(true)
