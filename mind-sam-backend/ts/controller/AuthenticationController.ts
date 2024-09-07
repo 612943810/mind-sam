@@ -4,16 +4,16 @@ import argon from 'argon2';
 import dotenv from 'dotenv';
 dotenv.config();
 import {register} from '../models/RegisterModel';
+let secretKey:any=process.env.JWT_SECRET;
 let registerUser = async (req: Request, res: Response) => {
     const {username,password,dateofbirth}=req.body;
-   let hashedPassword= await argon.hash(password,{type:argon.argon2id});
-    let users = new register({username:username,password:hashedPassword,dateofbirth:dateofbirth})
+    let users = new register({username:username,password:password,dateofbirth:dateofbirth})
     try {
         await users.save();
-        let secretKey=process.env.JWT_SECRET;
-        const jwtToken = jwt.sign(
+
+        const jwtToken:string = jwt.sign(
             {username: username,password:password,dateofbirth },
-            process.env.JWT_SECRET as Secret,
+        secretKey,
             {
               expiresIn: "15m",
             }
@@ -28,30 +28,16 @@ let loginUser=async (req: Request, res: Response) => {
   try {
     const {username,password} =req.body;
     let appUsers:any=0;
-    appUsers= await register.findOne({username:req.body.username})
-     if(appUsers){
-     let  checkPassword=await argon.verify( appUsers.password,password);
-     if(checkPassword==true){      
-    
-       const jwtToken = jwt.sign(
-        {username: username,password:password},
-        process.env.JWT_SECRET as Secret,
-        {
-          expiresIn: "15m",
-        }
+    appUsers=await register.findOne({ username:username,password:password}).exec();
+    console.log(appUsers)
+    if(appUsers){
+        
+        const jwtToken = jwt.sign(
+        {username: username,password:password}, secretKey,{ expiresIn: "15m"}
       );
- res.cookie("jwtToken",jwtToken,{
-        httpOnly:false,
-        secure:true,
-        sameSite: "none",
-      })
-     res.json("Access granted!")
-
-      }else{
-      res.json("Access denied!");
-    }  
-   
- }
+    }else if(appUsers==null){
+      res.json({"result":"User not found"})
+    }
 }catch (error) {
 console.log(error)
   }
