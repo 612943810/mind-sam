@@ -17,27 +17,24 @@ let registerUser = async (req: Request, res: Response) => {
             {
               expiresIn: "15m",
             }
-          );
-        res.send("User Registered")
+          );  
+         res.json("User Registered")     
     } catch (error) {
         res.json(error);
     }
   }
 let loginUser=async (req: Request, res: Response) => {
- 
   try {
     const {username,password} =req.body;
     let appUsers:any=0;
     appUsers=await register.findOne({ username:username,password:password}).exec();
     console.log(appUsers)
     if(appUsers){
-        
-        const jwtToken = jwt.sign(
-        {username: username,password:password}, secretKey,{ expiresIn: "15m"}
-     
-      );  
-       res.json({"result":"Success"});
-    }else if(appUsers==null){
+     const jwtToken = jwt.sign(
+        {username: username,password:password}, secretKey,{ expiresIn: "15m"}  
+      );   
+      res.json({"result":"Success"}) 
+   }else if(appUsers==null){
       res.json({"result":"User not found"})
     }  
   

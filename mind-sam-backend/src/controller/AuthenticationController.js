@@ -16,7 +16,7 @@ let registerUser = async (req, res) => {
         const jwtToken = jsonwebtoken_1.default.sign({ username: username, password: password, dateofbirth }, secretKey, {
             expiresIn: "15m",
         });
-        res.send("User Registered");
+        res.json("User Registered");
     }
     catch (error) {
         res.json(error);
