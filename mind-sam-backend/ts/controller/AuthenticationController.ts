@@ -34,10 +34,13 @@ let loginUser=async (req: Request, res: Response) => {
         
         const jwtToken = jwt.sign(
         {username: username,password:password}, secretKey,{ expiresIn: "15m"}
-      );
+     
+      );  
+       res.json({"result":"Success"});
     }else if(appUsers==null){
       res.json({"result":"User not found"})
-    }
+    }  
+  
 }catch (error) {
 console.log(error)
   }

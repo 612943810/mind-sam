@@ -30,7 +30,7 @@ let loginUser = async (req, res) => {
         console.log(appUsers);
         if (appUsers) {
             const jwtToken = jsonwebtoken_1.default.sign({ username: username, password: password }, secretKey, { expiresIn: "15m" });
-            res.json({ jwtToken });
+            res.json({ "result": "Success" });
         }
         else if (appUsers == null) {
             res.json({ "result": "User not found" });
