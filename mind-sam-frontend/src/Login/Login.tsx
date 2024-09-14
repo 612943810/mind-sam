@@ -28,7 +28,6 @@ export default function Login() {
   }
 await axios.post(`http://localhost:3000/login`, fullData)
    .then( (res:any)=>{ 
-    console.log(res.data.result)
     setloginData(res.data.result)
 if(res.data.result=="Success"){
     navLink(`/inventory/${fullData.username}`); 
