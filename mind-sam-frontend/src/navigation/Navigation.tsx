@@ -23,7 +23,7 @@ redirectUser('/')
         {
           currentUser ?
             <>
-              <Link to={`/inventory/${currentUser}`} className='navLink'> Inventory</Link>
+              <Link to={`/`} className='navLink'> Inventory</Link>
               <li onClick={logoutUser}className='navLink' > <a>Logout</a></li>
             </>
 
