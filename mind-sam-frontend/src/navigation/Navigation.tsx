@@ -5,16 +5,23 @@ import './Navigation.css';
 
 export default function Navigation() {
   const navigate = useNavigate();
-  const { username } = useParams(); // Extract username from route params
+  const { username } = useParams();
   const [currentUser, setCurrentUser] = useState(username || null);
 
-  // Logout function
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      setCurrentUser(parsedUser.username);
+    }
+  }, []);
+
   const logoutUser = () => {
     axios
       .get("http://localhost:3000/logout")
       .then(() => {
-        setCurrentUser(null); // Clear the user session
-        navigate('/'); // Redirect to home
+        localStorage.removeItem('user'); 
+        navigate('/'); 
       })
       .catch(() => {
         alert("Page not available.");
@@ -26,7 +33,7 @@ export default function Navigation() {
       <nav className="navigationBar">
         {currentUser ? (
           <>
-            <Link to={`/${username}`} className="navLink">Inventory</Link>
+            <Link to={`/${currentUser}`} className="navLink">Inventory</Link>
             <li onClick={logoutUser} className="navLink">
               <a>Logout</a>
             </li>
