@@ -22,6 +22,7 @@ function App() {
   <Routes>
 
 <Route path='/' element={<Home/>}/>
+<Route path='/:username' element={<Home/>}/>
 <Route path='/inventory/:username' element={<Profile/>}/>
 <Route path='/inventory/create'element={<CreateInventory/>}/>
 <Route path='/inventory/update/:id'element={<UpdateInventory/>}/>
