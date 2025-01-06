@@ -16,10 +16,15 @@ export interface Inventory {
 export default function Home() {
     let { id } = useParams();
     const [inventory, setInventory] = useState<Inventory[]>([]);
-    let currentParams = new URLSearchParams(window.location.search);
-    let currentUser = currentParams.get('username');
+    const [currentUser, setCurrentUser] = useState<string | null>(null);
 
     useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            const parsedUser = JSON.parse(storedUser);
+            setCurrentUser(parsedUser.username);
+        }
+
         axios.get('http://localhost:3000/inventory')
             .then((inData) => {
                 setInventory(inData.data);
