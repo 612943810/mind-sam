@@ -1,4 +1,4 @@
-# 🧠 mind-sam
+# mind-sam
 
 Mind-Sam is a full-stack web application that makes it easier for store owners to manage their inventory and provides customers with links to their preferred entertainment platforms.
 
