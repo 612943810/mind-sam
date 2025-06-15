@@ -47,7 +47,7 @@ npm run dev
 - **Frontend**: React, JavaScript, Vite  
 - **Backend**: Node.js, Express.js  
 - **Database**: MongoDB  
-- **Other Tools**: Mongoose, RESTful APIs, Axios, TailwindCSS (optional), Postman (for API testing)  
+- **Other Tools**: Mongoose, Axios
 
 ---
 
