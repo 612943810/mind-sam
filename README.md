@@ -1,26 +1,68 @@
-# mind-sam
+# 🧠 mind-sam
 
-This app makes it easier for store owners to manage their inventory and provides customers with  links to their preferred entertainment method.
+Mind-Sam is a full-stack web application that makes it easier for store owners to manage their inventory and provides customers with links to their preferred entertainment platforms.
+
+---
+
+## Features
+
+-  CRUD-based inventory management  
+- Chat feature which gives  option to see news for customers or business guide or business owners 
+
+---
+
 ## Installation
 
-To install run the following: 
+To install and run the app locally:
 
-```
+```bash
 git clone https://github.com/612943810/mind-sam.git
 npm install
 ```
 
-### Please run the folders in the order given to see the app.
+>  **Note:** Please run the folders in the order given below to properly see the app in action.
 
+---
 
-To run the backend:
-```
+## Run Order
+
+### Run the Backend
+
+```bash
 cd mind-sam-backend
 npm start
 ```
 
-To run the frontend:
-```
+###  Run the Frontend
+
+```bash
 cd mind-sam-frontend
 npm run dev
 ```
+
+---
+
+##  Tech Stack
+
+- **Frontend**: React, JavaScript, Vite  
+- **Backend**: Node.js, Express.js  
+- **Database**: MongoDB  
+- **Other Tools**: Mongoose, RESTful APIs, Axios, TailwindCSS (optional), Postman (for API testing)  
+
+---
+
+##  Screenshots
+
+
+---
+
+##  Author
+
+- **Name**: Raiyan Rofiquzzaman  
+- **Portfolio**: [https://raiyanrofiquzzaman.netlify.app/](https://raiyanrofiquzzaman.netlify.app/)  
+- **LinkedIn**: [https://www.linkedin.com/in/raiyanrofiquzzaman](https://www.linkedin.com/in/raiyanrofiquzzaman)  
+- **GitHub**: [https://github.com/612943810](https://github.com/612943810)  
+
+---
+
+
