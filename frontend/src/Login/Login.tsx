@@ -42,7 +42,7 @@ export default function Login() {
     }
     await axios.post(`http://localhost:3000/login`, fullData)
       .then((res: any) => {
-        setLoginData(res.data.result);
+        setLoginData(res.data.result || '');
         if (res.data.result === "Success") {
           localStorage.setItem('user', JSON.stringify(fullData));
           setUser(fullData); 
@@ -77,8 +77,8 @@ export default function Login() {
         <br />
         <label> Password</label>
         <br />
-        <input type='text' name='password' value={user.password} onChange={changeAction} />
-        {loginData === "Password correct!" && formStatus === true ? '' : <h1>{loginData}</h1>}
+<input type='password' name='password' value={user.password} onChange={changeAction} />
+     {typeof loginData === 'string' && loginData && <h1>{loginData}</h1>}
         <br />
         <div>
           <Button buttonType='submit' text="Login" backgroundColor='#084b83ff' color='#fbc3bcff' />

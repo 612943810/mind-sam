@@ -17,15 +17,9 @@ export default function Navigation() {
   }, []);
 
   const logoutUser = () => {
-    axios
-      .get("http://localhost:3000/logout")
-      .then(() => {
-        localStorage.removeItem('user'); 
-        navigate('/'); 
-      })
-      .catch(() => {
-        alert("Page not available.");
-      });
+    localStorage.removeItem('user');
+  setCurrentUser(null);
+  navigate('/');
   };
 
   return (
