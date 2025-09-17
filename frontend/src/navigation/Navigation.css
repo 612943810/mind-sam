@@ -20,6 +20,7 @@
 .navLink {
     display: block;
     padding: 3% 3% 3% 3%;
+    margin-left: auto;
 }
 
 .navLink:hover {

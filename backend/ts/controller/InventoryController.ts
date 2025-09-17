@@ -1,7 +1,7 @@
 import mongoose, { Mongoose, Schema } from "mongoose";
 import { Express, Request, Response, json } from "express";
 import { inventory } from "../models/InventoryModel"
-export let postInventory = async (req: Request, res: Response,) => {
+export let createIdea = async (req: Request, res: Response,) => {
     let inventoryData = new inventory(req.body)
     try {
         await inventoryData.save();
@@ -57,7 +57,7 @@ export let deleteInventory = async (req: Request, res: Response) => {
 }
 module.exports = {
     getInventory,
-    postInventory,
+    createIdea,
     updateInventory,
     deleteInventory,
 }
