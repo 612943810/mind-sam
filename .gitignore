@@ -105,3 +105,4 @@ dist
 
 certificates/
 node_modules/
+.github/copilot-instructions.md
