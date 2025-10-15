@@ -1,7 +1,5 @@
 import express, { Request,Response } from 'express';
-import http, { IncomingMessage, Server, ServerResponse } from 'http';
-import https from'https';
-import mongose, { Schema } from 'mongoose';
+import http from 'http';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { Router } from 'express';
@@ -9,8 +7,6 @@ import mongoose from 'mongoose';
 import {inRoute} from './routes/inventory';
 import { authRoute } from './routes/authentication';
 const cookieParser = require('cookie-parser')
-import fs from 'fs';
-import path from 'path';
 dotenv.config();
 
 mongoose.connect(`mongodb+srv://${process.env.database_name}:${process.env.database_password}@${process.env.database_name}.yhrxz.mongodb.net/inventory?retryWrites=true&w=majority`);
@@ -81,9 +77,4 @@ mongoose.connection.on('error',(error:any)=>{
 console.log(`Error:${error}`);
 });
 
-const httpsOptions = {
-    key: fs.readFileSync(path.join(__dirname, "../certificates/cert-key.pem")),
-    cert: fs.readFileSync(path.join(__dirname, "../certificates/cert-csr.pem")),
-  };
-  http.createServer(appInit).listen(3000)
-https.createServer(httpsOptions,appInit).listen(3002)
+http.createServer(appInit).listen(3000)
