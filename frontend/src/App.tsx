@@ -10,13 +10,15 @@ import Login from './Login/Login';
 import Register from './Register/Register';
 import axios from 'axios';
 import Profile from './Profile/Profile';
+import Navigation from './navigation/Navigation';
 axios.defaults.withCredentials=true
 const App = () => {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="container mx-auto p-6 space-y-6">
+    <div className="website h-full backgroundImage">
       <BrowserRouter>
+      <Navigation/>
       <Routes>
 
 <Route path='/' element={<Home/>}/>

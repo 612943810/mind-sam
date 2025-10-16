@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import Navigation from '../../navigation/Navigation';
+
 import Button from '../../Button/Button';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios, { AxiosResponse } from 'axios';
@@ -56,7 +56,7 @@ navLink('/inventory');
       }
   return (
     <div className="container mx-auto p-6">
-      <Navigation />
+
       <form onSubmit={submitData} className="bg-white p-6 rounded-lg shadow max-w-xl mx-auto space-y-4">
         <h1 className="text-2xl font-semibold text-center text-indigo-900">Update Inventory</h1>
         <div>

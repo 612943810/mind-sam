@@ -1,5 +1,4 @@
 import Button from "../../Button/Button";
-import Navigation from "../../navigation/Navigation";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -42,7 +41,7 @@ export default function Home() {
     return (
         <>
             <div className="container mx-auto p-6">
-                <Navigation />
+
                 <div className="flex items-center justify-between mb-4">
                     <h1 className='text-2xl font-semibold'>Inventory Details</h1>
                 </div>

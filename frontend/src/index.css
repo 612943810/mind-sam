@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
 :root {
   --cardinal: #c33149ff;
   --xanthous: #f3b61fff;
@@ -11,6 +18,7 @@
 }
 
 .backgroundImage{
+  height: 100%;
   background-image: url('./assets/images/shopping.png');
   background-size: cover;
   background-position: center;

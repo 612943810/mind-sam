@@ -8,7 +8,6 @@ export default function Profile() {
   console.log('Profile params:', params);
   return (
     <>
-      <Navigation />
       <div className="container mx-auto p-6 space-y-6">
         <header className="text-center">
           <h1 className="text-3xl font-bold">Profile</h1>

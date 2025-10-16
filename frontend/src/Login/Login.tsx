@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import Navigation from '../navigation/Navigation';
+
 import Button from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -62,8 +62,8 @@ export default function Login() {
   }
 
   return (
-    <div className="container mx-auto p-6">
-      <Navigation />
+    <div className="container mx-auto">
+
       <form onSubmit={submitData} className="bg-white p-6 rounded-lg shadow max-w-md mx-auto space-y-4">
         <h1 className="text-2xl font-semibold text-center text-indigo-900">Login to your account</h1>
         <div>
