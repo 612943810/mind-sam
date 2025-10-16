@@ -1,11 +1,19 @@
-  import { useParams } from "react-router";
+import React from 'react';
 import Navigation from "../navigation/Navigation";
+import { useParams } from 'react-router-dom';
   export default  function Profile() {
 let username=useParams();
   return (
  <>
  <Navigation/>
- <h1>Welcome {username.username}</h1>
+ <div className="container mx-auto p-6 space-y-6">
+   <header className="text-center">
+     <h1 className="text-3xl font-bold">Profile</h1>
+   </header>
+   <section className="bg-white shadow-md rounded-lg p-4">
+     <h2>Welcome {username.username}</h2>
+   </section>
+ </div>
  </>
   );
 }

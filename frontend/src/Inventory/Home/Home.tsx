@@ -1,4 +1,3 @@
-import './Home.css';
 import Button from "../../Button/Button";
 import Navigation from "../../navigation/Navigation";
 import axios from 'axios';
@@ -41,37 +40,36 @@ export default function Home() {
     };
 
     return (
-        <>
-            <div className='grid'>
-                <div className='navigation'>
-                    <Navigation />
+        <div className="container mx-auto p-6">
+            <Navigation />
+            <h1 className='text-2xl font-semibold text-center my-4'>Inventory Details</h1>
+            {currentUser && (
+                <div className='text-center mb-4'>
+                    <Link to={`/inventory/create?username=${currentUser}`}>
+                        <Button text="Create" backgroundColor='#084b83ff' color='#fbc3bcff' />
+                    </Link>
                 </div>
-                <h1 className='title'>Inventory Details</h1>
-                {currentUser &&
-                    <div className='createButton'>
-                        <Link to={`/inventory/create?username=${currentUser}`}>
-                            <Button text="Create" backgroundColor='#084b83ff' color='#fbc3bcff' />
-                        </Link>
-                    </div>
-                }
-                {currentUser && <h2 className='textDesign'>Welcome {currentUser}</h2>}
-                <table className='tableDesign'>
-                    <thead>
+            )}
+            {currentUser && <h2 className='text-center mb-4'>Welcome {currentUser}</h2>}
+
+            <div className="overflow-x-auto">
+                <table className="min-w-full bg-white rounded-lg shadow overflow-hidden">
+                    <thead className="bg-indigo-100">
                         <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Date</th>
-                            {currentUser && <th>Actions</th>}
+                            <th className="px-4 py-2 text-left">Id</th>
+                            <th className="px-4 py-2 text-left">Name</th>
+                            <th className="px-4 py-2 text-left">Date</th>
+                            {currentUser && <th className="px-4 py-2 text-left">Actions</th>}
                         </tr>
                     </thead>
                     <tbody>
                         {inventory.map((tableData) => (
-                            <tr key={tableData._id.toString()}>
-                                <td>{tableData.inventoryId}</td>
-                                <td>{tableData.inventoryName}</td>
-                                <td>{tableData.inventoryDate}</td>
+                            <tr key={tableData._id.toString()} className="border-t">
+                                <td className="px-4 py-2">{tableData.inventoryId}</td>
+                                <td className="px-4 py-2">{tableData.inventoryName}</td>
+                                <td className="px-4 py-2">{tableData.inventoryDate}</td>
                                 {currentUser && (
-                                    <td>
+                                    <td className="px-4 py-2 space-x-2">
                                         <Link to={`/inventory/update/${tableData._id}`}>
                                             <Button buttonType='button' text="Update" backgroundColor='#f3b61fff' color='#fbc3bcff' />
                                         </Link>
@@ -82,10 +80,11 @@ export default function Home() {
                         ))}
                     </tbody>
                 </table>
-                <section className="chatButton">
-                    <Chat />
-                </section>
             </div>
-        </>
+
+            <div className="fixed bottom-6 left-6">
+                <Chat />
+            </div>
+        </div>
     );
 }

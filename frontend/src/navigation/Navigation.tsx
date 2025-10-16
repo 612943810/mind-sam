@@ -1,7 +1,6 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import './Navigation.css';
 
 export default function Navigation() {
   const navigate = useNavigate();
@@ -23,27 +22,22 @@ export default function Navigation() {
   };
 
   return (
-    <>
-      <nav className="navigationBar">
-        {currentUser ? (
-          <>
-            <Link to={`/${currentUser}`} className="navLink">Inventory</Link>
-            <li onClick={logoutUser} className="navLink">
-              <a>Logout</a>
-            </li>
-          </>
-        ) : (
-          <>
-            <Link to="/" className="navLink">Inventory</Link>
-            <li className="navLink loginPosition">
-              <a className="registerPad" href="/register">Register</a>
-            </li>
-            <li className="navLink">
-              <a href="/login">Login</a>
-            </li>
-          </>
-        )}
-      </nav>
-    </>
+    <nav className="w-full bg-yellow-200">
+      <div className="container mx-auto px-4 py-3 flex items-center">
+        <div className="flex items-center gap-4">
+          <Link to={`/${currentUser || ''}`} className="text-indigo-900 font-semibold">Inventory</Link>
+        </div>
+        <div className="ml-auto flex items-center gap-4">
+          {currentUser ? (
+            <button onClick={logoutUser} className="text-sm text-indigo-900">Logout</button>
+          ) : (
+            <>
+              <Link to="/register" className="text-sm text-indigo-900">Register</Link>
+              <Link to="/login" className="text-sm text-indigo-900">Login</Link>
+            </>
+          )}
+        </div>
+      </div>
+    </nav>
   );
 }

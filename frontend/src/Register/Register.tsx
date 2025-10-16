@@ -1,158 +1,80 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
-import './Register.css';
 import Navigation from '../navigation/Navigation';
 import Button from '../Button/Button';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-  export default interface Register{
-    username:string,
-   password:string,
-    dateofbirth:string
-      }
-export default function Login() {
-  const[success,setSuccess]=useState('');
-  const[user,setUser]=useState<Login>({
-    username:'',
-   password:'',
-    dateofbirth:''
-  })
 
-     let navLink=useNavigate();
-     const changeAction=(event:ChangeEvent<HTMLInputElement>)=>{
-      setUser({...user,[event.target.name]:event.target.value});
-        }
-  const submitData=(event:FormEvent)=>{
-  
-   event.preventDefault()
-   const fullData={
-      username:user.username,
-   password:user.password,
-    dateofbirth:user.dateofbirth
-  } 
+interface RegisterData {
+  username: string;
+  password: string;
+  dateofbirth: string;
+}
 
- axios.post('http://localhost:3000/register',fullData)
-   .then( (res)=>{
-setSuccess(res.data);
-    try {
-  setUser({
-username:'',
-password:'',
-dateofbirth:''
-})
-    } catch (inError) {
-     console.log(inError)
-    }
+export default function Register() {
+  const [success, setSuccess] = useState('');
+  const [user, setUser] = useState<RegisterData>({
+    username: '',
+    password: '',
+    dateofbirth: ''
+  });
 
-   })
-  
-      }
-      if(!success){
-return (
-   <> 
-   <Navigation/>
-  {
+  const navLink = useNavigate();
 
+  const changeAction = (event: ChangeEvent<HTMLInputElement>) => {
+    setUser({ ...user, [event.target.name]: event.target.value });
   }
 
-<form className='formDesign' onSubmit={submitData}>
-  <h1 className='title'>Please register for an account.</h1>
-  <b/>
-  <label> User Name </label>
-  <br/>
-    <input type='text' name='username' value={user.username} onChange={changeAction}/>
-    <br/>
-    <br/>
-    <label> Password</label>
-    <br/>
-    <input type='text'  name='password' value={user.password}  onChange={changeAction}/>
-    <br/>
-    <label> Date of Birth</label>
-    <br/>
-    <input type='date'  name='dateofbirth' value={user.dateofbirth}  onChange={changeAction}/>
-    <br/>
-    <div>
-          <Button  buttonType='submit' text="Login" backgroundColor='#084b83ff' color='#fbc3bcff' />
-    </div>
+  const submitData = (event: FormEvent) => {
+    event.preventDefault();
+    const fullData = { ...user };
+    axios.post('http://localhost:3000/register', fullData)
+        .then((res) => {
+          setSuccess(res.data);
+          try {
+            setUser({ username: '', password: '', dateofbirth: '' });
+            // after successful register navigate to profile
+            navLink(`/inventory/${fullData.username}`);
+          } catch (inError) {
+            console.log(inError);
+          }
+        })
+      .catch((err) => {
+        console.error(err);
+        setSuccess('An error occurred');
+      });
+  }
 
+  if (!success) {
+    return (
+      <div className="container mx-auto p-6">
+        <Navigation />
+        <form onSubmit={submitData} className="bg-white p-6 rounded-lg shadow max-w-md mx-auto space-y-4">
+          <h1 className="text-2xl font-semibold text-center text-indigo-900">Please register for an account.</h1>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">User Name</label>
+            <input type='text' name='username' value={user.username} onChange={changeAction} className="mt-1 block w-full border rounded px-3 py-2" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Password</label>
+            <input type='text' name='password' value={user.password} onChange={changeAction} className="mt-1 block w-full border rounded px-3 py-2" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Date of Birth</label>
+            <input type='date' name='dateofbirth' value={user.dateofbirth} onChange={changeAction} className="mt-1 block w-full border rounded px-3 py-2" />
+          </div>
+          <div className="text-center">
+            <Button buttonType='submit' text="Register" backgroundColor='#084b83ff' color='#fbc3bcff' />
+          </div>
+        </form>
+      </div>
+    )
+  } else {
+    return (
+      <div className="container mx-auto p-6">
+        <Navigation />
+        <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow text-center">{success}</div>
+      </div>
+    )
+  }
 
-    
-</form> 
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-  </>
-  )
-      }else{
-        return(
-        <>   
-        <Navigation/>
-     <h2>{success}</h2>
-     <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-        </>  
-        )
-     
-      }
-    
 }

@@ -1,9 +1,8 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import './Update.css';
 import Navigation from '../../navigation/Navigation';
 import Button from '../../Button/Button';
-import { useNavigate, useParams } from 'react-router';
-import axios, { Axios, AxiosResponse } from 'axios';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios, { AxiosResponse } from 'axios';
   export default interface UpdateInventory {
     
     inventoryId:number,
@@ -55,52 +54,27 @@ navLink('/inventory');
 )
   
       }
-    return (
-  <>
-  <Navigation/>
-<form className='formDesign' onSubmit={submitData}>
-  <h1 className='title'>Create Inventory</h1>
-  <b/>
-  <label>ID</label>
-  <br/>
-    <input type='text' name='inventoryId' value={inventory.inventoryId} onChange={changeAction}/>
-    <br/>
-  <label> Name</label>
-  <br/>
-    <input type='text' name='inventoryName' value={inventory.inventoryName} onChange={changeAction}/>
-    <br/>
-    <br/>
-    <label> Date</label>
-    <br/>
-    <input type='date'  name='inventoryDate' value={inventory.inventoryDate} onChange={changeAction}/>
-    <div>
-          <Button  buttonType='submit' text="Update Inventory" backgroundColor='#084b83ff' color='#fbc3bcff' />
+  return (
+    <div className="container mx-auto p-6">
+      <Navigation />
+      <form onSubmit={submitData} className="bg-white p-6 rounded-lg shadow max-w-xl mx-auto space-y-4">
+        <h1 className="text-2xl font-semibold text-center text-indigo-900">Update Inventory</h1>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">ID</label>
+          <input type="text" name="inventoryId" value={inventory.inventoryId} onChange={changeAction} className="mt-1 block w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Name</label>
+          <input type="text" name="inventoryName" value={inventory.inventoryName} onChange={changeAction} className="mt-1 block w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Date</label>
+          <input type="date" name="inventoryDate" value={inventory.inventoryDate} onChange={changeAction} className="mt-1 block w-full border rounded px-3 py-2" />
+        </div>
+        <div className="text-center">
+          <Button buttonType='submit' text="Update Inventory" backgroundColor='#084b83ff' color='#fbc3bcff' />
+        </div>
+      </form>
     </div>
-
-
-    
-</form> <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-  </>
-  )
+  );
 }

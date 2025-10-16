@@ -1,8 +1,7 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import './Login.css';
 import Navigation from '../navigation/Navigation';
 import Button from '../Button/Button';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default interface Login {
@@ -65,26 +64,24 @@ export default function Login() {
   }
 
   return (
-    <>
+    <div className="container mx-auto p-6">
       <Navigation />
-      <form className='formDesign' onSubmit={submitData}>
-        <h1 className='title'>Login to your account</h1>
-        <b />
-        <label> User Name </label>
-        <br />
-        <input type='text' name='username' value={user.username} onChange={changeAction} />
-        <br />
-        <br />
-        <label> Password</label>
-        <br />
-<input type='password' name='password' value={user.password} onChange={changeAction} />
-     {typeof loginData === 'string' && loginData && <h1>{loginData}</h1>}
-        <br />
+      <form onSubmit={submitData} className="bg-white p-6 rounded-lg shadow max-w-md mx-auto space-y-4">
+        <h1 className="text-2xl font-semibold text-center text-indigo-900">Login to your account</h1>
         <div>
+          <label className="block text-sm font-medium text-gray-700">User Name</label>
+          <input type="text" name="username" value={user.username} onChange={changeAction} className="mt-1 block w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Password</label>
+          <input type="password" name="password" value={user.password} onChange={changeAction} className="mt-1 block w-full border rounded px-3 py-2" />
+        </div>
+        {typeof loginData === 'string' && loginData && <div className="text-center text-sm text-red-600">{loginData}</div>}
+        <div className="text-center">
           <Button buttonType='submit' text="Login" backgroundColor='#084b83ff' color='#fbc3bcff' />
         </div>
       </form>
-    </>
+    </div>
   );
 }
 
