@@ -27,17 +27,20 @@ export default function Register() {
   const submitData = (event: FormEvent) => {
     event.preventDefault();
     const fullData = { ...user };
-    axios.post('http://localhost:3000/register', fullData)
-        .then((res) => {
-          setSuccess(res.data);
-          try {
-            setUser({ username: '', password: '', dateofbirth: '' });
-            // after successful register navigate to profile
-            navLink(`/inventory/${fullData.username}`);
-          } catch (inError) {
-            console.log(inError);
-          }
-        })
+        axios.post('http://localhost:3000/register', fullData)
+            .then((res) => {
+              console.log('Register response:', res.data);
+              setSuccess(res.data);
+              try {
+                setUser({ username: '', password: '', dateofbirth: '' });
+                if (res.status === 200 && (res.data.result === 'User Registered' || res.data.token)) {
+                  localStorage.setItem('user', JSON.stringify({ username: fullData.username }));
+                  navLink(`/inventory/${fullData.username}`);
+                }
+              } catch (inError) {
+                console.log(inError);
+              }
+            })
       .catch((err) => {
         console.error(err);
         setSuccess('An error occurred');

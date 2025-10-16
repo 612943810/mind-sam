@@ -20,5 +20,3 @@
 .website{
   background-color: var(--indigo-dye);
 }
-
-/* keep normalize rules: Tailwind's preflight covers most reset behaviors */

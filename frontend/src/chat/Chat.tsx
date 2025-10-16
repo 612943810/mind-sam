@@ -65,16 +65,7 @@ const submitChat = (submitVal:any) => {
 
 
 
-  // return()=>{
-  //  axios.get("http://localhost:3001/").then((response)=>{
-  //    console.log(response.data)
-  //   })
-  //   console.log(`Data: ${chat}`)
 
-    
-
-
-  // }
 
 
 

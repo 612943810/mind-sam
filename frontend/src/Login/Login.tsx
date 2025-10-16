@@ -41,25 +41,23 @@ export default function Login() {
     }
     await axios.post(`http://localhost:3000/login`, fullData)
       .then((res: any) => {
+        console.log('Login response:', res.data);
         setLoginData(res.data.result || '');
-        if (res.data.result === "Success") {
+        if (res.status === 200 && res.data.result === "Success") {
           localStorage.setItem('user', JSON.stringify(fullData));
-          setUser(fullData); 
+          setUser(fullData);
           console.log("Login successful, navigating to inventory page...");
           navLink(`/inventory/${fullData.username}`);
         } else if (res.data.result === "User not found") {
-          navLink(`/login`);
           setFormStatus(true);
+        } else if (res.status === 200) {
+          if (res.data && res.data.token) {
+            localStorage.setItem('user', JSON.stringify(fullData));
+            navLink(`/inventory/${fullData.username}`);
+          }
         }
 
-        try {
-          setUser({
-            username: '',
-            password: '',
-          })
-        } catch (inError) {
-          console.log(inError)
-        }
+        setUser({ username: '', password: '' });
       })
   }
 
