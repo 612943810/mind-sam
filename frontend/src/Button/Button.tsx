@@ -5,7 +5,7 @@ interface ButtonProps{
     text: ReactNode;
     backgroundColor?: CSSProperties['backgroundColor'];
     color?: CSSProperties['color'];
-    buttonType?: HTMLButtonElement['type'];
+    buttonType?: 'submit' | 'reset' | 'button';
     clickAction?: () => void;
     submitAction?: () => void;
 }
