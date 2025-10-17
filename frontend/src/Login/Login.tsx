@@ -1,8 +1,8 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 import Button from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../AuthContext';
 
 export default interface Login {
   username: string,
@@ -18,16 +18,8 @@ export default function Login() {
     password: '',
   });
 
-  let navLink = useNavigate();
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      setUser(parsedUser);
-      navLink(`/inventory/${parsedUser.username}`);
-    }
-  }, [navLink]);
+  const navLink = useNavigate();
+  const { login } = useAuth();
 
   const changeAction = (event: ChangeEvent<HTMLInputElement>) => {
     setUser({ ...user, [event.target.name]: event.target.value });
@@ -41,29 +33,24 @@ export default function Login() {
     }
     await axios.post(`http://localhost:3000/login`, fullData)
       .then((res: any) => {
-        console.log('Login response:', res.data);
         setLoginData(res.data.result || '');
         if (res.status === 200 && res.data.result === "Success") {
-          localStorage.setItem('user', JSON.stringify(fullData));
-          setUser(fullData);
-          console.log("Login successful, navigating to inventory page...");
+          login(fullData.username);
           navLink(`/inventory/${fullData.username}`);
         } else if (res.data.result === "User not found") {
           setFormStatus(true);
         } else if (res.status === 200) {
           if (res.data && res.data.token) {
-            localStorage.setItem('user', JSON.stringify(fullData));
+            login(fullData.username); 
             navLink(`/inventory/${fullData.username}`);
           }
         }
-
         setUser({ username: '', password: '' });
       })
   }
 
   return (
     <div className="container mx-auto">
-
       <form onSubmit={submitData} className="bg-white p-6 rounded-lg shadow max-w-md mx-auto space-y-4">
         <h1 className="text-2xl font-semibold text-center text-indigo-900">Login to your account</h1>
         <div>

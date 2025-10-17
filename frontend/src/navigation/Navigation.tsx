@@ -1,29 +1,18 @@
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../AuthContext';
 
 export default function Navigation() {
   const navigate = useNavigate();
-  const { username } = useParams();
-  const [currentUser, setCurrentUser] = useState(username || null);
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      setCurrentUser(parsedUser.username);
-    }
-  }, []);
+  const { currentUser, logout } = useAuth();
 
   const logoutUser = () => {
-    localStorage.removeItem('user');
-  setCurrentUser(null);
-  navigate('/');
+    logout();
+    navigate('/');
   };
 
   return (
     <nav className="w-full bg-yellow-200">
-      <div className="px-4 py-3 flex   items-center">
+      <div className="px-4 py-3 flex items-center">
         <div className="flex items-center gap-4">
           <Link to={`/${currentUser || ''}`} className="text-indigo-900 font-semibold">Inventory</Link>
         </div>
