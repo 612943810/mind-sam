@@ -11,14 +11,29 @@ dotenv.config();
 
 mongoose.connect(`mongodb+srv://${process.env.database_name}:${process.env.database_password}@${process.env.database_name}.yhrxz.mongodb.net/inventory?retryWrites=true&w=majority`);
 let appInit = express();
-appInit.use(cors());
+const allowedOrigins = ['https://mind-sam.netlify.app', 'http://localhost:5173', 'http://localhost:3001', 'https://mind-sam.onrender.com'];
+appInit.use(cors({
+        origin: allowedOrigins,
+        credentials: true,
+        methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: [
+        "Content-Type",
+        "Authorization",
+        "Access-Control-Allow-Credentials",
+    ]
+}));
 appInit.use(cookieParser());
 appInit.use(express.json());
 appInit.use(inRoute);
 appInit.use(authRoute);
 
 let chatInit =http.createServer(appInit);
-var io = require('socket.io')(chatInit);
+var io = require('socket.io')(chatInit, {
+    cors: {
+        origin: allowedOrigins,
+        credentials: true
+    }
+});
 
 
 var port = 3001;
