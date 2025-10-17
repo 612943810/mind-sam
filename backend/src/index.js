@@ -14,7 +14,7 @@ const cookieParser = require('cookie-parser');
 dotenv_1.default.config();
 mongoose_1.default.connect(`mongodb+srv://${process.env.database_name}:${process.env.database_password}@${process.env.database_name}.yhrxz.mongodb.net/inventory?retryWrites=true&w=majority`);
 let appInit = (0, express_1.default)();
-const allowedOrigins = ['https://mind-sam.netlify.app', 'http://localhost:5173', 'https://mind-sam.onrender.com'];
+const allowedOrigins = ['https://mind-sam.netlify.app', 'http://localhost:3001', 'http://localhost:5173', 'https://mind-sam.onrender.com'];
 appInit.use((0, cors_1.default)({
     origin: allowedOrigins,
     credentials: true,
