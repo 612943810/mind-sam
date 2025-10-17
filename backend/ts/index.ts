@@ -11,9 +11,9 @@ dotenv.config();
 
 mongoose.connect(`mongodb+srv://${process.env.database_name}:${process.env.database_password}@${process.env.database_name}.yhrxz.mongodb.net/inventory?retryWrites=true&w=majority`);
 let appInit = express();
-const allowedOrigins = ['*'];
+const allowedOrigins = ['https://mind-sam.netlify.app', 'http://localhost:5173', 'https://mind-sam.onrender.com'];
 appInit.use(cors({
-        origin: '*',
+        origin: allowedOrigins,
         credentials: true,
         methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: [
@@ -22,7 +22,11 @@ appInit.use(cors({
         "Access-Control-Allow-Credentials",
     ]
 }));
-appInit.use(cookieParser())
+appInit.use(cookieParser());
+appInit.use(express.json());
+appInit.use(inRoute);
+appInit.use(authRoute);
+
 let chatInit =http.createServer(appInit);
 var io = require('socket.io')(chatInit, {
     cors: {
@@ -36,6 +40,7 @@ var port = 3001;
 io.on('connection', (mindConection:any) => {
     mindConection.emit("welcomeMessage",`Welcome, ${mindConection.id} to the bot! `)
 });
+
 
 
 io.on("connection",(socketLis:any)=>{
@@ -53,8 +58,6 @@ io.on("disconnect",(socketLis:any)=>{
    socketLis.emit("Chat off")
 })
 
-
-
 mongoose.connection.on('connected',()=>{
     console.log("Connection successful");
 });
@@ -65,17 +68,3 @@ console.log(`Error:${error}`);
 chatInit.listen(port, () => {
     console.log(`Port  ${port}`);
 });
-
-appInit.use(express.json());
-appInit.use(inRoute);
-appInit.use(authRoute);
-
-mongoose.connection.on('connected',()=>{
-    console.log("Connection successful");
-});
-
-mongoose.connection.on('error',(error:any)=>{
-console.log(`Error:${error}`);
-});
-
-http.createServer(appInit).listen(3000)

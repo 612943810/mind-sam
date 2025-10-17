@@ -14,21 +14,9 @@ const cookieParser = require('cookie-parser');
 dotenv_1.default.config();
 mongoose_1.default.connect(`mongodb+srv://${process.env.database_name}:${process.env.database_password}@${process.env.database_name}.yhrxz.mongodb.net/inventory?retryWrites=true&w=majority`);
 let appInit = (0, express_1.default)();
-const allowedOrigins = ['*'];
+const allowedOrigins = ['https://mind-sam.netlify.app', 'http://localhost:5173', 'https://mind-sam.onrender.com'];
 appInit.use((0, cors_1.default)({
-    origin: function (origin, callback) {
-        // allow requests with no origin (like curl/postman or server-to-server)
-        if (!origin)
-            return callback(null, true);
-        if (allowedOrigins.indexOf(origin) !== -1) {
-            return callback(null, true);
-        }
-        // optionally allow any localhost during development
-        if (origin.startsWith('http://localhost:')) {
-            return callback(null, true);
-        }
-        callback(new Error('Not allowed by CORS'));
-    },
+    origin: allowedOrigins,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: [
@@ -38,6 +26,9 @@ appInit.use((0, cors_1.default)({
     ]
 }));
 appInit.use(cookieParser());
+appInit.use(express_1.default.json());
+appInit.use(inventory_1.inRoute);
+appInit.use(authentication_1.authRoute);
 let chatInit = http_1.default.createServer(appInit);
 var io = require('socket.io')(chatInit, {
     cors: {
@@ -68,13 +59,3 @@ mongoose_1.default.connection.on('error', (error) => {
 chatInit.listen(port, () => {
     console.log(`Port  ${port}`);
 });
-appInit.use(express_1.default.json());
-appInit.use(inventory_1.inRoute);
-appInit.use(authentication_1.authRoute);
-mongoose_1.default.connection.on('connected', () => {
-    console.log("Connection successful");
-});
-mongoose_1.default.connection.on('error', (error) => {
-    console.log(`Error:${error}`);
-});
-http_1.default.createServer(appInit).listen(3000);
