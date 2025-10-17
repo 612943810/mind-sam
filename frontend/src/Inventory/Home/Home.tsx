@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Chat from '../../chat/Chat';
 
+const API_URL = process.env.VITE_API_URL;
+
 export interface Inventory {
     _id: any;
     inventoryId: number;
@@ -23,7 +25,7 @@ export default function Home() {
             setCurrentUser(parsedUser.username);
         }
 
-        axios.get('http://localhost:3000/inventory')
+        axios.get(`${API_URL}/inventory`)
             .then((inData) => {
                 setInventory(Array.isArray(inData.data) ? inData.data : []);
             })
@@ -31,7 +33,7 @@ export default function Home() {
     }, []);
 
     const deleteInventory = (inventoryId: any) => {
-        axios.delete(`http://localhost:3000/inventory/${inventoryId}`)
+        axios.delete(`${API_URL}/inventory/${inventoryId}`)
             .then(() => {
                 setInventory(inventory.filter(item => item._id !== inventoryId));
             })
