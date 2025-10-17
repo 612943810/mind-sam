@@ -50,10 +50,10 @@ npm run dev
 - **Other Tools**: Mongoose, Axios
 
 ---
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ee59b02a-958c-4a2e-b97c-5974e28d33b0/deploy-status)](https://app.netlify.com/projects/mind-sam/deploys)
+##  Link
 
-##  Screenshots
-
-
+[mind-sam.netlify.app](https://mind-sam.netlify.app/)
 ---
 
 ##  Author
