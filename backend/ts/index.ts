@@ -13,18 +13,7 @@ mongoose.connect(`mongodb+srv://${process.env.database_name}:${process.env.datab
 let appInit = express();
 const allowedOrigins = ['*'];
 appInit.use(cors({
-        origin: function(origin, callback) {
-                // allow requests with no origin (like curl/postman or server-to-server)
-                if (!origin) return callback(null, true);
-                if (allowedOrigins.indexOf(origin) !== -1) {
-                        return callback(null, true);
-                }
-                // optionally allow any localhost during development
-                if (origin.startsWith('http://localhost:')) {
-                        return callback(null, true);
-                }
-                callback(new Error('Not allowed by CORS'));
-        },
+        origin: '*',
         credentials: true,
         methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: [
