@@ -1,5 +1,5 @@
 import Button from "../../Button/Button";
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Chat from '../../chat/Chat';
