@@ -75,10 +75,12 @@ export default function Home() {
                                     <td className="px-4 py-2">{tableData.inventoryDate ? new Date(tableData.inventoryDate).toLocaleDateString() : ''}</td>
                                     {currentUser && (
                                         <td className="px-4 py-2">
-                                            <Link to={`/inventory/update/${tableData._id}`}>
-                                                <Button buttonType='button' text="Update" backgroundColor='#f3b61fff' color='#fbc3bcff' />
-                                            </Link>
-                                            <Button buttonType='button' text="Delete" backgroundColor='#15b097ff' color='#fbc3bcff' clickAction={() => deleteInventory(tableData._id)} />
+                                            <div className="flex gap-2">
+                                                <Link to={`/inventory/update/${tableData._id}`}>
+                                                    <Button buttonType='button' text="Update" backgroundColor='#f3b61fff' color='#fbc3bcff' />
+                                                </Link>
+                                                <Button buttonType='button' text="Delete" backgroundColor='#15b097ff' color='#fbc3bcff' clickAction={() => deleteInventory(tableData._id)} />
+                                            </div>
                                         </td>
                                     )}
                                 </tr>
