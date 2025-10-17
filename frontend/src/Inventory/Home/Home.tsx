@@ -25,12 +25,13 @@ export default function Home() {
             setCurrentUser(parsedUser.username);
         }
 
-        axios.get(`${API_URL}/inventory`)
-            .then((inData) => {
-                setInventory(Array.isArray(inData.data) ? inData.data : []);
-            })
-            .catch((error) => console.error("Error fetching inventory:", error));
-    }, []);
+    const API_URL = import.meta.env.VITE_API_URL;
+    axios.get(`${API_URL}/inventory`)
+      .then((res: AxiosResponse<Inventory[]>) => {
+        setInventory(res.data);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
     const deleteInventory = (inventoryId: any) => {
         axios.delete(`${API_URL}/inventory/${inventoryId}`)

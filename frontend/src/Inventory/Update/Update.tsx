@@ -22,8 +22,8 @@ export default function UpdateInventory() {
       setInventory({...inventory,[event.target.name]:event.target.value});
         }
 useEffect(()=>{
-
-axios.get(`http://localhost:3000/inventory/?id=${id}`)
+const API_URL = import.meta.env.VITE_API_URL;
+axios.get(`${API_URL}/inventory/?id=${id}`)
    .then((res:AxiosResponse)=>{
    try {
     var dateFormat= new Date(res.data[0].inventoryDate).toISOString().split('T')[0];
@@ -45,8 +45,8 @@ axios.get(`http://localhost:3000/inventory/?id=${id}`)
       inventoryName:inventory.inventoryName,
      inventoryDate:inventory.inventoryDate
   }
-
-axios.put(`http://localhost:3000/inventory/${id}`,fullData).
+const API_URL = import.meta.env.VITE_API_URL;
+axios.put(`${API_URL}/inventory/${id}`,fullData).
 then(()=>{
 navLink('/inventory');   
  }

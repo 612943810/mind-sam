@@ -23,21 +23,17 @@ export default function CreateInventory() {
       inventoryName:inventory.inventoryName,
      inventoryDate:inventory.inventoryDate
   }
- axios.post('http://localhost:3000/inventory',fullData)
-   .then( (res)=>()=>{
-
-    try {
-  setInventory({
-  inventoryName:'',
-  inventoryDate:'', 
-})
-    } catch (inError) {
-     console.log(inError)
-    }
-
+  const API_URL = import.meta.env.VITE_API_URL;
+ axios.post(`${API_URL}/inventory`,fullData)
+   .then( (res)=>{
+    setInventory({
+      inventoryName:'',
+      inventoryDate:'', 
+    })
+    navLink('/inventory');
    })
-     navLink('/inventory');   
-      }
+   .catch(err => console.log(err));
+  }
   return (
     <div className="container mx-auto p-6 space-y-6">
 
