@@ -27,9 +27,8 @@ export default function Register() {
   const submitData = (event: FormEvent) => {
     event.preventDefault();
     const fullData = { ...user };
-
-    axios
-      .post('http://localhost:3000/register', fullData)
+const API_URL = import.meta.env.VITE_API_URL;
+    axios.post(`${API_URL}/register`, fullData)
       .then((res) => {
         console.log('Register response:', res.data);
         setSuccess(res.data);
@@ -37,7 +36,7 @@ export default function Register() {
           setUser({ username: '', password: '', dateofbirth: '' });
           if (res.status === 200 && (res.data.result === 'User Registered' || res.data.token)) {
             localStorage.setItem('user', JSON.stringify({ username: fullData.username }));
-            navLink(`/inventory/${fullData.username}`);
+            navLink(`${API_URL}/inventory/${fullData.username}`);
           }
         } catch (inError) {
           console.log(inError);
@@ -94,7 +93,6 @@ export default function Register() {
 
   return (
     <div className="container mx-auto p-6">
-      <Navigation />
       <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow text-center">{success}</div>
     </div>
   );

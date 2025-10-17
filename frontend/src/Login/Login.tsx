@@ -31,7 +31,8 @@ export default function Login() {
       username: user.username,
       password: user.password
     }
-    await axios.post(`http://localhost:3000/login`, fullData)
+    const API_URL = import.meta.env.VITE_API_URL;
+    await axios.post(`${API_URL}/login`, fullData)
       .then((res: any) => {
         setLoginData(res.data.result || '');
         if (res.status === 200 && res.data.result === "Success") {
