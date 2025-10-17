@@ -46,7 +46,7 @@ export default function Home() {
             <div className="container mx-auto p-6">
 
                 <div className="flex items-center justify-between mb-4">
-                    <h1 className='text-2xl font-semibold'>Inventory Details</h1>
+                    <h1 className='text-2xl font-semibold text-[#fbc3bcff]'>Inventory Details</h1>
                 </div>
 
                 {currentUser && (
@@ -77,7 +77,7 @@ export default function Home() {
                                         <td className="px-4 py-2">
                                             <div className="flex gap-2">
                                                 <Link to={`/inventory/update/${tableData._id}`}>
-                                                    <Button buttonType='button' text="Update" backgroundColor='#f3b61fff' color='#fbc3bcff' />
+                                                    <Button buttonType='button' text="Update" backgroundColor='#fef09a' color='#fbc3bcff' />
                                                 </Link>
                                                 <Button buttonType='button' text="Delete" backgroundColor='#15b097ff' color='#fbc3bcff' clickAction={() => deleteInventory(tableData._id)} />
                                             </div>
