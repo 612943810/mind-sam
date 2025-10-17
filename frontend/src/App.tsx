@@ -8,6 +8,7 @@ import CreateInventory from './Inventory/Create/Create';
 import UpdateInventory from './Inventory/Update/Update';
 import Login from './Login/Login';
 import Register from './Register/Register';
+import RegistrationComplete from './Success/Success';
 import axios from 'axios';
 import Profile from './Profile/Profile';
 import Navigation from './navigation/Navigation';
@@ -29,6 +30,7 @@ const App = () => {
             <Route path='/inventory/update/:id' element={<UpdateInventory/>}/>
             <Route path='/chat' element={<Chat/>}/>
             <Route path='/register' element={<Register/>}/>
+            <Route path='/register/success' element={<RegistrationComplete/>}/>
             <Route path='/login' element={<Login/>}/>
           </Routes>
         </BrowserRouter>
