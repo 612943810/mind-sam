@@ -16,9 +16,9 @@ jobs:
           node-version: 18
       
       - name: Install dependencies
-        run: npm install
+        run: cd backend && npm install
 
       - name: Ping MongoDB
-        run: npx ts-node scripts/cron.ts
+        run: cd backend && npx ts-node scripts/cron.ts
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
