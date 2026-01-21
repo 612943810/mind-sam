@@ -21,4 +21,4 @@ jobs:
       - name: Ping MongoDB
         run: cd backend && npx ts-node scripts/cron.ts
         env:
-          MONGO_URI: ${{ secrets.MONGO_URI }}
+          MONGO_URI: ${{ secrets.MONGODB_URI }}
