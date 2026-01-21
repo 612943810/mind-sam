@@ -75,6 +75,7 @@ navLink('/inventory');
           <Button buttonType='submit' text="Update Inventory" backgroundColor='#084b83ff' color='#fbc3bcff' />
         </div>
       </form>
+ 
     </div>
   );
 }
