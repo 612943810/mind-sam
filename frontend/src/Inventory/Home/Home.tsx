@@ -72,7 +72,7 @@ export default function Home() {
                                 <tr key={tableData.inventoryId ?? idx} className={`${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-indigo-50`}>
                                     <td className="px-4 py-2">{tableData.inventoryId}</td>
                                     <td className="px-4 py-2">{tableData.inventoryName}</td>
-                                    <td className="px-4 py-2">{tableData.inventoryDate ? new Date(tableData.inventoryDate).toLocaleDateString() : ''}</td>
+                                    <td className="px-4 py-2">{tableData.inventoryDate ? new Date(tableData.inventoryDate).toDateString() : ''}</td>
                                     {currentUser && (
                                         <td className="px-4 py-2">
                                             <div className="flex gap-2">
