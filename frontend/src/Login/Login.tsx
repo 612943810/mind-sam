@@ -50,6 +50,30 @@ export default function Login() {
       })
   }
 
+  const handleRecruiterLogin = async () => {
+    const recruiterData = {
+      username: 'recruiter',
+      password: 'recruiter123'
+    };
+    
+    const API_URL = import.meta.env.VITE_API_URL;
+    await axios.post(`${API_URL}/login`, recruiterData)
+      .then((res: any) => {
+        setLoginData(res.data.result || '');
+        if (res.status === 200 && res.data.result === "Success") {
+          login(recruiterData.username);
+          navLink(`/inventory/${recruiterData.username}`);
+        } else if (res.data.result === "User not found") {
+          setFormStatus(true);
+        } else if (res.status === 200) {
+          if (res.data && res.data.token) {
+            login(recruiterData.username); 
+            navLink(`/inventory/${recruiterData.username}`);
+          }
+        }
+      })
+  }
+
   return (
     <div className="container mx-auto">
       <form onSubmit={submitData} className="bg-white p-6 rounded-lg shadow max-w-md mx-auto space-y-4">
@@ -65,6 +89,7 @@ export default function Login() {
         {typeof loginData === 'string' && loginData && <div className="text-center text-sm text-red-600">{loginData}</div>}
         <div className="text-center">
           <Button buttonType='submit' text="Login" backgroundColor='#084b83ff' color='#fbc3bcff' />
+          <button type="button" onClick={handleRecruiterLogin} className="ml-2 bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">Dummy User</button>
         </div>
       </form>
     </div>

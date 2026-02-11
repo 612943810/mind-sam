@@ -10,6 +10,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const inventory_1 = require("./routes/inventory");
 const authentication_1 = require("./routes/authentication");
+const seedData_1 = require("./utils/seedData");
 const cookieParser = require('cookie-parser');
 dotenv_1.default.config();
 mongoose_1.default.connect(`mongodb+srv://${process.env.database_name}:${process.env.database_password}@${process.env.database_name}.yhrxz.mongodb.net/inventory?retryWrites=true&w=majority`);
@@ -52,6 +53,7 @@ io.on("disconnect", (socketLis) => {
 });
 mongoose_1.default.connection.on('connected', () => {
     console.log("Connection successful");
+    (0, seedData_1.seedData)();
 });
 mongoose_1.default.connection.on('error', (error) => {
     console.log(`Error:${error}`);

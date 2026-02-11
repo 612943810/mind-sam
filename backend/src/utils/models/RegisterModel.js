@@ -1,8 +1,8 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 exports.register = void 0;
-const mongoose_1 = require("mongoose");
-let registerSchema = new mongoose_1.Schema({
+var mongoose_1 = require("mongoose");
+var registerSchema = new mongoose_1.Schema({
     username: { type: String, required: true },
     password: { type: String, required: true },
     dateofbirth: { type: Date, required: true }

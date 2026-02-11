@@ -6,6 +6,7 @@ import { Router } from 'express';
 import mongoose from 'mongoose';
 import {inRoute} from './routes/inventory';
 import { authRoute } from './routes/authentication';
+import { seedData } from './utils/seedData';
 const cookieParser = require('cookie-parser')
 dotenv.config();
 
@@ -60,6 +61,7 @@ io.on("disconnect",(socketLis:any)=>{
 
 mongoose.connection.on('connected',()=>{
     console.log("Connection successful");
+    seedData();
 });
 
 mongoose.connection.on('error',(error:any)=>{
