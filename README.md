@@ -1,6 +1,6 @@
 # mind-sam
 
-Mind-Sam is a full-stack web application that makes it easier for store owners to manage their inventory and provides customers with links to their preferred entertainment platforms.
+Mind-Sam is a full-stack web application that makes it easier for users to track their progress and their problems in life. It will be AI-poweed and have a chat for users to keep track of their problems with any situation and the resolution. This will allow users to destress themselves for the day so they can go about the day worry free. It will also have a feature to track the progress of the users and give them insights on how they can improve their lives. The app will be built using React for the frontend, Node.js and Express for the backend, and MongoDB for the database.
 
 ---
 
