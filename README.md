@@ -5,9 +5,11 @@ Mind-Sam is a full-stack web application that makes it easier for users to track
 ---
 
 ## Features
-
--  CRUD-based inventory management  
-- Chat feature which gives  option to see news for customers or business guide or business owners 
+- **Problem Tracking**: Users can log their daily problems and challenges, along with the solutions they tried and the outcomes.
+- **User Authentication**: Users can create an account, log in, and log out securely.
+- **Chat Interface**: Users can interact with an AI-powered chat interface to discuss their problems and receive guidance.
+- **Progress Tracking**: Users can track their progress over time and view insights on their mental health and well-being.
+- **Data Visualization**: Users can visualize their progress through charts and graphs to better understand their mental health trends.
 
 ---
 

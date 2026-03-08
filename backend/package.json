@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": " npx tsc && npx nodemon src/index.js",
-    "test": "npx jest \"src/tests/**/*.test.js\""
+    "test": "npx jest --testPathPattern=src/tests"
   },
   "author": "Raiyan Rofiquzzaman",
   "license": "ISC",

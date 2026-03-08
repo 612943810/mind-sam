@@ -1,11 +1,10 @@
-import { Request, Response } from 'express';
-import * as controller from '../controller/InventoryController';
+const controller = require('../controller/InventoryController');
 
 jest.mock('../models/InventoryModel', () => {
   const inventory = jest.fn();
-  (inventory as any).find = jest.fn();
-  (inventory as any).findByIdAndUpdate = jest.fn();
-  (inventory as any).findByIdAndDelete = jest.fn();
+  inventory.find = jest.fn();
+  inventory.findByIdAndUpdate = jest.fn();
+  inventory.findByIdAndDelete = jest.fn();
   return { inventory };
 });
 
@@ -16,22 +15,22 @@ describe('InventoryController (ts)', () => {
 
   describe('postInventory', () => {
     it('sends Success when save resolves', async () => {
-      const req = { body: { inventoryName: 'item', inventoryDate: '2020-01-01' } } as Partial<Request>;
-      const res = { send: jest.fn(), json: jest.fn() } as Partial<Response>;
-      (inventory as any).mockImplementation(() => ({ save: jest.fn().mockResolvedValue(undefined) }));
+      const req = { body: { inventoryName: 'item', inventoryDate: '2020-01-01' } };
+      const res = { send: jest.fn(), json: jest.fn() };
+      inventory.mockImplementation(() => ({ save: jest.fn().mockResolvedValue(undefined) }));
 
-      await (controller as any).postInventory(req, res);
+      await controller.postInventory(req, res);
 
       expect(res.send).toHaveBeenCalledWith('Success');
     });
 
     it('returns error JSON when save rejects', async () => {
-      const req = { body: { inventoryName: 'item' } } as Partial<Request>;
-      const res = { send: jest.fn(), json: jest.fn() } as Partial<Response>;
+      const req = { body: { inventoryName: 'item' } };
+      const res = { send: jest.fn(), json: jest.fn() };
       const error = new Error('db failure');
-      (inventory as any).mockImplementation(() => ({ save: jest.fn().mockRejectedValue(error) }));
+      inventory.mockImplementation(() => ({ save: jest.fn().mockRejectedValue(error) }));
 
-      await (controller as any).postInventory(req, res);
+      await controller.postInventory(req, res);
 
       expect(res.json).toHaveBeenCalledWith(error);
     });
@@ -39,49 +38,49 @@ describe('InventoryController (ts)', () => {
 
   describe('getInventory', () => {
     it('returns all inventory when no query provided', async () => {
-      const req = { query: {} } as any;
+      const req = { query: {} };
       const sample = [{ inventoryName: 'a' }];
-      (inventory as any).find.mockResolvedValue(sample);
-      const res = { send: jest.fn(), json: jest.fn() } as Partial<Response>;
+      inventory.find.mockResolvedValue(sample);
+      const res = { send: jest.fn(), json: jest.fn() };
 
-      await (controller as any).getInventory(req, res);
+      await controller.getInventory(req, res);
 
-      expect((inventory as any).find).toHaveBeenCalledWith({});
+      expect(inventory.find).toHaveBeenCalledWith({});
       expect(res.send).toHaveBeenCalledWith(sample);
     });
 
     it('queries by inventoryId when inid present', async () => {
-      const req = { query: { inid: '123' } } as any;
+      const req = { query: { inid: '123' } };
       const sample = [{ inventoryId: 123 }];
-      (inventory as any).find.mockResolvedValue(sample);
-      const res = { send: jest.fn(), json: jest.fn() } as Partial<Response>;
+      inventory.find.mockResolvedValue(sample);
+      const res = { send: jest.fn(), json: jest.fn() };
 
-      await (controller as any).getInventory(req, res);
+      await controller.getInventory(req, res);
 
-      expect((inventory as any).find).toHaveBeenCalledWith({ inventoryId: req.query.inid });
+      expect(inventory.find).toHaveBeenCalledWith({ inventoryId: req.query.inid });
       expect(res.send).toHaveBeenCalledWith(sample);
     });
   });
 
   describe('updateInventory', () => {
     it('responds with Inventory Updated on success', async () => {
-      const req = { params: { id: 'abc' }, body: { inventoryName: 'updated' } } as any;
-      (inventory as any).findByIdAndUpdate.mockResolvedValue({});
-      const res = { json: jest.fn(), status: jest.fn().mockReturnThis() } as any;
+      const req = { params: { id: 'abc' }, body: { inventoryName: 'updated' } };
+      inventory.findByIdAndUpdate.mockResolvedValue({});
+      const res = { json: jest.fn(), status: jest.fn().mockReturnThis() };
 
-      await (controller as any).updateInventory(req, res);
+      await controller.updateInventory(req, res);
 
-      expect((inventory as any).findByIdAndUpdate).toHaveBeenCalledWith(req.params.id, req.body, expect.any(Object));
+      expect(inventory.findByIdAndUpdate).toHaveBeenCalledWith(req.params.id, req.body, expect.any(Object));
       expect(res.json).toHaveBeenCalledWith('Inventory Updated');
     });
 
     it('returns 500 json on error', async () => {
-      const req = { params: { id: 'abc' }, body: {} } as any;
-      const res = { json: jest.fn(), status: jest.fn().mockReturnThis() } as any;
+      const req = { params: { id: 'abc' }, body: {} };
+      const res = { json: jest.fn(), status: jest.fn().mockReturnThis() };
       const error = new Error('update failed');
-      (inventory as any).findByIdAndUpdate.mockRejectedValue(error);
+      inventory.findByIdAndUpdate.mockRejectedValue(error);
 
-      await (controller as any).updateInventory(req, res);
+      await controller.updateInventory(req, res);
 
       expect(res.status).toHaveBeenCalledWith(500);
       expect(res.json).toHaveBeenCalledWith(error);
@@ -90,24 +89,24 @@ describe('InventoryController (ts)', () => {
 
   describe('deleteInventory', () => {
     it('responds with Inventory deleted on success', async () => {
-      const req = { params: { id: 'xyz' } } as any;
-      (inventory as any).findByIdAndDelete.mockResolvedValue({});
-      const res = { json: jest.fn(), status: jest.fn().mockReturnThis() } as any;
+      const req = { params: { id: 'xyz' } };
+      inventory.findByIdAndDelete.mockResolvedValue({});
+      const res = { json: jest.fn(), status: jest.fn().mockReturnThis() };
 
-      await (controller as any).deleteInventory(req, res);
+      await controller.deleteInventory(req, res);
 
-      expect((inventory as any).findByIdAndDelete).toHaveBeenCalledWith(req.params.id);
+      expect(inventory.findByIdAndDelete).toHaveBeenCalledWith(req.params.id);
       expect(res.json).toHaveBeenCalledWith('Inventory deleted');
     });
 
     it('returns error JSON on failure', async () => {
-      const req = { params: { id: 'xyz' } } as any;
-      const res = { json: jest.fn() } as any;
+      const req = { params: { id: 'xyz' } };
+      const res = { json: jest.fn() };
       const error = new Error('delete failed');
-      (inventory as any).findByIdAndDelete.mockRejectedValue(error);
+      inventory.findByIdAndDelete.mockRejectedValue(error);
 
-      await (controller as any).deleteInventory(req, res);
-
+      await controller.deleteInventory(req, res);
+      expect(inventory.findByIdAndDelete).toHaveBeenCalledWith(req.params.id);
       expect(res.json).toHaveBeenCalledWith(error);
     });
   });
