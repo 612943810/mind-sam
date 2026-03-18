@@ -13,14 +13,27 @@ Mind-Sam is a full-stack web application that makes it easier for users to track
 
 ---
 
+## Environment Setup
+
+1. Copy environment file template:
+
+```bash
+cp backend/.env.example backend/.env
+```
+
+2. Set your MongoDB URI and JWT secret in `backend/.env`.
+
+3. (Optional) For production, use `backend/.env.production` and set `NODE_ENV=production`.
+
 ## Installation
 
 To install and run the app locally:
 
 ```bash
 git clone https://github.com/612943810/mind-sam.git
+cd mind-sam
 npm install
-```
+``` 
 
 >  **Note:** Please run the folders in the order given below to properly see the app in action.
 

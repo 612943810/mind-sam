@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const controller = require('../controller/InventoryController');
 jest.mock('../models/InventoryModel', () => {
     const inventory = jest.fn();

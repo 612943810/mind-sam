@@ -1,12 +1,14 @@
 const controller = require('../controller/InventoryController');
 
 jest.mock('../models/InventoryModel', () => {
-  const inventory = jest.fn();
+  const inventory: any = jest.fn();
   inventory.find = jest.fn();
   inventory.findByIdAndUpdate = jest.fn();
   inventory.findByIdAndDelete = jest.fn();
   return { inventory };
 });
+
+export {};
 
 const { inventory } = require('../models/InventoryModel');
 

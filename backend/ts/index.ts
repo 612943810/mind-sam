@@ -1,72 +1,60 @@
-import express, { Request,Response } from 'express';
+import express from 'express';
 import http from 'http';
 import cors from 'cors';
-import dotenv from 'dotenv';
-import { Router } from 'express';
-import mongoose from 'mongoose';
-import {inRoute} from './routes/inventory';
+import { inRoute } from './routes/inventory';
 import { authRoute } from './routes/authentication';
 import { seedData } from './utils/seedData';
-const cookieParser = require('cookie-parser')
-dotenv.config();
+import { connectDb } from './db/connection';
+import { PORT } from './config';
 
-mongoose.connect(`mongodb+srv://${process.env.database_name}:${process.env.database_password}@${process.env.database_name}.yhrxz.mongodb.net/inventory?retryWrites=true&w=majority`);
-let appInit = express();
+const cookieParser = require('cookie-parser');
+
+const appInit = express();
 const allowedOrigins = ['https://mind-sam.netlify.app', 'http://localhost:5173', 'http://localhost:3001', 'https://mind-sam.onrender.com'];
 appInit.use(cors({
-        origin: allowedOrigins,
-        credentials: true,
-        methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: [
-        "Content-Type",
-        "Authorization",
-        "Access-Control-Allow-Credentials",
-    ]
+  origin: allowedOrigins,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Credentials'],
 }));
 appInit.use(cookieParser());
 appInit.use(express.json());
 appInit.use(inRoute);
 appInit.use(authRoute);
 
-let chatInit =http.createServer(appInit);
-var io = require('socket.io')(chatInit, {
-    cors: {
-        origin: allowedOrigins,
-        credentials: true
-    }
+const chatInit = http.createServer(appInit);
+const io = require('socket.io')(chatInit, {
+  cors: {
+    origin: allowedOrigins,
+    credentials: true,
+  },
 });
 
+io.on('connection', (mindConnection: any) => {
+  mindConnection.emit('welcomeMessage', `Welcome, ${mindConnection.id} to the bot! `);
+  mindConnection.emit('Chat started');
+  mindConnection.emit('messageDisplay', 'Please select an option for your respective links. 1 is for Customer, and 2 is for Business Owner.');
 
-var port = 3001;
-io.on('connection', (mindConection:any) => {
-    mindConection.emit("welcomeMessage",`Welcome, ${mindConection.id} to the bot! `)
+  mindConnection.on('showMenu', (menuOptions: any) => {
+    io.emit('showMenu', menuOptions);
+  });
+
+  mindConnection.on('disconnect', () => {
+    console.log('Socket disconnected', mindConnection.id);
+  });
 });
 
-
-
-io.on("connection",(socketLis:any)=>{
-   socketLis.emit("Chat started");
- 
-   socketLis.emit("messageDisplay","Please select an option for your respective links. 1 is for Customer, and 2 is for Business Owner.");
-socketLis.on("showMenu",(menuOptions:any)=>{
-      io.emit("showMenu",menuOptions);
-   })
-
-}) 
-
-
-io.on("disconnect",(socketLis:any)=>{
-   socketLis.emit("Chat off")
-})
-
-mongoose.connection.on('connected',()=>{
-    console.log("Connection successful");
+const startServer = async () => {
+  try {
+    await connectDb();
     seedData();
-});
+    chatInit.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (error: any) {
+    console.error('Failed to start server', error);
+    process.exit(1);
+  }
+};
 
-mongoose.connection.on('error',(error:any)=>{
-console.log(`Error:${error}`);
-});
-chatInit.listen(port, () => {
-    console.log(`Port  ${port}`);
-});
+startServer();
