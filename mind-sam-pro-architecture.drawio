@@ -1,0 +1,302 @@
+<mxfile host="app.diagrams.net" modified="2026-04-18T21:06:00.000Z" agent="5.0 (Windows NT 10.0; Win64; x64)" version="22.0.0" etag="mind-sam-pro" type="device">
+  <diagram name="Mind-Sam Architecture" id="mind-sam-pro">
+    <mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;Mind-Sam System Architecture&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=36;fontColor=#1a1a2e;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="800" y="20" width="600" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ================= CLIENT LAYER ================= -->
+        <mxCell id="client-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;arcSize=6;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="120" width="400" height="280" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="client-title" value="&lt;b&gt;Client Layer&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontColor=#1565c0;" vertex="1" parent="1">
+          <mxGeometry x="50" y="130" width="400" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- User Icons -->
+        <mxCell id="user1" value="" style="shape=mxgraph.aws4.user;fillColor=#ff9800;strokeColor=none;aspect=fixed;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="70" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="user2" value="" style="shape=mxgraph.aws4.user;fillColor=#ff9800;strokeColor=none;aspect=fixed;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="200" width="70" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="user-label" value="&lt;b&gt;End Users&lt;/b&gt;\nBrowser / Mobile" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="75" y="280" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- React Icon -->
+        <mxCell id="react-icon" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#61dafb;strokeColor=#20232a;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="280" y="190" width="130" height="130" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="react-text" value="&lt;b style=&quot;font-size:18px;&quot;&gt;React&lt;/b&gt;\n+ Vite\nTypeScript" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#20232a;" vertex="1" parent="1">
+          <mxGeometry x="285" y="235" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ================= NETLIFY HOSTING ================= -->
+        <mxCell id="netlify-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;arcSize=6;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="500" y="120" width="350" height="280" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="netlify-title" value="&lt;b&gt;CDN &amp;amp; Hosting&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontColor=#7b1fa2;" vertex="1" parent="1">
+          <mxGeometry x="500" y="130" width="350" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Netlify Logo -->
+        <mxCell id="netlify-logo" value="N" style="ellipse;whiteSpace=wrap;html=1;fillColor=#00c7b7;strokeColor=#00543c;strokeWidth=3;fontColor=white;fontSize=48;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="610" y="190" width="130" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="netlify-label" value="&lt;b&gt;Netlify&lt;/b&gt;\nGlobal CDN\nEdge Functions" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="530" y="330" width="290" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ================= AWS INFRASTRUCTURE ================= -->
+        <mxCell id="aws-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#e65100;arcSize=6;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="50" y="450" width="800" height="580" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="aws-title" value="&lt;b&gt;AWS Cloud Infrastructure&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontColor=#e65100;" vertex="1" parent="1">
+          <mxGeometry x="50" y="460" width="800" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- API Gateway -->
+        <mxCell id="apigw-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;arcSize=4;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="530" width="220" height="220" as="geometry" />
+        </mxCell>
+
+        <mxCell id="apigw-icon" value="" style="shape=mxgraph.aws4.api_gateway;fillColor=#ff9900;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="125" y="550" width="130" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="apigw-label" value="&lt;b&gt;API Gateway&lt;/b&gt;\nREST / WebSocket\nRate Limiting\nAuth" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="90" y="690" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- EC2/ECS Container -->
+        <mxCell id="compute-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;arcSize=4;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="330" y="530" width="480" height="470" as="geometry" />
+        </mxCell>
+
+        <mxCell id="compute-label" value="&lt;b&gt;Compute Layer&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#2e7d32;" vertex="1" parent="1">
+          <mxGeometry x="330" y="540" width="480" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- EC2 Icon -->
+        <mxCell id="ec2-icon" value="" style="shape=mxgraph.aws4.ec2;fillColor=#f58536;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="360" y="600" width="100" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ec2-label" value="&lt;b&gt;EC2 / ECS&lt;/b&gt;\nNode.js\nExpress" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="350" y="710" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Express Server -->
+        <mxCell id="express-box" value="&lt;b&gt;Express Server&lt;/b&gt;\nPort 3001\n\n• /api/auth\n• /api/problems\n• /api/progress\n• /api/chat\n• /api/insights" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#f57c00;arcSize=5;align=left;verticalAlign=top;spacingLeft=15;spacingTop=15;fontSize=12;fontColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="490" y="600" width="140" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- Socket.io -->
+        <mxCell id="socket-icon" value="&#128172;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#388e3c;strokeWidth=2;fontSize=40;" vertex="1" parent="1">
+          <mxGeometry x="660" y="600" width="100" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="socket-label" value="&lt;b&gt;Socket.io&lt;/b&gt;\nReal-time\nChat" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="650" y="710" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Middleware -->
+        <mxCell id="middleware-box" value="&lt;b&gt;Middleware Stack&lt;/b&gt;\n\n• JWT Authentication\n• CORS\n• Cookie Parser\n• Rate Limiting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;arcSize=5;align=left;verticalAlign=top;spacingLeft=15;spacingTop=15;fontSize=12;fontColor=#4a148c;" vertex="1" parent="1">
+          <mxGeometry x="360" y="800" width="430" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Lambda -->
+        <mxCell id="lambda-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1565c0;arcSize=4;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="780" width="220" height="220" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lambda-icon" value="" style="shape=mxgraph.aws4.lambda;fillColor=#ff9900;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="125" y="800" width="130" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lambda-label" value="&lt;b&gt;AWS Lambda&lt;/b&gt;\nAI Processing\n• Sentiment\n• Insights\n• Analytics" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="90" y="940" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ================= NEON DATABASE ================= -->
+        <mxCell id="neon-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0f7fa;strokeColor=#0097a7;arcSize=6;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="900" y="450" width="650" height="580" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="neon-title" value="&lt;b&gt;Neon Serverless PostgreSQL&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontColor=#0097a7;" vertex="1" parent="1">
+          <mxGeometry x="900" y="460" width="650" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Neon Icon -->
+        <mxCell id="neon-icon" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#00e5ff;strokeColor=#00b8d4;strokeWidth=4;" vertex="1" parent="1">
+          <mxGeometry x="950" y="540" width="100" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="neon-text" value="&lt;b style=&quot;font-size:28px;color:white;&quot;&gt;n&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="950" y="565" width="100" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="neon-features" value="&lt;b&gt;Serverless Features&lt;/b&gt;\n• Auto-scaling\n• Branching\n• PITR\n• Connection Pooling" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#006064;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="540" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Database Tables -->
+        <mxCell id="tables-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=white;strokeColor=#00bcd4;arcSize=3;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="930" y="660" width="590" height="350" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tables-title" value="&lt;b&gt;Database Schema&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#006064;" vertex="1" parent="1">
+          <mxGeometry x="930" y="670" width="590" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Users Table -->
+        <mxCell id="users-table" value="&lt;b&gt;users&lt;/b&gt;\n&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;\nid (PK, UUID)\nusername\nemail\npassword_hash\nprofile (JSONB)\ncreated_at" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0288d1;arcSize=3;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=11;fontColor=#01579b;" vertex="1" parent="1">
+          <mxGeometry x="950" y="720" width="130" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Problems Table -->
+        <mxCell id="problems-table" value="&lt;b&gt;problem_entries&lt;/b&gt;\n&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;\nid (PK, UUID)\nuser_id (FK)\ntitle\ndescription\nmood_level\ncategory\nresolution\nis_resolved\ncreated_at" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;arcSize=3;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=11;fontColor=#4a148c;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="720" width="140" height="170" as="geometry" />
+        </mxCell>
+
+        <!-- Chat Table -->
+        <mxCell id="chat-table" value="&lt;b&gt;chat_sessions&lt;/b&gt;\n&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;\nid (PK, UUID)\nuser_id (FK)\nmessages (JSONB)\nsentiment\nai_model\ncreated_at" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#388e3c;arcSize=3;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=11;fontColor=#1b5e20;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="720" width="130" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- Progress Table -->
+        <mxCell id="progress-table" value="&lt;b&gt;progress_metrics&lt;/b&gt;\n&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;\nid (PK, UUID)\nuser_id (FK)\nmood_trends (JSONB)\nproblem_stats (JSONB)\ninsights (JSONB)\ncalculated_at" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#f57c00;arcSize=3;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=11;fontColor=#e65100;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="910" width="140" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- Prisma ORM -->
+        <mxCell id="prisma-box" value="&lt;b&gt;Prisma ORM&lt;/b&gt;\nType-Safe\nConnection Pooling" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#1a202c;fontColor=white;arcSize=5;align=center;verticalAlign=middle;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="940" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ================= AI SERVICES ================= -->
+        <mxCell id="ai-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;arcSize=6;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1070" width="500" height="220" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ai-title" value="&lt;b&gt;External AI Services&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontColor=#7b1fa2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1080" width="500" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- OpenAI Icon -->
+        <mxCell id="openai-icon" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#10a37f;strokeColor=#0d8a6a;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1140" width="100" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="openai-text" value="&lt;b style=&quot;font-size:28px;color:white;&quot;&gt;AI&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1165" width="100" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="openai-label" value="&lt;b&gt;OpenAI / Claude&lt;/b&gt;\nGPT-4 / Claude 3.5\nMental Health AI" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1250" width="140" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ai-features" value="&lt;b&gt;AI Capabilities&lt;/b&gt;\n&#8226; Therapy-style Conversations\n&#8226; Sentiment Analysis\n&#8226; Coping Strategies\n&#8226; Crisis Detection\n&#8226; Pattern Recognition\n&#8226; Progress Summaries" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="240" y="1140" width="280" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- ================= CONNECTION LINES ================= -->
+        <!-- Client to Netlify -->
+        <mxCell id="edge1" value="&lt;b&gt;HTTPS&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;fontSize=14;fontStyle=1;strokeWidth=4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="client-bg" target="netlify-bg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Netlify to API Gateway -->
+        <mxCell id="edge2" value="" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;fontSize=12;strokeWidth=3;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.27;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="netlify-bg" target="aws-bg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- API Gateway to Compute -->
+        <mxCell id="edge3" value="&lt;b&gt;REST API&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2e7d32;fontSize=13;fontStyle=1;strokeWidth=3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.35;entryDx=0;entryDy=0;" edge="1" parent="1" source="apigw-bg" target="compute-bg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- WebSocket Direct -->
+        <mxCell id="edge4" value="&lt;b&gt;WebSocket&lt;br&gt;(Socket.io)&lt;/b&gt;" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#388e3c;fontSize=12;strokeWidth=3;dashed=1;strokeDashPattern=10 5;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.7;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="client-bg" target="compute-bg">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="350" y="410" />
+              <mxPoint x="666" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Compute to Lambda -->
+        <mxCell id="edge5" value="&lt;b&gt;Invoke&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ff9900;fontSize=12;fontStyle=1;strokeWidth=3;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="compute-bg" target="lambda-bg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Compute to Neon -->
+        <mxCell id="edge6" value="&lt;b&gt;Prisma SQL&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0097a7;fontSize=14;fontStyle=1;strokeWidth=4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="aws-bg" target="neon-bg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Lambda to Neon -->
+        <mxCell id="edge7" value="&lt;b&gt;Analytics&lt;br&gt;Writes&lt;/b&gt;" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0097a7;fontSize=11;strokeWidth=2;dashed=1;strokeDashPattern=6 4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.12;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="lambda-bg" target="neon-bg">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="890" />
+              <mxPoint x="978" y="1030" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Compute to AI -->
+        <mxCell id="edge8" value="&lt;b&gt;API Calls&lt;/b&gt;" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;fontSize=12;strokeWidth=3;exitX=0.35;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="aws-bg" target="ai-bg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ================= LEGEND ================= -->
+        <mxCell id="legend-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=white;strokeColor=#666;arcSize=3;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="1070" width="550" height="220" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend-title" value="&lt;b&gt;Architecture Legend&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="1080" width="550" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Legend Items -->
+        <mxCell id="legend-aws-icon" value="" style="shape=mxgraph.aws4.user;fillColor=#ff9800;strokeColor=none;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="1630" y="1130" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-aws-text" value="AWS Icons - Official AWS architecture icons" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="1670" y="1130" width="300" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend-neon-icon" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#00e5ff;strokeColor=#00b8d4;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1630" y="1170" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-neon-text" value="Neon - Serverless PostgreSQL (cyan branding)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="1670" y="1170" width="320" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend-solid" value="&lt;b&gt;&#9472;&#9472;&#9472;&lt;/b&gt; Primary Data Flow (REST API, SQL)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="1630" y="1210" width="280" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend-dashed" value="&lt;b&gt;- - -&lt;/b&gt; Async Flow (WebSocket, Analytics)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#333;" vertex="1" parent="1">
+          <mxGeometry x="1630" y="1245" width="280" height="30" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

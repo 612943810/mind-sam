@@ -68,8 +68,8 @@ export default function Home() {
                             </tr>
                         </thead>
                         <tbody>
-                            {inventory.map((tableData, idx) => (
-                                <tr key={tableData.inventoryId ?? idx} className={`${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-indigo-50`}>
+                            {inventory.map((tableData) => (
+                                <tr key={tableData.inventoryId ?? tableData._id} className="bg-white hover:bg-indigo-50">
                                     <td className="px-4 py-2">{tableData.inventoryId}</td>
                                     <td className="px-4 py-2">{tableData.inventoryName}</td>
                                     <td className="px-4 py-2">{tableData.inventoryDate ? new Date(tableData.inventoryDate).toDateString() : ''}</td>
